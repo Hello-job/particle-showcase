@@ -1,4 +1,4 @@
-import { DEEPSEEK_SHAPE } from "./custom-shapes.js";
+import { DEEPSEEK_SHAPE, DEEPSEEK_WORDMARK_SHAPE } from "./custom-shapes.js";
 
 // Extracted from the public OpenAI Astra source, 28nbglk5oli9p.js.
 // Shader, geometry and motion math are preserved; see README.md for provenance.
@@ -26,12 +26,14 @@ export default (e) => {
     {
       cursor: { height: 19, paths: [t], width: 19 },
       deepseek: DEEPSEEK_SHAPE,
+      "deepseek-wordmark": DEEPSEEK_WORDMARK_SHAPE,
       "openai-knot": { height: 1538, paths: a, width: 1726 },
     },
     "resolveAstraPathShape",
     0,
     function (e) {
       if (e === "deepseek") return "deepseek";
+      if (e === "deepseek-wordmark") return "deepseek-wordmark";
       return "cursor" === e
         ? "cursor"
         : "openai-knot" === e || "blossom" === e

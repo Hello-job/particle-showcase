@@ -395,6 +395,7 @@ export default (t) => {
   uniform float uPathShapePositionProgress;
   uniform vec2 uPathShapeRotation;
   uniform float uPathShapeScatter;
+  uniform float uPathShapePointScale;
   uniform float uPathShapeSampleCount;
   uniform vec2 uPathShapeSize;
   uniform vec2 uPathShapeTrackedScatter;
@@ -834,6 +835,7 @@ export default (t) => {
       * mix(1.0, 1.0 + coreBurst * 0.42, uFormationEnabled)
       * mix(1.0, 0.3 + growthVisibility * 0.7, uGrowthEnabled)
       * scrollSizeScale
+      * mix(uPathShapePointScale, 1.0, backgroundStar)
       * mix(1.0, pathShapeDepthCue, pathShapeProgress)
       * introParticleScale;
     vec4 viewPosition = modelViewMatrix * vec4(animatedPosition, 1.0);
@@ -1020,6 +1022,7 @@ export default (t) => {
           uPathShapePositionProgress: { value: 0 },
           uPathShapeRotation: { value: new e.Vector2() },
           uPathShapeScatter: { value: 1 },
+          uPathShapePointScale: { value: 1 },
           uPathShapeSampleCount: { value: 1024 },
           uPathShapeSize: { value: new e.Vector2() },
           uPathShapeTrackedScatter: {

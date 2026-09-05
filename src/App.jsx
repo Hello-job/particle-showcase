@@ -5,7 +5,7 @@ import { ASTRA_SHAPE_SVGS } from "./astra/index.js";
 function ShapeTarget({ shape }) {
   const definition = ASTRA_SHAPE_SVGS[shape];
   return (
-    <svg aria-hidden="true" className="astra-shape-target" fill="none" viewBox={`0 0 ${definition.width} ${definition.height}`}>
+    <svg aria-hidden="true" className="astra-shape-target" fill="none" viewBox={definition.viewBox ?? `0 0 ${definition.width} ${definition.height}`}>
       {definition.paths.map((path, index) => <path key={index} d={path} />)}
     </svg>
   );
@@ -113,12 +113,12 @@ function HeroLabel({ text, side }) {
 }
 
 function ShapeCue({ shape }) {
-  const shapeName = shape === "cursor" ? "Cursor" : shape === "deepseek" ? "DeepSeek" : "OpenAI";
+  const shapeName = shape === "cursor" ? "Cursor" : shape === "deepseek-wordmark" ? "DeepSeek wordmark" : shape === "deepseek" ? "DeepSeek" : "OpenAI";
   return (
     <section className="shape-section" id={shape} aria-label={`${shapeName} constellation`}>
-      <div className="astra-shape-cue" data-astra-path-shape={shape} data-astra-scroll-cue="true">
+      <div className="astra-shape-cue" data-astra-path-shape={shape} data-astra-scroll-cue={shape === "deepseek-wordmark" ? JSON.stringify({ keyframe: { engine: { pathShapeScatter: 0.18, lensFlare: { intensity: 0.12 } }, particles: { starIntensity: 2.2 } } }) : "true"}>
         <ShapeTarget shape={shape} />
-        <button type="button" className="astra-drag-surface" data-astra-drag aria-label={shape === "cursor" ? "Drag or use arrow keys to rotate the cursor" : shape === "deepseek" ? "Drag or use arrow keys to rotate the DeepSeek whale" : "Drag or use arrow keys to rotate the OpenAI blossom"} />
+        <button type="button" className="astra-drag-surface" data-astra-drag aria-label={shape === "cursor" ? "Drag or use arrow keys to rotate the cursor" : shape === "deepseek-wordmark" ? "Drag or use arrow keys to rotate the DeepSeek wordmark" : shape === "deepseek" ? "Drag or use arrow keys to rotate the DeepSeek whale" : "Drag or use arrow keys to rotate the OpenAI blossom"} />
       </div>
     </section>
   );
@@ -152,11 +152,11 @@ export function App() {
               <p>{deepseek ? "Move through the stars. Drag to rotate. Scroll to transform." : "We’re introducing GPT‑6 Astra, the world’s most intelligent and aligned model."}</p>
             </div>
           </section>
-          <ShapeCue shape="cursor" />
+          {!deepseek && <ShapeCue shape="cursor" />}
           <div className="constellation-interlude" aria-hidden="true">
             <div className="astra-release-cue" data-astra-scroll-cue={JSON.stringify({ easing: "smoothstep", keyframe: { opacity: 1, motion: { autoplay: true }, particles: { disperse: 1, flowSpeed: 0.8 } } })} />
           </div>
-          <ShapeCue shape={deepseek ? "deepseek" : "openai-knot"} />
+          <ShapeCue shape={deepseek ? "deepseek-wordmark" : "openai-knot"} />
           <footer className="astra-footer">
             <a href={deepseek ? "https://www.deepseek.com/" : referenceUrl}>{deepseek ? "Explore DeepSeek" : "Explore GPT-6 Astra"} <ArrowIcon /></a>
             <a href="#astra">Back to top</a>

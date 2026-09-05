@@ -41,3 +41,5 @@ The mathematical effect is preserved, while the page layout and DOM lifecycle ar
 ## DeepSeek variation
 
 `custom-shapes.js` adds the exact whale paths from https://github.com/deepseek-ai/DeepSeek-V2/blob/main/figures/logo.svg. Four separate SVG subpaths preserve the body, mouth and eye details without connecting pen-up segments. `heroShape` opts into the opening path destination; original Astra behavior is preserved when omitted. The pre-customization source is tagged `astra-original-v1`.
+
+The final DeepSeek cue now samples all nine official lettering contours, including the rectangular k stem. Only this wordmark increases fine-star visibility and scales point size, contour scatter and tracked flares to the viewport width. `uPathShapePointScale` defaults to 1, preserving the original shader result for all Astra shapes and the whale.

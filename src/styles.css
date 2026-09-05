@@ -55,7 +55,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
 .version-switch a[aria-current="page"] { color: #fff; background: #ffffff18; }
 .switch-to-deepseek { position: fixed; bottom: 14px; left: 16px; border-radius: 100px; background: #ffffff14; padding: 9px 14px; font-size: 12px; }
 [data-astra-hero-shape] { position: absolute; inset: 0; pointer-events: none; }
-.astra-custom-poster { position: absolute; width: min(58vw, 100vh); max-height: 64vh; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); filter: brightness(1.5); opacity: .7; }
 .wordmark { display: flex; align-items: center; height: 100%; flex-shrink: 0; }
 .wordmark img { display: block; height: 17px; width: auto; }
 .desktop-nav { display: flex; align-items: center; gap: 32px; font-size: 13px; line-height: 20px; font-weight: 500; }
@@ -91,11 +90,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
 .shape-section { position: relative; min-height: 100svh; display: flex; align-items: center; padding: 0 24px; scroll-margin-top: var(--header-h); }
 .astra-shape-cue { width: 100%; max-width: var(--astra-shape-max-width,36rem); height: var(--astra-shape-height,calc(.8 * var(--astra-viewport-height,100vh))); touch-action: pan-y pinch-zoom; margin-inline: auto; position: relative; }
 .astra-shape-target { pointer-events: none; opacity: 0; width: 100%; height: 100%; position: absolute; inset: 0; }
+.astra-shape-cue[data-astra-path-shape="deepseek-wordmark"] { --astra-shape-max-width: min(82vw, 1280px); }
 .constellation-interlude { height: 45svh; position: relative; }
 .astra-release-cue { pointer-events: none; height: 1px; width: 100%; position: absolute; top: calc(120px - 10svh); }
 .astra-footer { display: flex; justify-content: space-between; gap: 24px; max-width: 1152px; margin: 0 auto; padding: 96px 24px 40px; font-size: 14px; }
 .astra-footer a { display: inline-flex; align-items: center; gap: 8px; }
 .astra-footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
+[data-variant="deepseek"] .astra-footer { position: absolute; inset: auto 0 0; }
 
 @media (max-width: 1100px) {
   .site-header { gap: 24px; }
@@ -119,7 +120,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
   .deepseek-wordmark img { width: 100px; }
   .version-switch { font-size: 11px; }
   .version-switch a { padding: 6px 10px; }
-  .astra-custom-poster { width: 80vw; }
   .astra-label-left { top: 46%; left: 1rem; }
   .astra-label-right { top: 54%; right: 1rem; }
   .astra-title { max-width: 360px; }

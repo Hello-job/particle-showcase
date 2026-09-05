@@ -1,6 +1,47 @@
-# DeepSeek custom shape — latest QA
+# DeepSeek bottom wordmark — latest QA
 
 final result: passed
+
+Scope: selected generated option 1 becomes the final particle section at the bottom; remove the intermediate cursor in DeepSeek mode and remove the initial solid whale loading image. Keep the animated whale hero and separately recoverable Astra version.
+
+## Visual evidence and normalization
+
+- Selected source: `reference/deepseek-wordmark-selected.png`, 1586 × 992 generated visual intended as a 1440 × 900 desktop viewport.
+- Official letter geometry: `public/assets/deepseek-wordmark.svg`, viewBox `60.422485 10.022217 134.577469 25.511124`; all eight source paths plus the exact rectangular k stem are sampled separately.
+- Desktop: `reference/deepseek-wordmark-desktop.png`, 1425 × 891 screenshot at CSS viewport 1440 × 900, final scroll Y=2005.5.
+- Phone: `reference/deepseek-wordmark-mobile.png`, 375 × 812 screenshot at CSS viewport 390 × 844, final scroll Y=1762.5.
+- Hero: `reference/deepseek-no-poster.png`, returning to the hero (Y=152); background image count is zero and WebGL scene reports ready.
+- Original-mode regression: `reference/astra-wordmark-regression.png`, desktop, settled opening.
+
+Selected source and final desktop screenshot were emitted together in the same comparison input. Frames share the same 1.6 aspect ratio; compositions were compared proportionally, accounting for browser scrollbar and output scaling. The wordmark spans about 82% of the viewport and sits at its vertical center at maximum scroll. Full-view and focused letter checks show readable d/p stems, open e apertures, a distinct s and complete k. Mobile is a responsive adaptation of the desktop target, not a separately supplied phone mock. No horizontal overflow: clientWidth = scrollWidth = 375.
+
+## Iteration history
+
+1. [P2, fixed] The footer initially pushed the final shape above center. DeepSeek footer now sits inside the final screen, and the wordmark cue center is Y=450.18 at the bottom of a 900 px viewport.
+2. [P2, fixed] Fine stars inherited the original scroll reduction to 45%, leaving the lettering sparse. Wordmark-only fine-star size now blends to 80%, with narrower contour scatter and reduced lens flare intensity. Original Astra and whale keep their existing values.
+3. [P1, fixed] Desktop-sized points overwhelmed the letters on a 390 px phone. Wordmark sprite size, contour scatter and tracked flare size now scale together with viewport width. The final phone capture shows clear, separate lowercase letters and no overflow.
+4. [P1, fixed] A solid whale SVG appeared during loading. The custom poster was removed from the render tree; the original Astra poster remains available in Astra mode.
+
+## Interaction and verification
+
+- Forward scrolling forms the final wordmark; returning to the top dissolves it and restores the whale.
+- Wordmark drag/release and keyboard ArrowRight work; keyboard rotation leaves scroll Y unchanged and drag state resets to false.
+- Both version links were exercised. Astra still exposes the original six, cursor and OpenAI knot sequence.
+- Desktop and phone resizing keeps the renderer ready. Browser console shows no warnings or errors.
+- Production build and whitespace checks passed. Existing bundle-size advisory remains.
+- Independent review checked 360 combinations of viewport width, shape progress, shape identity and custom/original modes: all added size/scatter factors are numerically neutral for Astra and whale shapes.
+
+## Findings and remaining limits
+
+No actionable P0/P1/P2 findings remain. The generated concept uses a softly filled particle stroke; the live scene traces the exact official letter contours with the existing moving stars, so individual point placement and brightness differ. This is an interactive adaptation, not a pixel-identical rendering of a still image. Physical iOS touch behavior and forced WebGL failure were not device-tested.
+
+Earlier versions remain at `astra-original-v1` and `deepseek-v1`. Current work is saved separately as `deepseek-wordmark-v2` on `feature/deepseek-particles`.
+
+---
+
+# DeepSeek custom shape — latest QA
+
+Previous version result: passed
 
 Scope: replace the opening spiral with the familiar DeepSeek whale, preserve interactive particles, keep the original Astra version independently recoverable. The final scroll shape is also the whale; the middle cursor transition remains available.
 

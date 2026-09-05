@@ -6,10 +6,12 @@
 - Astra: http://localhost:4173/?shape=astra
 - 原始基线：`main` 分支、`astra-original-v1` 标签、提交 `3dd20cf`
 - DeepSeek 开发分支：`feature/deepseek-particles`
+- 上一版鲸鱼 / 光标 / 鲸鱼：`deepseek-v1`（提交 `582d779`）
+- 当前鲸鱼 / 底部英文字标版：`deepseek-wordmark-v2`
 
 返回完整原版代码：`git switch main`。回到鲸鱼版：`git switch feature/deepseek-particles`。两份代码都有独立提交，无需删除或覆盖文件。
 
-鲸鱼的轮廓、嘴部和眼部来自 [DeepSeek 官方 SVG](https://github.com/deepseek-ai/DeepSeek-V2/blob/main/figures/logo.svg)，路径保存在 `src/astra/custom-shapes.js`。首屏、滚动末屏均使用鲸鱼；中间保留光标形状。DeepSeek 模式略微收窄粒子沿轮廓的散布，让尾鳍和口眼更清晰。
+鲸鱼的轮廓、嘴部和眼部来自 [DeepSeek 官方 SVG](https://github.com/deepseek-ai/DeepSeek-V2/blob/main/figures/logo.svg)，路径保存在 `src/astra/custom-shapes.js`。首屏使用鲸鱼，滚动后散开，最底部聚成官方 `deepseek` 英文字标；DeepSeek 模式不再出现光标。首屏没有实心鲸鱼加载占位图。字标在手机上会等比例缩小光点和光晕，保留字母间隙。鲸鱼及字标路径均保存在 `src/astra/custom-shapes.js`。
 
 ## Astra engine origin
 

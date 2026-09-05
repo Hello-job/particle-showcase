@@ -47,7 +47,7 @@ export default function AstraBackground({ heroShape }) {
       <div className="astra-scene" data-astra-scene={status}>
         <canvas ref={canvasRef} data-astra-canvas="true" />
       </div>
-      {status !== 'ready' && <img className={heroShape ? "astra-custom-poster" : "astra-poster"} src={heroShape ? "/assets/deepseek-whale.svg" : "/assets/astra-poster.webp"} alt="" />}
+      {!heroShape && status !== 'ready' && <img className="astra-poster" src="/assets/astra-poster.webp" alt="" />}
       <div className="astra-ambient" data-astra-ambient="true" />
       <div className="astra-vignette" />
     </div>

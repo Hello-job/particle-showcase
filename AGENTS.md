@@ -15,3 +15,5 @@ The user requests maximum fidelity to the interactive particle background at htt
 ## DeepSeek customization
 
 The original Astra experience is preserved on `main` and the annotated tag `astra-original-v1` (commit `3dd20cf`). Work on the DeepSeek whale variation belongs to `feature/deepseek-particles`. Keep the original engine defaults available, use the official DeepSeek SVG paths rather than drawing an approximation, and preserve mouse, drag, replay and scroll effects. Save each verified variation as its own commit; never overwrite or move the original tag.
+
+The user selected generated option 1 (the lowercase particle `deepseek` wordmark) on 2026-09-05. Put it in the final constellation section at the bottom, remove the intermediate cursor in DeepSeek mode, and keep the whale as the particle hero. Remove the solid whale loading poster that flashes before the particles initialize. Reference: `reference/deepseek-wordmark-selected.png`. The earlier whale/cursor/whale version remains preserved at `deepseek-v1`.
