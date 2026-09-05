@@ -21,14 +21,6 @@ function ArrowIcon() {
   );
 }
 
-function ChevronIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="2.219 -0.578 11.563 18.5" aria-hidden="true">
-      <path fill="currentColor" d="M12.47 5.72a.75.75 0 1 1 1.06 1.06l-4.764 4.765a1.083 1.083 0 0 1-1.532 0L2.47 6.78a.75.75 0 1 1 1.06-1.06L8 10.19z" />
-    </svg>
-  );
-}
-
 function ReplayIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20" aria-hidden="true">
@@ -38,57 +30,21 @@ function ReplayIcon() {
 }
 
 function Header({ deepseek }) {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 12);
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, []);
-  if (deepseek) return (
-    <header className="site-header deepseek-header" data-scrolled={scrolled}>
-      <a className="deepseek-wordmark" href="https://www.deepseek.com/" aria-label="DeepSeek">
-        <img src="/assets/deepseek-official.svg" alt="DeepSeek" />
-      </a>
-      <nav className="version-switch" aria-label="粒子版本">
-        <a href="/?shape=deepseek" aria-current="page">DeepSeek</a>
-        <a href="/?shape=astra">Astra 原版</a>
-      </nav>
-    </header>
-  );
   return (
-    <header className="site-header" data-scrolled={scrolled}>
-      <a className="switch-to-deepseek" href="/?shape=deepseek">DeepSeek 版本 ↗</a>
-      <a className="wordmark" href="https://openai.com/" aria-label="OpenAI Home">
-        <img src="/assets/openai-wordmark.svg" alt="OpenAI" width="64" height="17" />
-      </a>
-      <nav className="desktop-nav" aria-label="Main navigation">
-        <a href="https://openai.com/research/index/">Research</a>
-        <a href="https://openai.com/chatgpt/overview/">Products</a>
-        <a href="https://openai.com/business/">Business</a>
-        <a href="https://openai.com/api/">Developers</a>
-        <a href="https://openai.com/about/">Company</a>
-        <a href="https://openaifoundation.org/">Foundation</a>
-      </nav>
-      <a className="header-search" href="https://openai.com/search/" aria-label="Search OpenAI">
-        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="/assets/icons/magnifying-glass-lg.svg#size-16" width="16" height="16" /></svg>
-      </a>
-      <div className="header-actions">
-        <a className="login-link" href="https://chatgpt.com/auth/login">Log in <ChevronIcon /></a>
-        <a className="chatgpt-link" href="https://chatgpt.com/">Try ChatGPT <ArrowIcon /></a>
-      </div>
-      <button className="mobile-menu-toggle" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls="mobile-menu" onClick={() => setMenuOpen(!menuOpen)}>
-        <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><use href="/assets/icons/sidebar.svg#size-20" width="20" height="20" /></svg>
-      </button>
-      {menuOpen && (
-        <nav className="mobile-menu" id="mobile-menu" aria-label="Explore the Astra star field">
-          <a href="#astra" onClick={() => setMenuOpen(false)}>GPT-6 Astra</a>
-          <a href="#cursor" onClick={() => setMenuOpen(false)}>Cursor</a>
-          <a href="#openai-knot" onClick={() => setMenuOpen(false)}>OpenAI</a>
-          <a href={referenceUrl}>Read the announcement</a>
-        </nav>
+    <header className="site-header">
+      {deepseek ? (
+        <a className="deepseek-wordmark" href="https://www.deepseek.com/" aria-label="DeepSeek">
+          <img src="/assets/deepseek-official.svg" alt="DeepSeek" />
+        </a>
+      ) : (
+        <a className="wordmark" href="https://openai.com/" aria-label="OpenAI Home">
+          <img src="/assets/openai-wordmark.svg" alt="OpenAI" width="64" height="17" />
+        </a>
       )}
+      <nav className="version-switch" aria-label="粒子版本">
+        <a href="/?shape=deepseek" aria-current={deepseek ? "page" : undefined}>DeepSeek</a>
+        <a href="/?shape=astra" aria-current={deepseek ? undefined : "page"}>Astra 原版</a>
+      </nav>
     </header>
   );
 }

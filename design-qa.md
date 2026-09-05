@@ -1,4 +1,18 @@
-# DeepSeek bottom wordmark — latest QA
+# Minimal shared header — latest verification
+
+final result: passed
+
+User correction: retain both brand logos. Both variants now show the original logo at top left and the same version switch at top right. Removed Astra navigation links, search, login/ChatGPT buttons, mobile menu and the old bottom-left version link. The header stays transparent while scrolling. Particle geometry, animation, hero spacing and scroll cues were not edited.
+
+- Desktop Astra evidence: `reference/astra-simple-header.png`, CSS 1440 × 900, screenshot 1425 × 891. Logo left, switch right; no remaining navigation buttons.
+- Mobile DeepSeek evidence: `reference/deepseek-simple-header-mobile.png`, CSS 390 × 844, screenshot 375 × 812. Logo and switch fit without overflow.
+- Both version links exercised, active version correctly marked, renderer ready, browser console free of warnings/errors.
+- Production build and whitespace checks passed. Existing bundle-size advisory remains.
+- Previous particle and wordmark validation is retained below. No particle code changed in this iteration.
+
+---
+
+# DeepSeek bottom wordmark — prior QA
 
 final result: passed
 

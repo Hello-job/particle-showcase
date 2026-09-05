@@ -1,13 +1,13 @@
 # DeepSeek / Astra particle experience
 
-当前默认显示 DeepSeek 鲸鱼粒子。页面右上角可切换到 Astra，原版也已单独保存在 Git 中。
+当前默认显示 DeepSeek 鲸鱼粒子。两个版本均保留左上角品牌标志和右上角版本切换，移除导航菜单、搜索、登录、CTA 按钮、手机菜单及旧的左下角切换入口，粒子布局和交互保持不变。完整 Astra 原版已单独保存在 Git 中。
 
 - DeepSeek: http://localhost:4173/?shape=deepseek
 - Astra: http://localhost:4173/?shape=astra
 - 原始基线：`main` 分支、`astra-original-v1` 标签、提交 `3dd20cf`
 - DeepSeek 开发分支：`feature/deepseek-particles`
 - 上一版鲸鱼 / 光标 / 鲸鱼：`deepseek-v1`（提交 `582d779`）
-- 当前鲸鱼 / 底部英文字标版：`deepseek-wordmark-v2`
+- 之前的鲸鱼 / 底部英文字标快照：`deepseek-wordmark-v2`（保持不变）
 
 返回完整原版代码：`git switch main`。回到鲸鱼版：`git switch feature/deepseek-particles`。两份代码都有独立提交，无需删除或覆盖文件。
 
@@ -23,12 +23,12 @@ The particle experience ports the original scene logic, particle paths, renderin
 
 - Move the pointer through a particle field.
 - Drag a field to rotate it, or focus the field and use the arrow keys.
-- Scroll to move between the three constellations.
+- Scroll to move between the constellations.
 - Use the circular replay button to restart the opening sequence.
 
 ## Structure
 
-- `src/App.jsx`: navigation, hero labels, accessible drag surfaces, scroll cues, and constellation targets.
+- `src/App.jsx`: brand logos, version switch, hero labels, accessible drag surfaces, scroll cues, and constellation targets.
 - `src/styles.css`: source-based typography, layout, responsive behavior, and page chrome.
 - `src/AstraBackground.jsx`: fixed background canvas and scene integration.
 - `src/astra/`: particle engine.

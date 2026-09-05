@@ -44,31 +44,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
 .astra-background { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
 .astra-background canvas { display: block; width: 100%; height: 100%; }
 
-.site-header { height: var(--header-h); position: fixed; inset: 0 0 auto; z-index: 20; display: flex; align-items: center; gap: 36px; padding: 0 32px; background: transparent; transition: background-color .25s; }
-.site-header[data-scrolled="true"] { background: #000; }
-.deepseek-header { justify-content: space-between; }
+.site-header { height: var(--header-h); position: fixed; inset: 0 0 auto; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 32px; pointer-events: none; }
+.site-header > * { pointer-events: auto; }
 .deepseek-wordmark { display: flex; align-items: center; }
 .deepseek-wordmark img { width: 124px; height: auto; display: block; filter: grayscale(1) brightness(0) invert(1); }
 .version-switch { display: flex; align-items: center; gap: 4px; padding: 4px; border-radius: 100px; background: #ffffff0d; font-size: 13px; }
 .version-switch a { padding: 7px 13px; border-radius: 100px; color: #ffffff8c; transition: color .2s, background .2s; }
 .version-switch a:hover { color: #fff; }
 .version-switch a[aria-current="page"] { color: #fff; background: #ffffff18; }
-.switch-to-deepseek { position: fixed; bottom: 14px; left: 16px; border-radius: 100px; background: #ffffff14; padding: 9px 14px; font-size: 12px; }
 [data-astra-hero-shape] { position: absolute; inset: 0; pointer-events: none; }
 .wordmark { display: flex; align-items: center; height: 100%; flex-shrink: 0; }
 .wordmark img { display: block; height: 17px; width: auto; }
-.desktop-nav { display: flex; align-items: center; gap: 32px; font-size: 13px; line-height: 20px; font-weight: 500; }
-.desktop-nav a { transition: opacity .15s; }
-.desktop-nav a:hover { opacity: .7; }
-.header-search { flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #fafafa80; }
-.header-search:hover { color: #fafafa; }
-.header-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; white-space: nowrap; font-size: 14px; line-height: 20px; }
-.login-link, .chatgpt-link { display: inline-flex; align-items: center; gap: 7px; justify-content: center; border-radius: 100px; padding: 8px 20px; transition: background-color .15s; }
-.login-link { background: #ffffff26; }
-.login-link:hover { background: #ffffff40; }
-.chatgpt-link { background: #fafafa; color: #000; }
-.chatgpt-link:hover { background: #ddd; }
-.mobile-menu-toggle, .mobile-menu { display: none; }
 
 .astra-hero { position: relative; width: 100%; min-height: var(--astra-viewport-height, 100svh); }
 .astra-label { position: fixed; top: 50%; z-index: 2; margin: 0; transform: translateY(-50%); color: #fafafa; text-shadow: 0 0 1.5rem #fafafa14; user-select: none; pointer-events: none; opacity: var(--astra-copy-opacity, 1); font-size: var(--type-h1-size); line-height: var(--type-h1-line); letter-spacing: -.03em; font-weight: 500; }
@@ -98,25 +84,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
 .astra-footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
 [data-variant="deepseek"] .astra-footer { position: absolute; inset: auto 0 0; }
 
-@media (max-width: 1100px) {
-  .site-header { gap: 24px; }
-  .desktop-nav { gap: 20px; }
-}
-
-@media (max-width: 900px) {
-  .desktop-nav, .header-actions { display: none; }
-  .site-header { padding-inline: 24px; }
-  .header-search { margin-left: auto; }
-  .mobile-menu-toggle { display: flex; align-items: center; justify-content: center; padding: 8px 0; border: 0; background: transparent; color: #fafafa80; cursor: pointer; }
-  .mobile-menu { position: absolute; top: var(--header-h); right: 0; left: 0; padding: 24px; background: #000; display: grid; gap: 24px; font-size: 20px; }
-}
-
 @media (max-width: 767px) {
   :root { --header-h: 56px; }
   .astra-experience main { padding-top: 96px; }
   .astra-article { margin-top: 80px; }
   .astra-release-cue { top: calc(80px - 10svh); }
-  .deepseek-header { padding-inline: 20px; gap: 12px; }
+  .site-header { padding-inline: 20px; gap: 12px; }
   .deepseek-wordmark img { width: 100px; }
   .version-switch { font-size: 11px; }
   .version-switch a { padding: 6px 10px; }
