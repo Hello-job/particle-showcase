@@ -33,3 +33,13 @@ Kimi and GLM are available at `/?shape=kimi` and `/?shape=glm` on the existing `
 ## Model title copy
 
 On 2026-09-06, the user approved replacing the intro headline in each mode with its verified model name: Astra → `GPT-6 Astra`, DeepSeek → `DeepSeek-V4-Pro`, Kimi → `Kimi K3`, and GLM → `GLM-5.3`. Remove the prior marketing sentence and show only the subtle interaction hint `Move · Drag · Scroll` below the model name. These names reflect verification on that date from the official [Astra announcement](https://openai.com/index/gpt-6-astra/), [DeepSeek website](https://deepseek.com/), [Kimi K3 announcement](https://kimi.com/news/kimi-k3), and [Z.ai model page](https://autoclaw.z.ai/models/); they are maintained manually, not automatically updated.
+
+## Latest showcase corrections
+
+The user's later feedback on 2026-09-06 supersedes the earlier lowercase DeepSeek selection and the instruction to show an interaction hint. Remove `Move · Drag · Scroll` entirely in all four modes, leaving only each approved model title. Preserve the mouse, drag, scroll and replay interactions.
+
+Use the visible casing `DeepSeek`, with uppercase D and S, for both the top-left header lettering and the bottom particle wordmark. Keep the exact official whale as the hero and header symbol. The custom case paths live in `src/astra/deepseek-titlecase.js`: preserve the official lowercase e/e/p/e/e/k geometry by translation only, use genuine uppercase D/S outlines from the bundled OpenAI Sans Medium font, align their cap height and baseline with the original k, and retain independent contours for the D counter and disconnected k parts. This user-requested lettering must not be described as the official DeepSeek logotype. The header uses `public/assets/deepseek-titlecase.svg`; `public/assets/deepseek-titlecase-wordmark.svg` contains the same lettering on its own. Keep the original lowercase assets and `custom-shapes.js` definitions available.
+
+Use one shared top-right version switch in Astra, DeepSeek, Kimi and GLM. All four tabs must have equal widths, with the same control dimensions, padding and alignment across modes at each viewport size. Keep its responsive desktop and mobile layouts consistent; do not add brand-specific sizing overrides.
+
+Preserve every existing baseline tag, including `astra-original-v1`, `deepseek-v1`, `deepseek-wordmark-v2`, `two-brand-showcase-v1` and `kimi-glm-v1`. Do not move or overwrite earlier snapshots when saving these corrections.

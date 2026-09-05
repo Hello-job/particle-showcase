@@ -14,7 +14,7 @@ function ShapeTarget({ shape }) {
 const referenceUrl = "https://openai.com/index/gpt-6-astra/";
 const versions = {
   astra: { name: "Astra", modelName: "GPT-6 Astra", logo: "/assets/openai-wordmark.svg", logoClass: "wordmark", url: referenceUrl, ending: "openai-knot" },
-  deepseek: { name: "DeepSeek", modelName: "DeepSeek-V4-Pro", logo: "/assets/deepseek-official.svg", logoClass: "deepseek-wordmark", url: "https://www.deepseek.com/", hero: "deepseek", ending: "deepseek-wordmark" },
+  deepseek: { name: "DeepSeek", modelName: "DeepSeek-V4-Pro", logo: "/assets/deepseek-titlecase.svg", logoClass: "deepseek-wordmark", url: "https://www.deepseek.com/", hero: "deepseek", ending: "deepseek-wordmark" },
   kimi: { name: "Kimi", modelName: "Kimi K3", logo: "/assets/kimi-wordmark.svg", logoClass: "brand-wordmark", url: "https://www.kimi.com/", hero: "kimi", ending: "kimi-wordmark", showcase: true },
   glm: { name: "GLM", modelName: "GLM-5.3", logo: "/assets/glm-wordmark.svg", logoClass: "brand-wordmark", url: "https://z.ai/", hero: "glm-wordmark", ending: "zai", showcase: true },
 };
@@ -111,9 +111,6 @@ export function App() {
           <section className="intelligence-section" id="intelligence">
             <div className="astra-model-intro" data-section-header data-astra-title>
               <h2 className="astra-title">{version.modelName}</h2>
-              <div className="article-copy">
-                <p>Move · Drag · Scroll</p>
-              </div>
             </div>
           </section>
           {!custom && <ShapeCue shape="cursor" />}

@@ -48,8 +48,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
 .site-header > * { pointer-events: auto; }
 .deepseek-wordmark { display: flex; align-items: center; }
 .deepseek-wordmark img { width: 124px; height: auto; display: block; filter: grayscale(1) brightness(0) invert(1); }
-.version-switch { display: flex; align-items: center; gap: 4px; padding: 4px; border-radius: 100px; background: #ffffff0d; font-size: 13px; }
-.version-switch a { padding: 7px 13px; border-radius: 100px; color: #ffffff8c; transition: color .2s, background .2s; }
+.version-switch { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: center; flex-shrink: 0; width: 400px; gap: 4px; padding: 5px; border-radius: 100px; background: #ffffff0d; font-size: 16px; line-height: 20px; }
+.version-switch a { padding: 9px 12px; border-radius: 100px; color: #ffffff8c; text-align: center; white-space: nowrap; transition: color .2s, background .2s; }
 .version-switch a:hover { color: #fff; }
 .version-switch a[aria-current="page"] { color: #fff; background: #ffffff18; }
 [data-astra-hero-shape] { position: absolute; inset: 0; pointer-events: none; }
@@ -75,8 +75,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
 .astra-model-intro { translate: 0 var(--astra-title-parallax-y,0px); }
 .astra-title { margin: 0 auto; max-width: 1100px; font-size: clamp(2.5rem, 5.5vw, 5rem); line-height: 1.1; letter-spacing: -.04em; font-weight: 500; text-align: center; white-space: nowrap; }
 [data-variant="deepseek"] .astra-title { font-size: clamp(1.75rem, 5.5vw, 5rem); }
-.article-copy { max-width: 720px; margin: 24px auto 0; padding: 0 24px; color: #a1a1a6; font-size: 13px; line-height: 1.5; letter-spacing: .14em; text-align: center; }
-.article-copy p { margin: 0; }
 .shape-section { position: relative; min-height: 100svh; display: flex; align-items: center; padding: 0 24px; scroll-margin-top: var(--header-h); }
 .astra-shape-cue { width: 100%; max-width: var(--astra-shape-max-width,36rem); height: var(--astra-shape-height,calc(.8 * var(--astra-viewport-height,100vh))); touch-action: pan-y pinch-zoom; margin-inline: auto; position: relative; }
 .astra-shape-target { pointer-events: none; opacity: 0; width: 100%; height: 100%; position: absolute; inset: 0; }
@@ -93,10 +91,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
 [data-variant="kimi"] .astra-ambient, [data-variant="glm"] .astra-ambient { --astra-ambient-opacity: .25; }
 
 @media (min-width: 768px) {
-  :is([data-variant="kimi"], [data-variant="glm"]) .site-header { height: 112px; padding-inline: 36px; }
+  .site-header { height: 112px; padding-inline: 36px; }
   :is([data-variant="kimi"], [data-variant="glm"]) .brand-wordmark img { height: 34px; }
-  :is([data-variant="kimi"], [data-variant="glm"]) .version-switch { font-size: 16px; padding: 5px; }
-  :is([data-variant="kimi"], [data-variant="glm"]) .version-switch a { padding: 9px 17px; }
   :is([data-variant="kimi"], [data-variant="glm"]) .astra-replay { width: 52px; height: 52px; bottom: 32px; right: 32px; }
   :is([data-variant="kimi"], [data-variant="glm"]) .astra-footer { font-size: 18px; padding: 44px 36px; }
 }
@@ -109,14 +105,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
   .site-header { padding-inline: 16px; gap: 8px; }
   .deepseek-wordmark img { width: 84px; }
   .brand-wordmark img { height: 20px; }
-  .version-switch { font-size: 10.5px; gap: 2px; padding: 3px; }
-  .version-switch a { padding: 6px 7px; }
+  .version-switch { width: 220px; flex-shrink: 1; font-size: 11px; line-height: 16px; gap: 2px; padding: 3px; }
+  .version-switch a { padding: 6px 1px; }
   .astra-shape-cue[data-astra-path-shape="kimi-wordmark"], .astra-shape-cue[data-astra-path-shape="zai"] { --astra-shape-max-width: 82vw; }
   .astra-label-left { top: 46%; left: 1rem; }
   .astra-label-right { top: 54%; right: 1rem; }
   .astra-title { max-width: 360px; }
   .intelligence-section { padding-bottom: 56px; }
-  .article-copy { font-size: 11px; padding: 0; margin-top: 20px; }
   .shape-section { padding-inline: 20px; }
   .astra-footer { align-items: flex-start; font-size: 13px; }
 }

@@ -1,4 +1,21 @@
-# Model-name copy — latest verification
+# Hint removal, DeepSeek casing and shared tabs — latest verification
+
+final result: passed
+
+User corrections: remove the Move/Drag/Scroll hint; use `DeepSeek` with uppercase D/S; make the top-right tabs consistent. All four modes now have a model-name-only introduction. Header and bottom particle lettering both use DeepSeek; the official whale is retained.
+
+- Fixed the inconsistent switch: Kimi/GLM had separate desktop font, padding and header-height overrides. A common desktop rule now positions every switch at the same coordinates, with four equal-width cells.
+- Desktop browser check, CSS 1440 × 900: each mode's switch is 400 × 48 at x=989, y=32; each cell is 94.5 × 38. All four links were clicked and all four modes measured.
+- Phone browser check, CSS 360 × 780: every switch is 220 × 34 and every cell is 52 × 28. Cell clientWidth/scrollWidth values are all 52; document clientWidth/scrollWidth are both 345. No hint text remains in any mode.
+- Visual evidence: `reference/deepseek-titlecase-desktop.jpg` (1425 × 891) and `reference/deepseek-titlecase-mobile.jpg` (345 × 748), browser-proportional outputs. D and S read as capitals, D's counter remains open, letters fit without clipping, and the header uses the same casing.
+- The new custom titlecase artwork preserves official lowercase e/e/p/e/e/k by translation and adds genuine local OpenAI Sans Medium D/S glyphs aligned to the original k. Ten independent contours preserve counters in the existing particle sampler. Original lowercase assets and earlier tags remain available.
+- JS import, contour count, SVG XML and visual asset checks passed. Desktop/phone rendering remained ready; all version switches worked. Final browser logs contain no warnings or errors. Production build and whitespace checks passed; the existing bundle-size advisory remains.
+
+No actionable visual findings remain for these three corrections. This update is saved separately as `showcase-polish-v1`; `model-titles-v1` preserves the preceding version. Prior particle interaction and physical-device test limits remain below.
+
+---
+
+# Model-name copy — prior verification
 
 final result: passed
 

@@ -1,4 +1,5 @@
-import { DEEPSEEK_SHAPE, DEEPSEEK_WORDMARK_SHAPE } from "./custom-shapes.js";
+import { DEEPSEEK_SHAPE } from "./custom-shapes.js";
+import { DEEPSEEK_TITLECASE_WORDMARK_SHAPE } from "./deepseek-titlecase.js";
 import { KIMI_SHAPE, KIMI_WORDMARK_SHAPE, GLM_WORDMARK_SHAPE, ZAI_SHAPE } from "./brand-shapes.js";
 
 // Extracted from the public OpenAI Astra source, 28nbglk5oli9p.js.
@@ -27,7 +28,7 @@ export default (e) => {
     {
       cursor: { height: 19, paths: [t], width: 19 },
       deepseek: DEEPSEEK_SHAPE,
-      "deepseek-wordmark": DEEPSEEK_WORDMARK_SHAPE,
+      "deepseek-wordmark": DEEPSEEK_TITLECASE_WORDMARK_SHAPE,
       kimi: { ...KIMI_SHAPE, filled: true, label: "Kimi symbol" },
       "kimi-wordmark": { ...KIMI_WORDMARK_SHAPE, filled: true, label: "Kimi wordmark" },
       "glm-wordmark": { ...GLM_WORDMARK_SHAPE, filled: true, label: "GLM wordmark" },
