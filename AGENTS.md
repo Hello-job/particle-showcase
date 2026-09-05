@@ -43,3 +43,5 @@ Use the visible casing `DeepSeek`, with uppercase D and S, for both the top-left
 Use one shared top-right version switch in Astra, DeepSeek, Kimi and GLM. All four tabs must have equal widths, with the same control dimensions, padding and alignment across modes at each viewport size. Keep its responsive desktop and mobile layouts consistent; do not add brand-specific sizing overrides.
 
 Preserve every existing baseline tag, including `astra-original-v1`, `deepseek-v1`, `deepseek-wordmark-v2`, `two-brand-showcase-v1` and `kimi-glm-v1`. Do not move or overwrite earlier snapshots when saving these corrections.
+
+The user later requested a shorter middle stretch with little visual activity. Keep the shared constellation interlude at 20svh (previously 45svh), and the model-title section bottom padding at 64px desktop / 40px mobile. Preserve the existing particle geometry, interaction handlers and scroll-cue equations; use layout spacing to shorten the transition.

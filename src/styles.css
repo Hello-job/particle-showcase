@@ -71,7 +71,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
 .astra-replay:hover { color: #ffffffe6; background: #ffffff40; }
 
 .astra-article { position: relative; margin-top: 120px; }
-.intelligence-section { padding: 0 24px 104px; }
+.intelligence-section { padding: 0 24px 64px; }
 .astra-model-intro { translate: 0 var(--astra-title-parallax-y,0px); }
 .astra-title { margin: 0 auto; max-width: 1100px; font-size: clamp(2.5rem, 5.5vw, 5rem); line-height: 1.1; letter-spacing: -.04em; font-weight: 500; text-align: center; white-space: nowrap; }
 [data-variant="deepseek"] .astra-title { font-size: clamp(1.75rem, 5.5vw, 5rem); }
@@ -81,7 +81,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
 .astra-shape-cue[data-astra-path-shape="deepseek-wordmark"] { --astra-shape-max-width: min(82vw, 1280px); }
 .astra-shape-cue[data-astra-path-shape="kimi-wordmark"] { --astra-shape-max-width: min(72vw, 1040px); }
 .astra-shape-cue[data-astra-path-shape="zai"] { --astra-shape-max-width: min(54vw, 670px); }
-.constellation-interlude { height: 45svh; position: relative; }
+.constellation-interlude { height: 20svh; position: relative; }
 .astra-release-cue { pointer-events: none; height: 1px; width: 100%; position: absolute; top: calc(120px - 10svh); }
 .astra-footer { display: flex; justify-content: space-between; gap: 24px; max-width: 1152px; margin: 0 auto; padding: 96px 24px 40px; font-size: 14px; }
 .astra-footer a { display: inline-flex; align-items: center; gap: 8px; }
@@ -111,7 +111,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
   .astra-label-left { top: 46%; left: 1rem; }
   .astra-label-right { top: 54%; right: 1rem; }
   .astra-title { max-width: 360px; }
-  .intelligence-section { padding-bottom: 56px; }
+  .intelligence-section { padding-bottom: 40px; }
   .shape-section { padding-inline: 20px; }
   .astra-footer { align-items: flex-start; font-size: 13px; }
 }

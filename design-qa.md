@@ -1,4 +1,19 @@
-# Hint removal, DeepSeek casing and shared tabs — latest verification
+# Shorter middle scroll spacing — latest verification
+
+final result: passed
+
+The shared constellation interlude is reduced from 45svh to 20svh. Model-title bottom padding is reduced from 104px to 64px on desktop and from 56px to 40px on mobile. Particle geometry, input handlers and scroll-cue equations are unchanged.
+
+- Desktop browser check, CSS 1440 × 900: interlude is 180px, and the page is 265px shorter. DeepSeek's final wordmark remains complete; Astra's cursor, release and OpenAI knot stages still appear in order.
+- Phone browser check, CSS 360 × 780: interlude is 156px and title bottom padding is 40px, shortening the page by 211px. DeepSeek's final wordmark fits fully; document clientWidth and scrollWidth both remain 345px.
+- Renderers remain ready. Browser logs contain no warnings or errors. Production build and whitespace checks passed; the existing bundle-size advisory remains.
+- Independent review confirmed the measured scroll anchors remain ordered, and the release cue precedes the final-shape center. No animation-engine change is needed.
+
+No actionable findings remain for this spacing adjustment. Saved separately as `shorter-scroll-v1`; `showcase-polish-v1` preserves the preceding layout. Prior physical-device test limits remain below.
+
+---
+
+# Hint removal, DeepSeek casing and shared tabs — prior verification
 
 final result: passed
 
