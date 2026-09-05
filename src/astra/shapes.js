@@ -1,4 +1,5 @@
 import { DEEPSEEK_SHAPE, DEEPSEEK_WORDMARK_SHAPE } from "./custom-shapes.js";
+import { KIMI_SHAPE, KIMI_WORDMARK_SHAPE, GLM_WORDMARK_SHAPE, ZAI_SHAPE } from "./brand-shapes.js";
 
 // Extracted from the public OpenAI Astra source, 28nbglk5oli9p.js.
 // Shader, geometry and motion math are preserved; see README.md for provenance.
@@ -27,6 +28,10 @@ export default (e) => {
       cursor: { height: 19, paths: [t], width: 19 },
       deepseek: DEEPSEEK_SHAPE,
       "deepseek-wordmark": DEEPSEEK_WORDMARK_SHAPE,
+      kimi: { ...KIMI_SHAPE, filled: true, label: "Kimi symbol" },
+      "kimi-wordmark": { ...KIMI_WORDMARK_SHAPE, filled: true, label: "Kimi wordmark" },
+      "glm-wordmark": { ...GLM_WORDMARK_SHAPE, filled: true, label: "GLM wordmark" },
+      zai: { ...ZAI_SHAPE, filled: true, label: "Z.ai symbol" },
       "openai-knot": { height: 1538, paths: a, width: 1726 },
     },
     "resolveAstraPathShape",
@@ -34,6 +39,7 @@ export default (e) => {
     function (e) {
       if (e === "deepseek") return "deepseek";
       if (e === "deepseek-wordmark") return "deepseek-wordmark";
+      if (["kimi", "kimi-wordmark", "glm-wordmark", "zai"].includes(e)) return e;
       return "cursor" === e
         ? "cursor"
         : "openai-knot" === e || "blossom" === e

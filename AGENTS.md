@@ -19,3 +19,13 @@ The original Astra experience is preserved on `main` and the annotated tag `astr
 The user selected generated option 1 (the lowercase particle `deepseek` wordmark) on 2026-09-05. Put it in the final constellation section at the bottom, remove the intermediate cursor in DeepSeek mode, and keep the whale as the particle hero. Remove the solid whale loading poster that flashes before the particles initialize. Reference: `reference/deepseek-wordmark-selected.png`. The earlier whale/cursor/whale version remains preserved at `deepseek-v1`.
 
 The user wants both versions to be minimal particle showcases: keep each brand logo at the top left and the shared version switch at the top right. Remove navigation menus, search, login, CTA buttons, the mobile menu, and the old bottom-left switch. Preserve particle layout and interactions. The original full Astra snapshot remains at `main` / `astra-original-v1`; keep `deepseek-wordmark-v2` unchanged as the previous wordmark snapshot.
+
+## Kimi and GLM customization
+
+The user approved the Kimi and GLM hero and bottom concepts on 2026-09-06. Selected visual references are `reference/kimi-glm-hero-selected.png` and `reference/kimi-glm-bottom-selected.png`; use these as the source of truth. Extend the shared top-right switch to Astra / DeepSeek / Kimi / GLM, preserving the top-left brand logo and minimal showcase header in all four modes.
+
+Kimi starts with the exact official K symbol and its detached blue droplet, then ends with the full official uppercase KIMI wordmark. GLM starts with the selected simple uppercase GLM lettering, then ends with the exact official three-piece Z.ai emblem without its surrounding square. Neither new mode includes the intermediate cursor. Their footer only contains Back to top. Keep the original mouse, drag, scroll and replay behavior and avoid solid logo loading posters in custom particle heroes.
+
+Keep Kimi and Z.ai official paths in `src/astra/brand-shapes.js` with source provenance. GLM lettering is outlined from the bundled OpenAI Sans Medium font and must not be described as a traced official GLM logo. Register the new shapes in `src/astra/shapes.js`; their cached filled scanline sampler in `src/astra/filled-shapes.js` must preserve counters, gaps between disconnected parts, and the Kimi blue accent. Preserve the existing Astra / DeepSeek contour sampling and engine defaults.
+
+Kimi and GLM are available at `/?shape=kimi` and `/?shape=glm` on the existing `feature/deepseek-particles` branch. Preserve all existing baseline tags, including `astra-original-v1`, `deepseek-v1`, and `deepseek-wordmark-v2`; save the verified expansion as a separate commit without moving earlier tags.

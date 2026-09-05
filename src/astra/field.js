@@ -396,6 +396,10 @@ export default (t) => {
   uniform vec2 uPathShapeRotation;
   uniform float uPathShapeScatter;
   uniform float uPathShapePointScale;
+  uniform float uPathShapeFilled;
+  uniform float uPathShapeRowSpacing;
+  uniform vec2 uPathShapeAccentRange;
+  uniform vec3 uPathShapeAccentColor;
   uniform float uPathShapeSampleCount;
   uniform vec2 uPathShapeSize;
   uniform vec2 uPathShapeTrackedScatter;
@@ -429,6 +433,7 @@ export default (t) => {
   varying float vOpacity;
   varying float vRayStrength;
   varying float vParticleDiameter;
+  varying float vPathShapeAccent;
 
   ${c}
   ${h}
@@ -687,6 +692,9 @@ export default (t) => {
       -pathShapeTangent.y,
       pathShapeTangent.x
     );
+    // Filled scanlines retrace their interval; a fixed normal keeps each
+    // star's stable vertical offset from flipping at the turn or loop seam.
+    pathShapeAcross = mix(pathShapeAcross, vec2(0.0, 1.0), uPathShapeFilled);
     float pathShapeRandomAcrossScatter = mix(
       (scatterX + scatterY - 1.0) * 0.12,
       uPathShapeTrackedScatter.x,
@@ -696,6 +704,12 @@ export default (t) => {
       starAcrossOffset * 1.1
       + pathShapeRandomAcrossScatter
     ) * uPathShapeScatter;
+    // Use the same tracked seed as CPU flares to cover each row's full height.
+    pathShapeScatter = mix(
+      pathShapeScatter,
+      (scatterY - 0.5) * uPathShapeSize.y * uPathShapeRowSpacing,
+      uPathShapeFilled
+    );
     float pathShapeDepthEnvelope = sin(
       shapeLocalProgress * 3.14159265359
     );
@@ -751,6 +765,8 @@ export default (t) => {
       0.055,
       shapeLocalProgress
     ) * (1.0 - smoothstep(0.945, 1.0, shapeLocalProgress));
+    pathShapeSizeEnvelope = mix(pathShapeSizeEnvelope, 1.0, uPathShapeFilled);
+    pathShapeEndpointVisibility = mix(pathShapeEndpointVisibility, 1.0, uPathShapeFilled);
     float pathShapeBrightSeed = fract(sin(
       dot(vec2(orbitProgress, twinklePhase), vec2(193.7, 417.2))
     ) * 43758.5453);
@@ -797,7 +813,11 @@ export default (t) => {
       )
       * mix(1.0, pathShapeDepthCue, pathShapeProgress)
       * mix(1.0, 0.42, pathShapeSuppressedBright);
-    vColor = starColor;
+    float pathShapeAccent = step(uPathShapeAccentRange.x, shapeBaseSeed)
+      * (1.0 - step(uPathShapeAccentRange.y, shapeBaseSeed))
+      * pathShapeProgress;
+    vPathShapeAccent = pathShapeAccent;
+    vColor = mix(starColor, uPathShapeAccentColor, pathShapeAccent);
     vOpacity = starOpacity
       * endpointVisibility
       * (0.92 + twinkle * 0.08)
@@ -838,6 +858,8 @@ export default (t) => {
       * mix(uPathShapePointScale, 1.0, backgroundStar)
       * mix(1.0, pathShapeDepthCue, pathShapeProgress)
       * introParticleScale;
+    gl_PointSize *= mix(1.0, 0.65, uPathShapeFilled * pathShapeProgress * brightStarWeight);
+    gl_PointSize *= mix(1.0, 1.5, uPathShapeFilled * pathShapeProgress * (1.0 - brightStarWeight));
     vec4 viewPosition = modelViewMatrix * vec4(animatedPosition, 1.0);
     if (backgroundStar > 0.5) {
       viewPosition = viewMatrix * (uBackgroundModelMatrix * vec4(animatedPosition, 1.0));
@@ -869,6 +891,7 @@ export default (t) => {
   varying float vLens;
   varying float vOpacity;
   varying float vRayStrength;
+  varying float vPathShapeAccent;
   ${l}
 
   void main() {
@@ -892,7 +915,8 @@ export default (t) => {
 
     float whiteCore = mix(0.59228, core, resolved)
       * smoothstep(0.9, 2.8, vBrightness)
-      * 0.82;
+      * 0.82
+      * mix(1.0, 0.2, vPathShapeAccent);
     float colorEnergy = 1.0
       - min(vColor.r, min(vColor.g, vColor.b));
     vec3 emission = mix(vColor, vec3(1.0), whiteCore)
@@ -1023,6 +1047,10 @@ export default (t) => {
           uPathShapeRotation: { value: new e.Vector2() },
           uPathShapeScatter: { value: 1 },
           uPathShapePointScale: { value: 1 },
+          uPathShapeFilled: { value: 0 },
+          uPathShapeRowSpacing: { value: 0 },
+          uPathShapeAccentRange: { value: new e.Vector2(0, 0) },
+          uPathShapeAccentColor: { value: new e.Color("#1685ff") },
           uPathShapeSampleCount: { value: 1024 },
           uPathShapeSize: { value: new e.Vector2() },
           uPathShapeTrackedScatter: {

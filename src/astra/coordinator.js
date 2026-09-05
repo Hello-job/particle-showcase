@@ -14,6 +14,7 @@ import {
   interpolateAstra,
 } from "./engine.js";
 import { createAstraProfile } from "./profile.js";
+import { sampleFilledAstraShape } from "./filled-shapes.js";
 
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 const smootherstep = (value, start, end) => {
@@ -39,6 +40,10 @@ export function sampleAstraPath(element, id) {
   const svg = element.querySelector("svg");
   const box = svg?.viewBox.baseVal;
   if (!svg || !box || box.width <= 0 || box.height <= 0) return null;
+  if (svg.dataset.filled === "true") {
+    const sampled = sampleFilledAstraShape(svg, id);
+    return sampled ? { element, ...sampled } : null;
+  }
   const rootMatrix = svg.getScreenCTM();
   const paths = Array.from(svg.querySelectorAll("path")).flatMap((path) => {
     try {
@@ -183,6 +188,10 @@ export function createAstraScene(canvas, options = {}) {
       sizeNdc: { x: 0, y: 0 },
       strength: 0,
       hero: false,
+      filled: false,
+      accentRange: [0, 0],
+      flowScale: 1,
+      rowSpacing: 0,
     },
   };
   const viewport = { width: 1, height: 1 };
@@ -488,6 +497,10 @@ export function createAstraScene(canvas, options = {}) {
         shape.sizeNdc.y = (height / layout.canvas.height) * 2;
         shape.id = selected.id;
         shape.samples = selected.samples;
+        shape.filled = selected.filled === true;
+        shape.accentRange = selected.accentRange ?? [0, 0];
+        shape.flowScale = selected.flowScale ?? 1;
+        shape.rowSpacing = selected.rowSpacing ?? 0;
       }
     }
 
@@ -522,11 +535,19 @@ export function createAstraScene(canvas, options = {}) {
       // the damped scatter transition cannot briefly expose the old spiral.
       if (strength >= shape.strength || shape.strength === 0) {
         const { aspectRatio, id, samples } = layout.heroShape;
+        const widthRatio = layout.heroShape.filled
+          ? (aspectRatio > 2 ? 0.66 : 0.42)
+          : 0.58;
+        const heightRatio = layout.heroShape.filled && aspectRatio < 2 ? 0.56 : 0.8;
         const width = visible.width < 768
           ? visible.width * 0.8
-          : Math.min(visible.width * 0.58, visible.height * 0.8 * aspectRatio);
+          : Math.min(visible.width * widthRatio, visible.height * heightRatio * aspectRatio);
         shape.id = id;
         shape.samples = samples;
+        shape.filled = layout.heroShape.filled === true;
+        shape.accentRange = layout.heroShape.accentRange ?? [0, 0];
+        shape.flowScale = layout.heroShape.flowScale ?? 1;
+        shape.rowSpacing = layout.heroShape.rowSpacing ?? 0;
         shape.strength = strength;
         shape.hero = true;
         shape.centerNdc.x = 0;

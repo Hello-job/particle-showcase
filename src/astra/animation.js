@@ -374,7 +374,7 @@ export default (t) => {
           t.shapeProgress = tm;
           // Lettering needs proportionate point sizes on narrow screens.
           // These factors are neutral for the whale and original Astra shapes.
-          const wordmarkWeight = customHero && tM.id?.startsWith("deepseek-wordmark:") ? tm : 0;
+          const wordmarkWeight = customHero && (tM.filled || tM.id?.startsWith("deepseek-wordmark:")) ? tm : 0;
           const wordmarkPointScale = e.MathUtils.lerp(1, e.MathUtils.clamp(x.width / 1440, 0.2, 1), wordmarkWeight);
           const shapeScatter = e.MathUtils.clamp(p.pathShapeScatter, 0, 3) * wordmarkPointScale;
           let td = e.MathUtils.smoothstep(tM.strength, 0, 1),
@@ -579,6 +579,7 @@ export default (t) => {
                       n *
                       (p.stars.flowInward ? 1 : -1) *
                       e.MathUtils.clamp(p.stars.flowSpeed, 0, 3) *
+                      (tM.flowScale ?? 1) *
                       h,
                   1,
                 )),
@@ -634,6 +635,9 @@ export default (t) => {
               (a.starMaterial.uniforms.uPathShapeScatter.value =
                 shapeScatter),
               (a.starMaterial.uniforms.uPathShapePointScale.value = wordmarkPointScale),
+              (a.starMaterial.uniforms.uPathShapeFilled.value = Number(tM.filled === true)),
+              (a.starMaterial.uniforms.uPathShapeRowSpacing.value = tM.rowSpacing ?? 0),
+              a.starMaterial.uniforms.uPathShapeAccentRange.value.fromArray(tM.accentRange ?? [0, 0]),
               a.starMaterial.uniforms.uPathShapeSize.value.copy(t.scratch.size),
               (a.starMaterial.uniforms.uPathShapeTexture.value =
                 t.pathShapeTexture),
@@ -828,6 +832,7 @@ export default (t) => {
                   t.scratch.normal
                     .set(-t.scratch.tangent.y, t.scratch.tangent.x, 0)
                     .normalize());
+                if (tM.filled) t.scratch.normal.set(0, 1, 0);
                 let h = Math.sin(l * Math.PI),
                   c =
                     Math.sin(l * Math.PI * 1.35 + a.pathShapeDepthPhase) *
@@ -843,7 +848,9 @@ export default (t) => {
                   )
                   .addScaledVector(
                     t.scratch.normal,
-                    (1.1 * a.flareAcrossOffset + a.flareShapeAcrossScatter) * u,
+                    tM.filled
+                      ? (a.flareScatter.y - 0.5) * t.scratch.size.y * (tM.rowSpacing ?? 0)
+                      : (1.1 * a.flareAcrossOffset + a.flareShapeAcrossScatter) * u,
                   ),
                   t.scratch.euler.set(
                     t.shapeRotation.x,
@@ -863,10 +870,10 @@ export default (t) => {
                   -1.15,
                   1.15,
                 );
-                ((E = e.MathUtils.lerp(E, (0, i.tipFade)(l), tm)),
+                ((E = e.MathUtils.lerp(E, tM.filled ? 1 : (0, i.tipFade)(l), tm)),
                   (b = e.MathUtils.lerp(
                     b,
-                    (0, i.sizeFalloff)(l, p.stars.sizeFalloff),
+                    tM.filled ? 1 : (0, i.sizeFalloff)(l, p.stars.sizeFalloff),
                     tm,
                   )),
                   (I = e.MathUtils.lerp(
@@ -910,7 +917,10 @@ export default (t) => {
                   D *
                   tx;
               (a.flareSource.position.copy(t.scratch.position),
-                a.flareSource.scale.setScalar(e.MathUtils.clamp(F, 0, 1) * _ * wordmarkPointScale));
+                a.flareSource.scale.setScalar(
+                  e.MathUtils.clamp(F, 0, 1) * _ * wordmarkPointScale *
+                  e.MathUtils.lerp(1, 0.65, tM.filled ? tm : 0),
+                ));
             }
             a.dustMaterial &&
               ((a.dustMaterial.uniforms.uDispersedMotion.value = tP),

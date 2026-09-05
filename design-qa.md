@@ -1,4 +1,59 @@
-# Minimal shared header — latest verification
+# Kimi / GLM particle showcases — latest verification
+
+final result: passed
+
+Scope: implement the approved hero and bottom concepts as real interactive particles. Kimi forms the official K with detached blue droplet, then the complete KIMI wordmark; GLM forms uppercase lettering, then the official three-piece Z.ai emblem without its square. Four working version links remain at top right, brand logo at top left, and new modes have only Back to top in their footer.
+
+## Visual evidence and normalization
+
+- Selected hero: `reference/kimi-glm-hero-selected.png`; selected bottom: `reference/kimi-glm-bottom-selected.png`. Both are 2103 × 748 paired images, interpreted as two side-by-side 1440 × 1024 desktop compositions.
+- Desktop captures use CSS viewport 1440 × 1024. Browser output is 1425 × 1013 after scrollbar exclusion and proportional output scaling. Compare each half of the selected source proportionally; no image stretching or density correction was applied.
+- Phone captures use CSS viewport 390 × 844 and output 375 × 812. They are responsive adaptations of the approved desktop concept.
+
+| State | Kimi evidence | GLM evidence |
+| --- | --- | --- |
+| Settled desktop hero | `reference/kimi-hero-desktop.jpg` | `reference/glm-hero-desktop.jpg` |
+| Final desktop constellation | `reference/kimi-bottom-desktop.jpg` | `reference/glm-bottom-desktop.jpg` |
+| Phone hero | `reference/kimi-hero-mobile.jpg` | `reference/glm-hero-mobile.jpg` |
+| Phone final constellation | `reference/kimi-bottom-mobile.jpg` | `reference/glm-bottom-mobile.jpg` |
+
+Each selected source and corresponding final desktop browser capture were opened together in the same comparison input. Full views show centered uncropped silhouettes, sparse surrounding stars and the four-choice header. The large, legible captures also resolve the detached droplet, G aperture, M interior and the two gaps between Z pieces; separate close crops were not necessary. Desktop bottom scroll Y=2194.5, phone bottom Y=1762.5. Back to top restores the hero at its document anchor, Y=152 desktop / Y=96 phone.
+
+## Findings and completed fixes
+
+1. [P2, fixed] First interior sampling showed horizontal particle bands and tangent reversal could make offsets jump. Stable per-particle half-row jitter and a fixed filled-route normal remove the banding and keep retraced motion continuous. Final hero and bottom captures show natural distributions.
+2. [P2, fixed] Bright white centers washed out the Kimi accent. Corrected the accent's texture-index boundary and reduced white-core mixing for that range. Final Kimi hero has a clearly separate blue droplet.
+3. [P2, fixed] Bright sprites dominated while fine stars left the lettering sparse. Filled modes now preserve stroke endpoints, reduce oversized bright sprites, increase fine-point visibility, and scale points and tracked flares with phone width. Existing contour modes keep neutral defaults.
+4. [P2, fixed] Initial header/replay sizing and ambient glow differed from the approved composition. New desktop modes use larger brand marks and controls with more top spacing, a 52 px replay control, and a darker surround. Final captures retain the established minimal header anatomy.
+
+No actionable P0/P1/P2 findings remain.
+
+## Fidelity surfaces
+
+- Typography: local OpenAI Sans controls, exact official KIMI path lettering, and local OpenAI Sans Medium outlined GLM with explicit tracking. No missing glyphs, fallback flashes, wrapping or truncation observed. The GLM type treatment is a concept wordmark, not a claim of official GLM artwork.
+- Layout: K hero height constrained for desktop, broad GLM/KIMI lettering, centered final Z, proportional viewBox fitting and independent pieces. Four links and logo fit on phone; document clientWidth and scrollWidth both equal 375.
+- Color: near-black surround, white/ice-blue/occasional amber particles, blue droplet, translucent active switch. The live bloom and seeded points naturally vary across animation frames.
+- Assets: official Moonshot K/KIMI and official Z.ai paths are local and unaltered in silhouette; only the Z square was removed. Hidden SVG geometry is sampled into the moving WebGL stars. No solid brand loading poster exists in the custom modes.
+- Content: correct brand title, active version, drag/replay labels, retained scroll instructions and Back to top. No full navigation or extra page flows were added.
+
+## Interaction and runtime verification
+
+- Exercised all four version links; active state and page title match. Kimi and GLM renderers report ready.
+- Desktop forward scrolling forms each final wordmark/emblem; returning to top restores each hero. Drag/release exercised on GLM hero and KIMI bottom; drag flags reset to false and renderer remains ready.
+- Kimi replay clears the field and reforms K plus blue droplet. Desktop/phone resizing preserves rendering and control visibility.
+- Original-mode regression captures: `reference/astra-four-version-regression.jpg` and `reference/deepseek-four-version-regression.jpg`. Astra still shows its spiral with cursor/knot cues; DeepSeek still shows the whale, wordmark-only final cue, and zero solid posters. Independent engine review checked neutral original defaults and matching CPU/GPU filled offsets.
+- Sampler checks cover deterministic 1024-point allocation, finite values, closed independent routes, holes/detached gaps, accent indexing, cache reuse and invalidation. Syntax checks and production build passed; the existing large-bundle advisory remains.
+- Console checked after final reloads and navigation. No new runtime or shader errors occurred. The log retains one earlier development hot-reload warning from changing the length of an effect dependency array; it did not recur after full reload and the current dependency array is stable.
+
+## Follow-up polish and limits
+
+Individual particle brightness, point placement and the precise local GLM font weight differ from the generated still. These remain an interactive adaptation; no pixel-identical still-image claim is made. Physical iOS touch, reduced-motion devices and forced WebGL loss were not newly device-tested. Existing keyboard handlers are unchanged; this pass focused on mouse/drag/scroll/replay and responsive rendering.
+
+The pre-change two-brand version is preserved at `two-brand-showcase-v1` (9974c46); the four-brand version is saved separately as `kimi-glm-v1`. Existing original and DeepSeek tags are unchanged.
+
+---
+
+# Minimal shared header — prior verification
 
 final result: passed
 

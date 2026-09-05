@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { createAstraScene } from './astra/index.js';
+import { createAstraScene, ASTRA_SHAPE_SVGS } from './astra/index.js';
 import './astra-background.css';
 
 /** A React lifetime around the source Astra renderer. All motion lives in astra/. */
@@ -15,7 +15,7 @@ export default function AstraBackground({ heroShape }) {
       try {
         scene = createAstraScene(canvas, {
           heroShape,
-          data: heroShape ? { engine: { pathShapeScatter: 0.5 } } : undefined,
+          data: heroShape ? { engine: ASTRA_SHAPE_SVGS[heroShape]?.filled ? { pathShapeScatter: 0.12, stars: { intensity: 2.2 }, lensFlare: { intensity: 0.12 } } : { pathShapeScatter: 0.5 } } : undefined,
           heroElement: document.querySelector('[data-astra-hero]'),
           contentElement: document.querySelector('[data-astra-content]'),
           cues: [...document.querySelectorAll('[data-astra-scroll-cue]')],
