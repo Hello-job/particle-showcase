@@ -1,51 +1,65 @@
-# Prototype Instructions
+# Project instructions
 
-Run the local server yourself and open the preview in the browser available to this environment. Do not give the user server-start instructions when you can run it.
+## Development
 
-Before making substantial visual changes, use the Product Design plugin's `get-context` skill when the visual source is unclear or no longer matches the current goal. When the user gives durable prototype-specific design feedback, preferences, or decisions, record them in `AGENTS.md`.
+This is a React + TypeScript particle showcase and a distributable Agent Skill. Keep React components in `.tsx`, handwritten logic and geometry data in `.ts`, and strict type checking enabled. Do not use `@ts-nocheck`, broad `any` casts, or file renaming to hide migration errors.
 
-When implementing from a selected generated mock, treat that image as the source of truth for layout, component anatomy, density, spacing, color, typography, visible content, and hierarchy.
+Run the local server and open the available browser yourself when working on the preview. Preserve its existing port when possible; do not give the user startup instructions when you can run it. For source refactors, verify that the existing visual result and interactions still work.
 
-Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs`, and `tests/sites-worker.test.mjs` intact so the same local prototype can be handed to Sites. Before a Sites handoff, run `npm run build` and `npm run test:sites`; the build must leave `dist/client/index.html`, `dist/server/index.js`, and `dist/.openai/hosting.json`.
+Read `README.md`, `docs/architecture.md` and `docs/customization.md` for the maintained structure. Record durable user preferences here. Keep historical experiments and screenshots under `docs/archive/` and `docs/reference/` instead of the repository root.
 
-## Astra recreation target
+## Source layout
 
-The user requests maximum fidelity to the interactive particle background at https://openai.com/index/gpt-6-astra/, including mouse and scroll behavior. Preserve the source shaders, geometry, seeded distribution, original interaction parameters and desktop/mobile proportions. Match the captured source in `reference/`; do not redesign the effect. The page surrounding the effect is a compact demo of its three shapes. Keep particle assets and dependencies local.
+- `src/app/App.tsx`: page composition and scroll stages.
+- `src/components/showcase/`: header, hero, SVG targets, drag surfaces and footer.
+- `src/config/showcase.json`: brand/model copy, default mode, hero/ending shapes and switch visibility.
+- `src/config/showcase.ts`: validated configuration types and mode selection.
+- `src/particles/ParticleBackground.tsx`: React scene lifetime.
+- `src/particles/engine/`: typed DOM, scroll, device profile and public API.
+- `src/particles/shapes/`: SVG geometry, shape registry and filled sampler.
+- `src/particles/vendor/astra/`: retained compiled renderer and typed adapter boundary.
+- `src/styles/`: global, page and particle styles.
+- `public/assets/brands/`, `fonts/`, `images/`: local runtime resources.
 
-## DeepSeek customization
+The vendor JavaScript is intentionally retained to preserve the source shaders, seeded distribution, geometry, optical postprocessing and motion parameters. Do not rename this compiled code to TypeScript or rewrite its mathematics as routine cleanup. Its provenance is recorded in `src/particles/vendor/astra/README.md` and `THIRD_PARTY_NOTICES.md`.
 
-The original Astra experience is preserved on `main` and the annotated tag `astra-original-v1` (commit `3dd20cf`). Work on the DeepSeek whale variation belongs to `feature/deepseek-particles`. Keep the original engine defaults available, use the official DeepSeek SVG paths rather than drawing an approximation, and preserve mouse, drag, replay and scroll effects. Save each verified variation as its own commit; never overwrite or move the original tag.
+## Visual and interaction contract
 
-The user selected generated option 1 (the lowercase particle `deepseek` wordmark) on 2026-09-05. Put it in the final constellation section at the bottom, remove the intermediate cursor in DeepSeek mode, and keep the whale as the particle hero. Remove the solid whale loading poster that flashes before the particles initialize. Reference: `reference/deepseek-wordmark-selected.png`. The earlier whale/cursor/whale version remains preserved at `deepseek-v1`.
+The target is the interactive background from https://openai.com/index/gpt-6-astra/. Match the references in `docs/reference/`; do not redesign the effect during maintenance. For substantial visual changes with an unclear source, use the Product Design context workflow first. When the user selects a mock, that image governs anatomy, spacing, typography, color and hierarchy.
 
-The user wants both versions to be minimal particle showcases: keep each brand logo at the top left and the shared version switch at the top right. Remove navigation menus, search, login, CTA buttons, the mobile menu, and the old bottom-left switch. Preserve particle layout and interactions. The original full Astra snapshot remains at `main` / `astra-original-v1`; keep `deepseek-wordmark-v2` unchanged as the previous wordmark snapshot.
+All modes retain the top-left brand logo and one shared top-right Astra / DeepSeek / Kimi / GLM switch. Tabs must have equal widths, common sizing and consistent alignment at each breakpoint. No navigation menus, search, login, CTA, mobile menu, old lower-left switch or `Move · Drag · Scroll` hint. Preserve pointer response, drag rotation, arrow-key interaction, scroll transitions, replay, reverse scrolling, reduced motion and scene disposal.
 
-## Kimi and GLM customization
+| Mode     | Hero                                          | Final constellation                                     | Model title     |
+| -------- | --------------------------------------------- | ------------------------------------------------------- | --------------- |
+| Astra    | Original spiral 6, with GPT/Astra side labels | OpenAI knot; cursor appears in the intermediate stage   | GPT-6 Astra     |
+| DeepSeek | Official whale                                | Custom titlecase DeepSeek wordmark                      | DeepSeek-V4-Pro |
+| Kimi     | Official K and detached blue droplet          | Official uppercase KIMI wordmark                        | Kimi K3         |
+| GLM      | Outlined GLM letters                          | Exact Z.ai three-piece emblem, without its outer square | GLM-5.3         |
 
-The user approved the Kimi and GLM hero and bottom concepts on 2026-09-06. Selected visual references are `reference/kimi-glm-hero-selected.png` and `reference/kimi-glm-bottom-selected.png`; use these as the source of truth. Extend the shared top-right switch to Astra / DeepSeek / Kimi / GLM, preserving the top-left brand logo and minimal showcase header in all four modes.
+Model titles are manually maintained examples verified on 2026-09-06, not live latest-model queries. Show only the title in the introduction. DeepSeek, Kimi and GLM do not include the intermediate cursor or a solid Logo loading poster. Kimi and GLM footers contain only Back to top; Astra and DeepSeek also retain their Explore link.
 
-Kimi starts with the exact official K symbol and its detached blue droplet, then ends with the full official uppercase KIMI wordmark. GLM starts with the selected simple uppercase GLM lettering, then ends with the exact official three-piece Z.ai emblem without its surrounding square. Neither new mode includes the intermediate cursor. Their footer only contains Back to top. Keep the original mouse, drag, scroll and replay behavior and avoid solid logo loading posters in custom particle heroes.
+Keep the middle interlude at 20svh and the title bottom spacing at 64px desktop / 40px mobile. Adjust layout spacing before changing scroll-cue equations when addressing inactive scroll distance. Preserve the latest compact transition.
 
-Keep Kimi and Z.ai official paths in `src/astra/brand-shapes.js` with source provenance. GLM lettering is outlined from the bundled OpenAI Sans Medium font and must not be described as a traced official GLM logo. Register the new shapes in `src/astra/shapes.js`; their cached filled scanline sampler in `src/astra/filled-shapes.js` must preserve counters, gaps between disconnected parts, and the Kimi blue accent. Preserve the existing Astra / DeepSeek contour sampling and engine defaults.
+## Shape integrity
 
-Kimi and GLM are available at `/?shape=kimi` and `/?shape=glm` on the existing `feature/deepseek-particles` branch. Preserve all existing baseline tags, including `astra-original-v1`, `deepseek-v1`, and `deepseek-wordmark-v2`; save the verified expansion as a separate commit without moving earlier tags.
+DeepSeek's whale, mouth and eye use the exact official paths in `shapes/deepseek.ts`. Its custom `DeepSeek` lettering in `shapes/deepseek-titlecase.ts` preserves official lowercase e/e/p/e/e/k by translation and adds real OpenAI Sans Medium D/S outlines, aligned to the original k height and baseline. Keep ten independent contours for counters and disconnected pieces; this is not the official logotype. Header and bottom use consistent D/S casing. Retain the original lowercase assets as source material.
 
-## Model title copy
+Kimi and Z.ai paths in `shapes/brands.ts` retain their official geometry and source URLs. GLM lettering is outlined from the bundled OpenAI Sans Medium font, not traced from an official GLM logo. Kimi/GLM use the filled sampler, which preserves counters, independent pieces and the Kimi blue accent. Astra/DeepSeek retain contour sampling. `shapes/registry.ts` is the single registry and derives accepted shape keys.
 
-On 2026-09-06, the user approved replacing the intro headline in each mode with its verified model name: Astra → `GPT-6 Astra`, DeepSeek → `DeepSeek-V4-Pro`, Kimi → `Kimi K3`, and GLM → `GLM-5.3`. Remove the prior marketing sentence and show only the subtle interaction hint `Move · Drag · Scroll` below the model name. These names reflect verification on that date from the official [Astra announcement](https://openai.com/index/gpt-6-astra/), [DeepSeek website](https://deepseek.com/), [Kimi K3 announcement](https://kimi.com/news/kimi-k3), and [Z.ai model page](https://autoclaw.z.ai/models/); they are maintained manually, not automatically updated.
+## Checks and builds
 
-## Latest showcase corrections
+Run `npm run typecheck`, `npm run lint`, `npm run format:check`, `npm test` and `npm run build` after substantive changes. Run meaningful browser checks for changes affecting the visible result or input/lifecycle behavior. Do not claim a physical-phone or failure-mode check that was only simulated or not performed.
 
-The user's later feedback on 2026-09-06 supersedes the earlier lowercase DeepSeek selection and the instruction to show an interaction hint. Remove `Move · Drag · Scroll` entirely in all four modes, leaving only each approved model title. Preserve the mouse, drag, scroll and replay interactions.
+The normal Vite build produces `dist/`. Preserve `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs` and `tests/sites-worker.test.mjs` for the optional Sites adapter. Before a Sites handoff, run `npm run build:sites` and `npm run test:sites`; the Sites build must leave `dist/client/index.html`, `dist/server/index.js` and `dist/.openai/hosting.json`. No deployment is implied by repository cleanup.
 
-Use the visible casing `DeepSeek`, with uppercase D and S, for both the top-left header lettering and the bottom particle wordmark. Keep the exact official whale as the hero and header symbol. The custom case paths live in `src/astra/deepseek-titlecase.js`: preserve the official lowercase e/e/p/e/e/k geometry by translation only, use genuine uppercase D/S outlines from the bundled OpenAI Sans Medium font, align their cap height and baseline with the original k, and retain independent contours for the D counter and disconnected k parts. This user-requested lettering must not be described as the official DeepSeek logotype. The header uses `public/assets/deepseek-titlecase.svg`; `public/assets/deepseek-titlecase-wordmark.svg` contains the same lettering on its own. Keep the original lowercase assets and `custom-shapes.js` definitions available.
+## Skill maintenance
 
-Use one shared top-right version switch in Astra, DeepSeek, Kimi and GLM. All four tabs must have equal widths, with the same control dimensions, padding and alignment across modes at each viewport size. Keep its responsive desktop and mobile layouts consistent; do not add brand-specific sizing overrides.
+The maintained Skill is `skills/particle-showcase/`. Its `assets/starter/` is generated from the application, not independently maintained. After relevant source changes, run `npm run skill:sync`, `npm run skill:check`, `npm run test:skill` and `npm run skill:pack`. Validate a newly generated project when changing the template or initializer. Refresh the installed Skill copy as part of an authorized Skill update; packing must not silently alter a user's global installation.
 
-Preserve every existing baseline tag, including `astra-original-v1`, `deepseek-v1`, `deepseek-wordmark-v2`, `two-brand-showcase-v1` and `kimi-glm-v1`. Do not move or overwrite earlier snapshots when saving these corrections.
+The shareable archive is `deliverables/particle-showcase-skill.zip`. Keep the template portable, free of personal paths, build output, dependency folders and Sites-only configuration. Documentation belongs in `docs/skill/` and the Skill's scoped references.
 
-The user later requested a shorter middle stretch with little visual activity. Keep the shared constellation interlude at 20svh (previously 45svh), and the model-title section bottom padding at 64px desktop / 40px mobile. Preserve the existing particle geometry, interaction handlers and scroll-cue equations; use layout spacing to shorten the transition.
+## Provenance and version preservation
 
-## Reusable particle Skill
+Do not assign a blanket MIT or other open-source license to the extracted renderer, brand paths, bundled fonts or posters. Keep `LICENSE.md` and `THIRD_PARTY_NOTICES.md` accurate. The user plans to make the project available for others to study; publishing or licensing third-party contents requires a separate, accurate decision.
 
-The user requested a distributable Skill so others can reproduce this effect. Its versioned source is `skills/particle-showcase/`, with a standalone template under `assets/starter`, and the distributable ZIP plus Chinese handoff instructions under `deliverables/`. Keep the template independent of this machine and Sites hosting. Preserve source provenance; the extracted renderer and bundled brand/font assets are not all original or uniformly MIT licensed. When updating the Skill, validate the initializer, refresh the ZIP and installed copy together, and avoid modifying the live showcase just to maintain the package.
+Keep all prior snapshots intact: `astra-original-v1` (`3dd20cf`, also `main`), `deepseek-v1`, `deepseek-wordmark-v2`, `two-brand-showcase-v1`, `kimi-glm-v1`, `model-titles-v1`, `showcase-polish-v1`, `shorter-scroll-v1` and `particle-showcase-skill-v1`. Do not move or overwrite these tags. The TypeScript organization is developed on `refactor/typescript-showcase`; save verified changes separately.

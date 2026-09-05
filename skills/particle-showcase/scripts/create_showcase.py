@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Copy the bundled particle demo into a new or empty destination."""
+"""Create a standalone React + TypeScript particle showcase in an empty directory."""
 
 import argparse
 import html
@@ -11,7 +11,7 @@ import shutil
 import sys
 
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--dest', required=True, type=Path, help='New or empty project directory')
     parser.add_argument('--brand', choices=['astra', 'deepseek', 'kimi', 'glm'], default='deepseek')
@@ -28,7 +28,8 @@ def main():
         parser.error('Destination must be outside the bundled starter.')
     if target.exists() and (not target.is_dir() or any(target.iterdir())):
         parser.error('Destination is not an empty directory; existing files were not changed.')
-    config_path = starter / 'src' / 'showcase.config.json'
+    config_relative_path = Path('src/config/showcase.json')
+    config_path = starter / config_relative_path
     if not config_path.is_file():
         parser.error('Bundled starter is missing. Install the entire skill folder, not just SKILL.md.')
 
@@ -41,17 +42,19 @@ def main():
         config['versions'][args.brand]['modelName'] = args.title
 
     shutil.copytree(starter, target, dirs_exist_ok=True)
-    (target / 'src' / 'showcase.config.json').write_text(
+    (target / config_relative_path).write_text(
         json.dumps(config, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
     )
     entry = target / 'index.html'
     title = html.escape(config['versions'][args.brand]['modelName'] + ' — Particle Constellation')
     entry.write_text(re.sub(r'<title>.*?</title>', lambda _: f'<title>{title}</title>',
-                           entry.read_text(encoding='utf-8')), encoding='utf-8')
+                           entry.read_text(encoding='utf-8'), flags=re.DOTALL), encoding='utf-8')
     print(f'Created particle showcase: {target}')
     print(f'Default: {args.brand}; version switch: {config["showVersionSwitch"]}')
     print(f'Next, run in {shlex.quote(str(target))}:')
     print('  npm ci')
+    print('  npm run typecheck')
+    print('  npm run lint')
     print('  npm run build')
     print('  npm run dev -- --port 5173 --strictPort')
     return 0

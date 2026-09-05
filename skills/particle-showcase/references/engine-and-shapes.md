@@ -2,13 +2,13 @@
 
 ## What is reusable
 
-The template is a procedural WebGL particle scene with pointer repulsion, drag rotation, replay, a scrolling transition through SVG destinations, and optical postprocessing. It is not a video, raster logo overlay, or generic CSS particle animation. Its original renderer and motion modules were ported from the public Astra page; custom brand shapes and the standalone DOM adapter were added locally. Preserve the source provenance in `src/astra/README.md` and the shape modules.
+The template is a procedural WebGL particle scene with pointer repulsion, drag rotation, replay, a scrolling transition through SVG destinations, and optical postprocessing. It is not a video, raster logo overlay, or generic CSS particle animation. Its original renderer and motion modules were ported from the public Astra page; custom brand shapes and the standalone DOM adapter were added locally. Preserve the source provenance in `src/particles/vendor/astra/README.md` and the shape modules.
 
-Reuse the entire `src/astra/` module graph and `src/astra-background.css`. `AstraBackground.jsx` is the existing React lifecycle wrapper; `App.jsx` and `styles.css` supply the working DOM and layout. The portable engine imports `three` and `postprocessing`; the verified versions are Three.js `0.180.0` and postprocessing `6.39.4`. Preserve a compatible lockfile instead of silently upgrading those rendering dependencies.
+Reuse the entire `src/particles/` module graph and the particle stylesheet in `src/styles/`. `src/particles/ParticleBackground.tsx` is the React lifecycle wrapper; `src/app/App.tsx`, `src/components/showcase/` and `src/styles/` supply the working DOM and layout. Application, coordinator and shape code use strict TypeScript. The third-party renderer remains in `src/particles/vendor/astra/` behind declarations at the engine boundary; do not silently rewrite its extracted shader or motion code. The portable engine imports `three` and `postprocessing`; the verified versions are Three.js `0.180.0` and postprocessing `6.39.4`. Preserve a compatible lockfile instead of silently upgrading those rendering dependencies.
 
 ## Scene contract
 
-Call `createAstraScene(canvas, options)` from `src/astra/index.js` only after the canvas, hero, content, SVG targets and cue elements are mounted in a browser. Its relevant options are:
+Call `createAstraScene(canvas, options)` from `src/particles/engine/index.ts` only after the canvas, hero, content, SVG targets and cue elements are mounted in a browser. Its relevant options are:
 
 - `heroElement`: a measured DOM element; defaults to `[data-astra-hero]`. Missing this throws.
 - `contentElement`: the entire scrolling content range, including the last destination and footer; defaults to `[data-astra-content]`, then `document.body`.
@@ -18,7 +18,7 @@ Call `createAstraScene(canvas, options)` from `src/astra/index.js` only after th
 - `profile`: optional `createAstraProfile(tier, reducedMotion)` result. Default is tier 3.
 - `onError(error)` and `onScroll({ progress, scatter, shape, shapeStrength, active })`.
 
-The returned scene exposes `ready`, `replay()`, `refresh()`, `dispose()`, `input`, and renderer/animation getters. Await `ready`; handle rejection with a deliberate fallback. Always call `dispose()` on unmount before creating the replacement scene. `refresh()` remeasures existing registrations; if a wrapper captured its `cues` array before a route or structure change, recreate the scene with the new DOM. Current `AstraBackground` does this when `heroShape` changes.
+The returned scene exposes `ready`, `replay()`, `refresh()`, `dispose()`, `input`, and renderer/animation getters. Await `ready`; handle rejection with a deliberate fallback. Always call `dispose()` on unmount before creating the replacement scene. `refresh()` remeasures existing registrations; if a wrapper captured its `cues` array before a route or structure change, recreate the scene with the new DOM. Current `ParticleBackground` does this when `heroShape` changes.
 
 Use one scene per page with the current adapter. Copy/title/drag selectors and replay events are document/window scoped. Multiple simultaneous scenes need scoped selectors and events first. Initialize only on the client in SSR frameworks.
 
@@ -26,19 +26,19 @@ Use one scene per page with the current adapter. Copy/title/drag selectors and r
 
 Keep a fixed viewport canvas behind normal scrolling content. The backdrop uses `pointer-events: none`; transparent buttons in the content receive drag/keyboard interaction. Preserve a stacking context and place interactive content above the canvas.
 
-| Hook | Purpose |
-| --- | --- |
-| `[data-astra-experience]` | Root pointer-hover region and scene wrapper. |
-| `[data-astra-backdrop]` | Fixed canvas wrapper; adapter sets its opacity, visibility and ending translation. |
-| `[data-astra-hero]` | Hero bounds and initial scroll anchor. |
-| `[data-astra-content]` | Complete scroll range. |
-| `[data-astra-hero-shape]` | Contains custom hero SVG. |
-| `[data-astra-scroll-cue]` | Cue registration; attribute may be empty/`"true"` or serialized JSON. |
-| `[data-astra-path-shape="id"]` | A cue destination; contains the measurable SVG. |
-| `[data-astra-drag]` | Transparent focusable button for pointer capture and arrow-key rotation. |
-| `[data-astra-copy]` | Hero text/replay chrome that fades during scroll. |
-| `[data-section-header]` with `[data-astra-title]` | Intermediate title bounds, particle text clearance and parallax. |
-| `[data-astra-ambient]` | Optional ambient layer restarted by replay. |
+| Hook                                              | Purpose                                                                            |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `[data-astra-experience]`                         | Root pointer-hover region and scene wrapper.                                       |
+| `[data-astra-backdrop]`                           | Fixed canvas wrapper; adapter sets its opacity, visibility and ending translation. |
+| `[data-astra-hero]`                               | Hero bounds and initial scroll anchor.                                             |
+| `[data-astra-content]`                            | Complete scroll range.                                                             |
+| `[data-astra-hero-shape]`                         | Contains custom hero SVG.                                                          |
+| `[data-astra-scroll-cue]`                         | Cue registration; attribute may be empty/`"true"` or serialized JSON.              |
+| `[data-astra-path-shape="id"]`                    | A cue destination; contains the measurable SVG.                                    |
+| `[data-astra-drag]`                               | Transparent focusable button for pointer capture and arrow-key rotation.           |
+| `[data-astra-copy]`                               | Hero text/replay chrome that fades during scroll.                                  |
+| `[data-section-header]` with `[data-astra-title]` | Intermediate title bounds, particle text clearance and parallax.                   |
+| `[data-astra-ambient]`                            | Optional ambient layer restarted by replay.                                        |
 
 Render target SVGs with a valid positive `viewBox`, real `<path d="...">` children, absolute positioning and `opacity: 0`. Keep them mounted and measurable; do not use `display: none`, hidden attributes, or a zero-sized cue. Reference geometry is invisible because particles render it. It must not flash as a solid logo during loading. `aria-hidden="true"` on decorative SVGs is appropriate.
 
@@ -52,7 +52,7 @@ Cues are deduplicated and ordered by DOM position. Shape anchors use their cue c
 
 Typical custom sequence: hero → model title → release cue → final shape. Original Astra additionally uses the cursor between title and release. A release cue is:
 
-```jsx
+```tsx
 data-astra-scroll-cue={JSON.stringify({
   easing: "smoothstep",
   keyframe: {
@@ -77,18 +77,18 @@ Each cue merges onto a default keyframe by cue index; adding many cues can event
 ## Add or replace a shape
 
 1. Give each custom shape a human-readable `label` for accessible button/section names (the template falls back to its registry key). Add a definition in a separate shape module: `{ width, height, paths: [d, ...], label?, viewBox?, filled?, accentPaths? }`. Keep source URLs and describe custom lettering truthfully.
-2. Import/register it in `ASTRA_SHAPE_SVGS` in `shapes.js` **and** extend `resolveAstraPathShape`. The resolver is an explicit allowlist; a registry entry alone is insufficient.
+2. Add it to `shapeDefinitions` in `src/particles/shapes/registry.ts`. The `ShapeId` union and `resolveAstraPathShape` derive from that registry, so there is no separate allowlist to maintain. Shape modules should satisfy `ShapeDefinition` from `src/particles/shapes/types.ts`; run the type check after registering a new key.
 3. Render it through `ShapeTarget`, which supplies the `viewBox`, `data-filled="true"` for filled shapes, and `data-accent="true"` on indexed accent paths.
-4. Set the variant's `hero` and/or `ending` in `src/showcase.config.json`. Each version has `name`, `modelName`, `logo`, `logoClass`, `url`, `hero` (omit only for Astra), `ending` and optional `showcase: true` (footer only Back to top). Set `defaultVariant` to its key, provide a matching local header SVG, and update static title/description in `index.html`. The `showcase` flag also aligns Back to top on the right. The switch derives its column count from this registry; check narrow-screen fit if adding entries.
-5. Set the destination's `--astra-shape-max-width` when its proportions differ. Prefer broad wordmarks at a larger width than compact symbols, then inspect desktop/mobile. Custom hero sizing is separately computed in `coordinator.js` from aspect ratio and viewport.
+4. Set the variant's `hero` and/or `ending` in `src/config/showcase.json`; the configuration loader validates those keys against the shape registry. Each version has `name`, `modelName`, `logo`, `logoClass`, `url`, `hero` (omit only for Astra), `ending` and optional `showcase: true` (footer only Back to top). Set `defaultVariant` to its key, provide a matching local header SVG, and update static title/description in `index.html`. The `showcase` flag also aligns Back to top on the right. The switch derives its column count from this registry; check narrow-screen fit if adding entries.
+5. Set the destination's `--astra-shape-max-width` when its proportions differ. Prefer broad wordmarks at a larger width than compact symbols, then inspect desktop/mobile. Custom hero sizing is separately computed in `src/particles/engine/coordinator.ts` from aspect ratio and viewport.
 
 **Contour mode:** best for the existing Astra and whale outlines. It samples 1024 points across path lengths and records each path's travel interval. Keep each disconnected contour in a separate `<path>`; several pen-up `M` subpaths inside one path can create unwanted connecting travel. DOM transforms are accounted for by this sampler. All points must fit the supplied viewBox; a nonzero origin needs `viewBox`, not just width/height.
 
-**Filled mode:** best for substantial lettering or broad silhouettes. `filled-shapes.js` makes cached independent interior scanline routes, returns 1024 RGBA samples, reduces row count for complex shapes, and supplies `rowSpacing`/`flowScale` to avoid visible bands. Holes must be genuine filled-path holes: keep outer and inner contours within the same compound path and preserve winding or an appropriate fill rule. Separate independently filled paths are combined as a union; putting a hole in its own filled path will fill it. Flatten SVG transforms into path coordinates first: this sampler does not apply path/group transformation matrices. Convert text, strokes, clipping and masks into final outline paths rather than expecting the sampler to render them.
+**Filled mode:** best for substantial lettering or broad silhouettes. `src/particles/shapes/filled-sampler.ts` makes cached independent interior scanline routes, returns 1024 RGBA samples, reduces row count for complex shapes, and supplies `rowSpacing`/`flowScale` to avoid visible bands. Holes must be genuine filled-path holes: keep outer and inner contours within the same compound path and preserve winding or an appropriate fill rule. Separate independently filled paths are combined as a union; putting a hole in its own filled path will fill it. Flatten SVG transforms into path coordinates first: this sampler does not apply path/group transformation matrices. Convert text, strokes, clipping and masks into final outline paths rather than expecting the sampler to render them.
 
 The fill cache detects path data, fill-rule and accent changes, not arbitrary transform/style changes. Fill attributes should be explicit and stable. The bundled ShapeTarget assumes nonzero winding. If a new SVG requires evenodd, extend ShapeTarget to pass its fillRule to the actual SVG/path instead of only recording it in the registry. `accentPaths` supports one contiguous accent group, currently rendered in the engine's fixed blue `#1685ff`; it is not a generic multicolor SVG renderer. Arbitrary brand colors require an intentional renderer extension.
 
-Current `deepseek-wordmark` is custom **DeepSeek** casing, not the official lowercase wordmark: original lowercase contours were retained and uppercase D/S added from the bundled font. Its contour visibility tuning includes an identifier check in `animation.js`; a new contour wordmark does not automatically inherit that special tuning. Filled shapes receive the generic filled treatment.
+Current `deepseek-wordmark` is custom **DeepSeek** casing, not the official lowercase wordmark: original lowercase contours were retained and uppercase D/S added from the bundled font. Its contour visibility tuning includes an identifier check in `src/particles/vendor/astra/animation.js`; a new contour wordmark does not automatically inherit that special tuning. Filled shapes receive the generic filled treatment.
 
 ## Controls, lifecycle and performance
 
@@ -102,6 +102,6 @@ Tier 3 limits are 40,000 maximum particles, 16 shader samples and full postproce
 
 ## Packaging caveats
 
-The showcase uses root-relative `/assets/...` URLs for logos, fallback poster and fonts. Adapt asset URLs/base configuration for subdirectory hosting. Font changes can alter title width and the measured transition; call refresh after asynchronous layout changes. Keep named exports and the complete internal module adapter graph intact.
+For subdirectory hosting, set Vite's `base` to the deployment path. Resolve new public assets with `assetUrl` from `src/lib/assets.ts`; existing logos and the fallback poster already use `import.meta.env.BASE_URL` through this helper. Vite rewrites bundled CSS font URLs for the configured base, and version links preserve the current directory. Font changes can alter title width and the measured transition; call refresh after asynchronous layout changes. Keep named exports and the complete internal module adapter graph intact.
 
 Model-name strings are manually maintained examples verified on 2026-09-06, not a live latest-model lookup. Do not promise future currency. Public-source provenance is not itself a redistribution license: do not assign a blanket original-work or MIT claim to the copied renderer, brand paths, bundled fonts or posters.

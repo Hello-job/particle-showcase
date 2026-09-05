@@ -1,20 +1,51 @@
 {
-  "name": "landing-page",
-  "version": "0.0.0",
+  "name": "particle-showcase",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prepare-sites-build.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "build": "npm run typecheck && vite build",
     "preview": "vite preview",
-    "test:sites": "node --test tests/sites-worker.test.mjs"
+    "build:sites": "npm run typecheck && vite build --mode sites && node scripts/prepare-sites-build.mjs",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:sites": "node --test tests/sites-worker.test.mjs",
+    "test:skill": "python3 -m unittest discover -s tests -p 'test_skill_initializer.py'",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
+    "skill:sync": "node scripts/manage-skill.mjs sync",
+    "skill:check": "node scripts/manage-skill.mjs check",
+    "skill:pack": "node scripts/manage-skill.mjs pack"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "5.0.4",
-    "postprocessing": "^6.39.4",
+    "postprocessing": "6.39.4",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "three": "^0.180.0",
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^22.20.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@types/three": "^0.180.0",
+    "@vitejs/plugin-react": "5.0.4",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.4.26",
+    "globals": "^16.5.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.13",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.69.0",
     "vite": "6.4.2"
+  },
+  "description": "Interactive particle constellations built with React, TypeScript and a reusable Skill.",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "engines": {
+    "node": ">=22.12.0"
   }
 }

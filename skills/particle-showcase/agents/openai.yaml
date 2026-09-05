@@ -1,4 +1,4 @@
 interface:
   display_name: "粒子星光展示"
-  short_description: "创建可换 Logo 的交互粒子页面，包含鼠标、拖拽与滚动变形"
-  default_prompt: "使用 $particle-showcase 创建一个交互粒子展示页，保留鼠标扰动、拖拽旋转、滚动成形和重播，并把首屏换成我提供的 Logo。"
+  short_description: "用 TypeScript 创建可换 Logo 的粒子页面，包含鼠标、拖拽与滚动变形"
+  default_prompt: "使用 $particle-showcase 创建一个 React + TypeScript 交互粒子展示页，保留鼠标扰动、拖拽旋转、滚动成形和重播，并把首屏换成我提供的 Logo。"
