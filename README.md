@@ -2,6 +2,8 @@
 
 当前默认显示 DeepSeek 鲸鱼粒子。四个版本均保留左上角品牌标志和右上角 Astra / DeepSeek / Kimi / GLM 切换；页头不设导航菜单、搜索、登录、CTA 按钮或手机菜单，也没有旧的左下角切换入口。完整 Astra 原版已单独保存在 Git 中。
 
+四个版本的介绍标题分别为 `GPT-6 Astra`、`DeepSeek-V4-Pro`、`Kimi K3`、`GLM-5.3`，标题下仅显示低调的 `Move · Drag · Scroll` 交互提示，移除原营销文案。型号名称以 2026-09-06 的官网核实结果为准，后续手动维护。
+
 | 版本 | 本地预览 | 首屏粒子 | 底部粒子 |
 | --- | --- | --- | --- |
 | Astra | http://localhost:4173/?shape=astra | 螺旋 6 | OpenAI 结形，中间保留光标 |

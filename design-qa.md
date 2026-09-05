@@ -1,4 +1,20 @@
-# Kimi / GLM particle showcases — latest verification
+# Model-name copy — latest verification
+
+final result: passed
+
+Approved text replaces the introduction headline in each mode with GPT-6 Astra, DeepSeek-V4-Pro, Kimi K3 or GLM-5.3. The former marketing sentence is replaced by the subtle hint `Move · Drag · Scroll`. Browser title and accessible page heading also use the model name. Model names were verified from official sources on 2026-09-06, as recorded in README.md; updates are manual.
+
+- Desktop evidence: `reference/model-title-kimi-desktop.jpg`, CSS viewport 1440 × 900, output 1425 × 891. The name is large, centered, and separated from the small gray hint by 24 px.
+- Phone evidence: `reference/model-title-deepseek-mobile.jpg`, CSS viewport 360 × 780, output 345 × 748. DeepSeek-V4-Pro is the longest name; it fits one line at 28 px. Document clientWidth/scrollWidth both equal 345, and heading clientWidth/scrollWidth both equal 297. Hint gap is 20 px.
+- Fixed a layout issue during this edit: the existing independent heading parallax could cross the newly adjacent hint. The heading and hint now share one moving wrapper, preserving their spacing throughout scrolling. Bottom section padding preserves breathing room after the compact copy block.
+- All four version links and their displayed model/hint strings were checked in the browser. Renderers remained ready. Final browser checks found no new runtime errors.
+- Production build and whitespace checks passed. Existing bundle-size advisory remains. No particle-engine, brand geometry, or input-handler files changed.
+
+No actionable visual findings remain in this copy/layout update. Existing particle QA and device-test limits are retained below. The earlier four-brand version remains at `kimi-glm-v1`; this update is saved separately as `model-titles-v1`.
+
+---
+
+# Kimi / GLM particle showcases — prior verification
 
 final result: passed
 

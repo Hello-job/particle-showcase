@@ -29,3 +29,7 @@ Kimi starts with the exact official K symbol and its detached blue droplet, then
 Keep Kimi and Z.ai official paths in `src/astra/brand-shapes.js` with source provenance. GLM lettering is outlined from the bundled OpenAI Sans Medium font and must not be described as a traced official GLM logo. Register the new shapes in `src/astra/shapes.js`; their cached filled scanline sampler in `src/astra/filled-shapes.js` must preserve counters, gaps between disconnected parts, and the Kimi blue accent. Preserve the existing Astra / DeepSeek contour sampling and engine defaults.
 
 Kimi and GLM are available at `/?shape=kimi` and `/?shape=glm` on the existing `feature/deepseek-particles` branch. Preserve all existing baseline tags, including `astra-original-v1`, `deepseek-v1`, and `deepseek-wordmark-v2`; save the verified expansion as a separate commit without moving earlier tags.
+
+## Model title copy
+
+On 2026-09-06, the user approved replacing the intro headline in each mode with its verified model name: Astra → `GPT-6 Astra`, DeepSeek → `DeepSeek-V4-Pro`, Kimi → `Kimi K3`, and GLM → `GLM-5.3`. Remove the prior marketing sentence and show only the subtle interaction hint `Move · Drag · Scroll` below the model name. These names reflect verification on that date from the official [Astra announcement](https://openai.com/index/gpt-6-astra/), [DeepSeek website](https://deepseek.com/), [Kimi K3 announcement](https://kimi.com/news/kimi-k3), and [Z.ai model page](https://autoclaw.z.ai/models/); they are maintained manually, not automatically updated.

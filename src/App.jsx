@@ -13,10 +13,10 @@ function ShapeTarget({ shape }) {
 
 const referenceUrl = "https://openai.com/index/gpt-6-astra/";
 const versions = {
-  astra: { name: "Astra", logo: "/assets/openai-wordmark.svg", logoClass: "wordmark", url: referenceUrl, ending: "openai-knot" },
-  deepseek: { name: "DeepSeek", logo: "/assets/deepseek-official.svg", logoClass: "deepseek-wordmark", url: "https://www.deepseek.com/", hero: "deepseek", ending: "deepseek-wordmark" },
-  kimi: { name: "Kimi", logo: "/assets/kimi-wordmark.svg", logoClass: "brand-wordmark", url: "https://www.kimi.com/", hero: "kimi", ending: "kimi-wordmark", showcase: true },
-  glm: { name: "GLM", logo: "/assets/glm-wordmark.svg", logoClass: "brand-wordmark", url: "https://z.ai/", hero: "glm-wordmark", ending: "zai", showcase: true },
+  astra: { name: "Astra", modelName: "GPT-6 Astra", logo: "/assets/openai-wordmark.svg", logoClass: "wordmark", url: referenceUrl, ending: "openai-knot" },
+  deepseek: { name: "DeepSeek", modelName: "DeepSeek-V4-Pro", logo: "/assets/deepseek-official.svg", logoClass: "deepseek-wordmark", url: "https://www.deepseek.com/", hero: "deepseek", ending: "deepseek-wordmark" },
+  kimi: { name: "Kimi", modelName: "Kimi K3", logo: "/assets/kimi-wordmark.svg", logoClass: "brand-wordmark", url: "https://www.kimi.com/", hero: "kimi", ending: "kimi-wordmark", showcase: true },
+  glm: { name: "GLM", modelName: "GLM-5.3", logo: "/assets/glm-wordmark.svg", logoClass: "brand-wordmark", url: "https://z.ai/", hero: "glm-wordmark", ending: "zai", showcase: true },
 };
 
 function ArrowIcon() {
@@ -91,15 +91,15 @@ export function App() {
   const version = versions[variant];
   const custom = variant !== "astra";
   useEffect(() => {
-    document.title = custom ? `${version.name} — Particle Constellation` : "GPT Astra — Interactive Particle Field";
-  }, [custom, version.name]);
+    document.title = `${version.modelName} — ${custom ? "Particle Constellation" : "Interactive Particle Field"}`;
+  }, [custom, version.modelName]);
   return (
     <div className="astra-experience" data-astra-experience data-variant={variant}>
       <AstraBackground heroShape={version.hero} />
       <Header variant={variant} />
       <main>
         <section className="astra-hero" id="astra" data-astra-hero aria-label={custom ? `${version.name} particle constellation` : "GPT-6 Astra"}>
-          <h1 className="sr-only">{custom ? `${version.name} particle constellation` : "GPT-6 Astra"}</h1>
+          <h1 className="sr-only">{version.modelName}</h1>
           {custom && <div data-astra-hero-shape><ShapeTarget shape={version.hero} /></div>}
           <button type="button" className="astra-drag-surface" data-astra-drag aria-label={`Drag or use arrow keys to rotate the ${version.name} star field`} />
           {!custom && <><HeroLabel text="GPT" side="left" /><HeroLabel text="Astra" side="right" /></>}
@@ -109,11 +109,11 @@ export function App() {
         </section>
         <article className="astra-article" data-astra-content>
           <section className="intelligence-section" id="intelligence">
-            <div data-section-header>
-              <h2 className="astra-title" data-astra-title>{custom ? "A familiar shape. A universe of particles." : "A new generation of intelligence"}</h2>
-            </div>
-            <div className="article-copy">
-              <p>{custom ? "Move through the stars. Drag to rotate. Scroll to transform." : "We’re introducing GPT‑6 Astra, the world’s most intelligent and aligned model."}</p>
+            <div className="astra-model-intro" data-section-header data-astra-title>
+              <h2 className="astra-title">{version.modelName}</h2>
+              <div className="article-copy">
+                <p>Move · Drag · Scroll</p>
+              </div>
             </div>
           </section>
           {!custom && <ShapeCue shape="cursor" />}
