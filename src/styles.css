@@ -46,6 +46,16 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
 
 .site-header { height: var(--header-h); position: fixed; inset: 0 0 auto; z-index: 20; display: flex; align-items: center; gap: 36px; padding: 0 32px; background: transparent; transition: background-color .25s; }
 .site-header[data-scrolled="true"] { background: #000; }
+.deepseek-header { justify-content: space-between; }
+.deepseek-wordmark { display: flex; align-items: center; }
+.deepseek-wordmark img { width: 124px; height: auto; display: block; filter: grayscale(1) brightness(0) invert(1); }
+.version-switch { display: flex; align-items: center; gap: 4px; padding: 4px; border-radius: 100px; background: #ffffff0d; font-size: 13px; }
+.version-switch a { padding: 7px 13px; border-radius: 100px; color: #ffffff8c; transition: color .2s, background .2s; }
+.version-switch a:hover { color: #fff; }
+.version-switch a[aria-current="page"] { color: #fff; background: #ffffff18; }
+.switch-to-deepseek { position: fixed; bottom: 14px; left: 16px; border-radius: 100px; background: #ffffff14; padding: 9px 14px; font-size: 12px; }
+[data-astra-hero-shape] { position: absolute; inset: 0; pointer-events: none; }
+.astra-custom-poster { position: absolute; width: min(58vw, 100vh); max-height: 64vh; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); filter: brightness(1.5); opacity: .7; }
 .wordmark { display: flex; align-items: center; height: 100%; flex-shrink: 0; }
 .wordmark img { display: block; height: 17px; width: auto; }
 .desktop-nav { display: flex; align-items: center; gap: 32px; font-size: 13px; line-height: 20px; font-weight: 500; }
@@ -105,6 +115,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid #fafafa; outline-offs
   .astra-experience main { padding-top: 96px; }
   .astra-article { margin-top: 80px; }
   .astra-release-cue { top: calc(80px - 10svh); }
+  .deepseek-header { padding-inline: 20px; gap: 12px; }
+  .deepseek-wordmark img { width: 100px; }
+  .version-switch { font-size: 11px; }
+  .version-switch a { padding: 6px 10px; }
+  .astra-custom-poster { width: 80vw; }
   .astra-label-left { top: 46%; left: 1rem; }
   .astra-label-right { top: 54%; right: 1rem; }
   .astra-title { max-width: 360px; }

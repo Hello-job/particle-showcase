@@ -358,7 +358,9 @@ export default (t) => {
             tc = x.width / Math.max(x.height, 1),
             tp = x.width / Math.max(x.height, 1) < 0.72 ? 12.7 : 10.9,
             tu = tp * tc,
-            tM = u.shape;
+            tM = u.shape,
+            heroShape = tM.hero === !0,
+            customHero = u.heroShapeEnabled === !0;
           tM.id &&
             tM.samples &&
             (tM.id !== t.lastShapeId || tM.samples !== t.lastShapeSamples) &&
@@ -366,12 +368,14 @@ export default (t) => {
             (t.pathShapeTexture.needsUpdate = !0),
             (t.lastShapeId = tM.id),
             (t.lastShapeSamples = tM.samples));
-          let tm = L ? tM.strength : n(t.shapeProgress, tM.strength, y);
+          // A custom opening shape is the initial destination. Reuse the
+          // original scatter envelopes to release it without revealing six.
+          let tm = heroShape ? 1 - Q : L ? tM.strength : n(t.shapeProgress, tM.strength, y);
           t.shapeProgress = tm;
           let td = e.MathUtils.smoothstep(tM.strength, 0, 1),
-            tf = L ? td : n(t.shapePositionProgress, td, y, 4);
+            tf = heroShape ? 1 - $ : L ? td : n(t.shapePositionProgress, td, y, 4);
           ((t.shapePositionProgress = tf), tf !== td && (b = !0));
-          let tg = p.scrollEffects ? e.MathUtils.clamp(Q * (1 - tm), 0, 1) : 0,
+          let tg = p.scrollEffects ? e.MathUtils.clamp(heroShape ? Q : Q * (1 - tm), 0, 1) : 0,
             tP = u.reducedMotion ? 0 : tg;
           t.railPresence = tg;
           let tU = u.reducedMotion
@@ -391,8 +395,8 @@ export default (t) => {
           else {
             let a = e.MathUtils.smootherstep(tm, 0.05, 0.4),
               s = 1 - Math.exp(-(u.returning ? 5.5 : 14) * y),
-              r = ta * u.rotation.x,
-              i = ta * u.rotation.y;
+              r = heroShape ? 0 : ta * u.rotation.x,
+              i = heroShape ? 0 : ta * u.rotation.y;
             ((t.shapePointerRotation.x = e.MathUtils.lerp(
               t.shapePointerRotation.x,
               r,
@@ -407,7 +411,7 @@ export default (t) => {
             t.shapeAutoRotation = 0;
             let l = e.MathUtils.smootherstep(tm, 0.001, 0.12),
               n = e.MathUtils.smootherstep(tm, 0.04, 0.82),
-              c = Number(p.pathShapeAutoRotate && p.animationPlaying),
+              c = Number(!heroShape && p.pathShapeAutoRotate && p.animationPlaying),
               M = e.MathUtils.lerp(-o, 0, n) * l * c,
               m = n > 0 && n < 1 ? Math.sin(n * Math.PI) : 0;
             (t.shapeRotation.set(
@@ -445,7 +449,7 @@ export default (t) => {
                 : 1,
             tb =
               "grow" === p.animationPreset ? e.MathUtils.lerp(0, 1.2, tE) : 1.2,
-            tI = e.MathUtils.lerp(tb, 0, Z);
+            tI = customHero ? 0 : e.MathUtils.lerp(tb, 0, Z);
           (M.position.set(0, tI, 12), M.lookAt(0, tI, 0));
           let tT =
             "grow" === p.animationPreset
@@ -529,9 +533,9 @@ export default (t) => {
                   (b = !0));
             }
             f.coreCluster.rotation.set(
-              u.reducedMotion ? 0 : 0.08 * Math.sin(0.22 * t.elapsed) * tt,
-              u.reducedMotion ? 0 : 0.14 * Math.cos(0.28 * t.elapsed) * tt,
-              t.coreRotation * tt,
+              u.reducedMotion || customHero ? 0 : 0.08 * Math.sin(0.22 * t.elapsed) * tt,
+              u.reducedMotion || customHero ? 0 : 0.14 * Math.cos(0.28 * t.elapsed) * tt,
+              customHero ? 0 : t.coreRotation * tt,
             );
           }
           let tF = e.MathUtils.clamp(p.interaction.rotationLag, 0, 1),
@@ -643,7 +647,7 @@ export default (t) => {
                 ) * _),
               (a.starMaterial.uniforms.uDispersedMotion.value = tP),
               (a.starMaterial.uniforms.uScrollScatter.value = Q),
-              (a.starMaterial.uniforms.uScrollPositionProgress.value = $),
+              (a.starMaterial.uniforms.uScrollPositionProgress.value = customHero ? 1 : $),
               (a.starMaterial.uniforms.uScrollDrift.value = tU),
               (a.starMaterial.uniforms.uScrollSizeScale.value = te),
               a.starMaterial.uniforms.uTextBounds.value.set(ty, tR),
@@ -769,10 +773,10 @@ export default (t) => {
                     tO,
                   ) -
                     0.5 * tO -
-                    Math.sin($ * Math.PI) * (0.15 + 0.25 * v),
+                    Math.sin((customHero ? 1 : $) * Math.PI) * (0.15 + 0.25 * v),
                   (v - 0.5) * 0.5,
                 ),
-                t.scratch.position.lerp(t.scratch.scattered, $));
+                t.scratch.position.lerp(t.scratch.scattered, customHero ? 1 : $));
               let E = h ? (0, i.tipFade)(m) : 1,
                 b = h ? (0, i.sizeFalloff)(m, p.stars.sizeFalloff) : 1;
               ((E = e.MathUtils.lerp(E, 1, Q)),

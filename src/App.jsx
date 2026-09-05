@@ -1,7 +1,16 @@
 import { useEffect, useState } from "react";
 import AstraBackground from "./AstraBackground.jsx";
+import { ASTRA_SHAPE_SVGS } from "./astra/index.js";
 
-const shapeMarkup = {"cursor": "<svg aria-hidden=\"true\" class=\"astra-shape-target\" fill=\"none\" viewBox=\"0 0 19 19\"><path d=\"M9.60978 17.0223C9.24308 17.739 8.76808 18.189 8.18478 18.3723C7.60148 18.564 7.03478 18.4931 6.48478 18.1598C5.93478 17.8348 5.53061 17.314 5.27228 16.5973L0.672282 3.68478C0.497282 3.19312 0.455612 2.72645 0.547282 2.28478C0.638952 1.83478 0.838952 1.45561 1.14728 1.14728C1.45561 0.838948 1.83478 0.638949 2.28478 0.547279C2.73478 0.455619 3.20561 0.497279 3.69728 0.672279L16.6098 5.27228C17.3265 5.53062 17.8473 5.93478 18.1723 6.48478C18.5056 7.02648 18.5765 7.58898 18.3848 8.17228C18.2015 8.75558 17.7515 9.23058 17.0348 9.59728L12.1098 12.1098L9.60978 17.0223Z\" stroke=\"currentColor\" stroke-width=\"0.8\"></path></svg>", "openai-knot": "<svg aria-hidden=\"true\" class=\"astra-shape-target\" fill=\"none\" viewBox=\"0 0 1726 1538\"><path d=\"M1025.52 167.475C960.586 89.5754 862.821 40 753.477 40C557.968 40 399.477 198.491 399.477 394V737.278C399.477 757.119 409.975 775.478 427.074 785.541L851.477 1035.3\" stroke=\"currentColor\" stroke-width=\"80\"></path><path d=\"M1465.07 608.95C1500.07 513.764 1494.12 404.309 1439.45 309.614C1341.69 140.298 1125.19 82.2866 955.872 180.041L658.585 351.68C641.402 361.6 630.752 379.872 630.587 399.712L626.49 892.135\" stroke=\"currentColor\" stroke-width=\"80\"></path><path d=\"M1302.52 1210.35C1402.45 1193.06 1494.27 1133.18 1548.94 1038.49C1646.69 869.17 1588.68 652.667 1419.36 554.912L1122.08 383.273C1104.89 373.353 1083.75 373.265 1066.48 383.042L637.982 625.706\" stroke=\"currentColor\" stroke-width=\"80\"></path><path d=\"M700.415 1370.27C765.351 1448.17 863.116 1497.74 972.461 1497.74C1167.97 1497.74 1326.46 1339.25 1326.46 1143.74V800.466C1326.46 780.625 1315.96 762.266 1298.86 752.203L874.461 502.444\" stroke=\"currentColor\" stroke-width=\"80\"></path><path d=\"M260.866 928.794C225.871 1023.98 231.82 1133.44 286.492 1228.13C384.247 1397.45 600.75 1455.46 770.065 1357.7L1067.35 1186.06C1084.54 1176.14 1095.19 1157.87 1095.35 1138.03L1099.45 645.61\" stroke=\"currentColor\" stroke-width=\"80\"></path><path d=\"M423.42 327.396C323.488 344.682 231.672 404.562 177 499.257C79.2456 668.573 137.257 885.076 306.573 982.83L603.861 1154.47C621.043 1164.39 642.192 1164.48 659.456 1154.7L1087.96 912.037\" stroke=\"currentColor\" stroke-width=\"80\"></path></svg>"};
+function ShapeTarget({ shape }) {
+  const definition = ASTRA_SHAPE_SVGS[shape];
+  return (
+    <svg aria-hidden="true" className="astra-shape-target" fill="none" viewBox={`0 0 ${definition.width} ${definition.height}`}>
+      {definition.paths.map((path, index) => <path key={index} d={path} />)}
+    </svg>
+  );
+}
+
 const referenceUrl = "https://openai.com/index/gpt-6-astra/";
 
 function ArrowIcon() {
@@ -28,7 +37,7 @@ function ReplayIcon() {
   );
 }
 
-function Header() {
+function Header({ deepseek }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
@@ -37,8 +46,20 @@ function Header() {
     window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);
   }, []);
+  if (deepseek) return (
+    <header className="site-header deepseek-header" data-scrolled={scrolled}>
+      <a className="deepseek-wordmark" href="https://www.deepseek.com/" aria-label="DeepSeek">
+        <img src="/assets/deepseek-official.svg" alt="DeepSeek" />
+      </a>
+      <nav className="version-switch" aria-label="粒子版本">
+        <a href="/?shape=deepseek" aria-current="page">DeepSeek</a>
+        <a href="/?shape=astra">Astra 原版</a>
+      </nav>
+    </header>
+  );
   return (
     <header className="site-header" data-scrolled={scrolled}>
+      <a className="switch-to-deepseek" href="/?shape=deepseek">DeepSeek 版本 ↗</a>
       <a className="wordmark" href="https://openai.com/" aria-label="OpenAI Home">
         <img src="/assets/openai-wordmark.svg" alt="OpenAI" width="64" height="17" />
       </a>
@@ -92,27 +113,32 @@ function HeroLabel({ text, side }) {
 }
 
 function ShapeCue({ shape }) {
+  const shapeName = shape === "cursor" ? "Cursor" : shape === "deepseek" ? "DeepSeek" : "OpenAI";
   return (
-    <section className="shape-section" id={shape} aria-label={shape === "cursor" ? "Cursor constellation" : "OpenAI constellation"}>
+    <section className="shape-section" id={shape} aria-label={`${shapeName} constellation`}>
       <div className="astra-shape-cue" data-astra-path-shape={shape} data-astra-scroll-cue="true">
-        <div dangerouslySetInnerHTML={{ __html: shapeMarkup[shape] }} />
-        <button type="button" className="astra-drag-surface" data-astra-drag aria-label={shape === "cursor" ? "Drag or use arrow keys to rotate the cursor" : "Drag or use arrow keys to rotate the OpenAI blossom"} />
+        <ShapeTarget shape={shape} />
+        <button type="button" className="astra-drag-surface" data-astra-drag aria-label={shape === "cursor" ? "Drag or use arrow keys to rotate the cursor" : shape === "deepseek" ? "Drag or use arrow keys to rotate the DeepSeek whale" : "Drag or use arrow keys to rotate the OpenAI blossom"} />
       </div>
     </section>
   );
 }
 
 export function App() {
+  const deepseek = new URLSearchParams(window.location.search).get("shape") !== "astra";
+  useEffect(() => {
+    document.title = deepseek ? "DeepSeek — Particle Constellation" : "GPT Astra — Interactive Particle Field";
+  }, [deepseek]);
   return (
-    <div className="astra-experience" data-astra-experience>
-      <AstraBackground />
-      <Header />
+    <div className="astra-experience" data-astra-experience data-variant={deepseek ? "deepseek" : "astra"}>
+      <AstraBackground heroShape={deepseek ? "deepseek" : undefined} />
+      <Header deepseek={deepseek} />
       <main>
-        <section className="astra-hero" id="astra" data-astra-hero aria-label="GPT-6 Astra">
-          <h1 className="sr-only">GPT-6 Astra</h1>
-          <button type="button" className="astra-drag-surface" data-astra-drag aria-label="Drag or use arrow keys to rotate the Astra star field" />
-          <HeroLabel text="GPT" side="left" />
-          <HeroLabel text="Astra" side="right" />
+        <section className="astra-hero" id="astra" data-astra-hero aria-label={deepseek ? "DeepSeek particle constellation" : "GPT-6 Astra"}>
+          <h1 className="sr-only">{deepseek ? "DeepSeek particle constellation" : "GPT-6 Astra"}</h1>
+          {deepseek && <div data-astra-hero-shape><ShapeTarget shape="deepseek" /></div>}
+          <button type="button" className="astra-drag-surface" data-astra-drag aria-label={deepseek ? "Drag or use arrow keys to rotate the DeepSeek star field" : "Drag or use arrow keys to rotate the Astra star field"} />
+          {!deepseek && <><HeroLabel text="GPT" side="left" /><HeroLabel text="Astra" side="right" /></>}
           <button type="button" className="astra-replay" data-astra-copy aria-label="Replay spiral field animation" onClick={() => window.dispatchEvent(new CustomEvent("astra-replay"))}>
             <ReplayIcon />
           </button>
@@ -120,19 +146,19 @@ export function App() {
         <article className="astra-article" data-astra-content>
           <section className="intelligence-section" id="intelligence">
             <div data-section-header>
-              <h2 className="astra-title" data-astra-title>A new generation of intelligence</h2>
+              <h2 className="astra-title" data-astra-title>{deepseek ? "A familiar shape. A universe of particles." : "A new generation of intelligence"}</h2>
             </div>
             <div className="article-copy">
-              <p>We’re introducing GPT‑6 Astra, the world’s most intelligent and aligned model.</p>
+              <p>{deepseek ? "Move through the stars. Drag to rotate. Scroll to transform." : "We’re introducing GPT‑6 Astra, the world’s most intelligent and aligned model."}</p>
             </div>
           </section>
           <ShapeCue shape="cursor" />
           <div className="constellation-interlude" aria-hidden="true">
             <div className="astra-release-cue" data-astra-scroll-cue={JSON.stringify({ easing: "smoothstep", keyframe: { opacity: 1, motion: { autoplay: true }, particles: { disperse: 1, flowSpeed: 0.8 } } })} />
           </div>
-          <ShapeCue shape="openai-knot" />
+          <ShapeCue shape={deepseek ? "deepseek" : "openai-knot"} />
           <footer className="astra-footer">
-            <a href={referenceUrl}>Explore GPT-6 Astra <ArrowIcon /></a>
+            <a href={deepseek ? "https://www.deepseek.com/" : referenceUrl}>{deepseek ? "Explore DeepSeek" : "Explore GPT-6 Astra"} <ArrowIcon /></a>
             <a href="#astra">Back to top</a>
           </footer>
         </article>

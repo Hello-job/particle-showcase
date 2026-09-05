@@ -1,6 +1,49 @@
-# Astra particle reproduction — visual QA
+# DeepSeek custom shape — latest QA
 
 final result: passed
+
+Scope: replace the opening spiral with the familiar DeepSeek whale, preserve interactive particles, keep the original Astra version independently recoverable. The final scroll shape is also the whale; the middle cursor transition remains available.
+
+## Source and visual evidence
+
+- User visual truth: `/Users/admin/Documents/ChatGPT/landing-page/reference/deepseek-user-reference.png` (814 × 316).
+- Exact vector source: https://github.com/deepseek-ai/DeepSeek-V2/blob/main/figures/logo.svg . Four whale subpaths, 56.25 × 41.3594 viewBox, stored locally in `src/astra/custom-shapes.js`.
+- Desktop implementation: `reference/deepseek-desktop.png`, CSS viewport 1440 × 900, browser screenshot 1425 × 891.
+- Phone implementation: `reference/deepseek-mobile.png`, CSS viewport 390 × 844, browser screenshot 375 × 812.
+- Scroll release: `reference/deepseek-transition.png`, scroll Y=634.
+- Original mode regression: `reference/astra-regression.png` compared together with `reference/source-desktop.png`.
+
+The user reference and desktop/mobile implementation captures were included together in each visual comparison. The reference is a solid blue brand logo on a white background; the requested result is its whale geometry expressed using the existing moving star aesthetic. Thus comparison checks the body, tail, mouth and eyes, not equal background/color pixels. Particle width was fitted without distorting the vector aspect ratio. Full captures resolve these features and the header controls clearly; the official vector path equality check supplies detail-level geometry evidence.
+
+## Iteration history
+
+- [P2, fixed] Labels on either side crossed the whale at narrow widths. DeepSeek mode now leaves the whale unobstructed and uses the official logo in its header; original Astra labels remain intact.
+- [P1, fixed] The source engine's autonomous core rotation produced a second rotating layer of whale particles. Custom mode disables this autonomous rotation while preserving the common drag parent. Post-fix `deepseek-desktop.png` shows one coherent contour; initial `deepseek-first-preview.png` records the earlier state.
+- [P1, fixed] Releasing a custom opening path could reveal the original six underneath. Custom mode now releases directly to dispersed stars, with CPU flare and shader positions synchronized. `deepseek-transition.png` shows the whale dissolving without a six.
+- [P2, fixed] Along-path scatter was broad for the whale's small eye/mouth details. DeepSeek alone uses pathShapeScatter=0.5; all source Astra defaults are preserved.
+
+## Fidelity and interaction review
+
+- Typography: local OpenAI Sans retained for controls/body; the DeepSeek header uses the exact official vector wordmark. No fallback-font or truncation issue observed.
+- Layout: centered whale with original aspect ratio, responsive width 80% on phones; no horizontal overflow (375 px clientWidth = scrollWidth). Version controls remain accessible.
+- Colors: the original dark starfield and white/blue/orange glows are intentionally retained. This is a particle adaptation of the logo, not a solid blue image replacement.
+- Assets: the four separate paths exactly concatenate to the official whale compound path. No paths were redrawn; separate mouth and eye subpaths prevent accidental connections.
+- Copy: new mode uses concise instructions for moving, dragging and scrolling; original mode preserves its prior text. New header links switch between DeepSeek and Astra.
+- Tested in browser: initial formation, hero drag/release, scroll dissolution into cursor, movement through later sections, version switch in both directions, phone layout and replay. Renderer stayed ready; console had no errors or warnings.
+- Numerical regression: latest Astra code matched the original animation for 480 frames, including core rotation. Custom checks passed for 5.5-second convergence, complementary release weights, single parent drag rotation, centered camera and stationary core rotation.
+- Production build and whitespace checks passed. Existing Three.js bundle-size advisory remains unchanged in nature.
+
+## Preservation
+
+Original code is commit `3dd20cf`, branch `main`, annotated tag `astra-original-v1`. New work is committed separately on `feature/deepseek-particles`. The original tag was not moved. No remote repository was created or pushed.
+
+No actionable P0/P1/P2 findings remain. Physical iOS touch/toolbar behavior has not been device-tested; phone dimensions were checked in the local browser.
+
+---
+
+# Astra particle reproduction — visual QA
+
+Original Astra result: passed
 
 Source: https://openai.com/index/gpt-6-astra/
 Implementation: http://localhost:4173/

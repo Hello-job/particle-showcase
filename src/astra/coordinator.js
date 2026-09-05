@@ -156,6 +156,9 @@ export function createAstraScene(canvas, options = {}) {
   const titleStage =
     title?.closest("[data-section-header]") ?? title?.parentElement;
   const heroData = options.data ?? {};
+  const heroShapeElement = options.heroShape
+    ? heroElement.querySelector("[data-astra-hero-shape]")
+    : null;
   const data = resolveHeroLayout(heroData);
   const config = resolveAstraRendererConfig(data, heroData);
   const { motion } = getAstraSceneValues(data.scene);
@@ -164,6 +167,7 @@ export function createAstraScene(canvas, options = {}) {
     contentBounds: null,
     heroViewportHeight: null,
     reducedMotion: reducedQuery.matches,
+    heroShapeEnabled: false,
     progress: 0,
     scatterProgress: null,
     tiltProgress: null,
@@ -178,6 +182,7 @@ export function createAstraScene(canvas, options = {}) {
       samples: null,
       sizeNdc: { x: 0, y: 0 },
       strength: 0,
+      hero: false,
     },
   };
   const viewport = { width: 1, height: 1 };
@@ -335,6 +340,10 @@ export function createAstraScene(canvas, options = {}) {
       };
     }
     const intro = getIntroElement(heroElement, contentElement);
+    const heroShape = heroShapeElement
+      ? sampleAstraPath(heroShapeElement, `hero:${options.heroShape}`)
+      : null;
+    input.heroShapeEnabled = heroShape !== null;
     layout = {
       viewport: visual,
       canvas: {
@@ -351,6 +360,7 @@ export function createAstraScene(canvas, options = {}) {
         prepareAstraRuntimeConfig(config, anchor.keyframe),
       ),
       shapes,
+      heroShape,
       intro: intro ? documentBounds(intro) : null,
       title: titleMetrics,
     };
@@ -431,6 +441,7 @@ export function createAstraScene(canvas, options = {}) {
 
     const shape = input.shape;
     shape.strength = 0;
+    shape.hero = false;
     if (config.scrollEffects && !input.reducedMotion) {
       const maxTop = Math.max(
         0,
@@ -499,6 +510,30 @@ export function createAstraScene(canvas, options = {}) {
       input.tiltProgress = clamp(
         heroScroll / Math.max(1, scatterEnd - heroBounds.top),
       );
+    }
+    if (layout.heroShape) {
+      const scatterStart = input.reducedMotion ? 0.5 : 0.375;
+      const scatterEnd = input.reducedMotion ? 1 : 1.1875;
+      const scatter = input.scatterProgress !== null
+        ? smootherstep(input.scatterProgress, 0, 1)
+        : smootherstep(input.progress, scatterStart, scatterEnd);
+      const strength = 1 - scatter;
+      // Keep the hero as the fallback destination even after its release so
+      // the damped scatter transition cannot briefly expose the old spiral.
+      if (strength >= shape.strength || shape.strength === 0) {
+        const { aspectRatio, id, samples } = layout.heroShape;
+        const width = visible.width < 768
+          ? visible.width * 0.8
+          : Math.min(visible.width * 0.58, visible.height * 0.8 * aspectRatio);
+        shape.id = id;
+        shape.samples = samples;
+        shape.strength = strength;
+        shape.hero = true;
+        shape.centerNdc.x = 0;
+        shape.centerNdc.y = 0;
+        shape.sizeNdc.x = width / layout.canvas.width * 2;
+        shape.sizeNdc.y = (width / aspectRatio) / layout.canvas.height * 2;
+      }
     }
     if (layout.title) {
       const { bounds, distance } = layout.title;

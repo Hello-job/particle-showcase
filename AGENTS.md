@@ -11,3 +11,7 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 ## Astra recreation target
 
 The user requests maximum fidelity to the interactive particle background at https://openai.com/index/gpt-6-astra/, including mouse and scroll behavior. Preserve the source shaders, geometry, seeded distribution, original interaction parameters and desktop/mobile proportions. Match the captured source in `reference/`; do not redesign the effect. The page surrounding the effect is a compact demo of its three shapes. Keep particle assets and dependencies local.
+
+## DeepSeek customization
+
+The original Astra experience is preserved on `main` and the annotated tag `astra-original-v1` (commit `3dd20cf`). Work on the DeepSeek whale variation belongs to `feature/deepseek-particles`. Keep the original engine defaults available, use the official DeepSeek SVG paths rather than drawing an approximation, and preserve mouse, drag, replay and scroll effects. Save each verified variation as its own commit; never overwrite or move the original tag.

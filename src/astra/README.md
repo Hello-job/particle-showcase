@@ -37,3 +37,7 @@ The launch page's actual hero configuration overrides only the headline, descrip
 Import `createAstraScene` from `index.js` for the DOM lifecycle. Lower-level original APIs are exported from `engine.js`: `createAstraRenderer`, `createAstraAnimationState`, `updateAstraAnimation`, `resolveHeroLayout`, `resolveAstraRendererConfig`, and the shape SVG data.
 
 The mathematical effect is preserved, while the page layout and DOM lifecycle are adapted to this standalone site. Device performance, display pixel ratio, antialiasing and browser rendering can produce small visual differences. Reduced motion renders a stable scene and WebGL failure can use the local poster fallback.
+
+## DeepSeek variation
+
+`custom-shapes.js` adds the exact whale paths from https://github.com/deepseek-ai/DeepSeek-V2/blob/main/figures/logo.svg. Four separate SVG subpaths preserve the body, mouth and eye details without connecting pen-up segments. `heroShape` opts into the opening path destination; original Astra behavior is preserved when omitted. The pre-customization source is tagged `astra-original-v1`.
