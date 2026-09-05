@@ -45,3 +45,7 @@ Use one shared top-right version switch in Astra, DeepSeek, Kimi and GLM. All fo
 Preserve every existing baseline tag, including `astra-original-v1`, `deepseek-v1`, `deepseek-wordmark-v2`, `two-brand-showcase-v1` and `kimi-glm-v1`. Do not move or overwrite earlier snapshots when saving these corrections.
 
 The user later requested a shorter middle stretch with little visual activity. Keep the shared constellation interlude at 20svh (previously 45svh), and the model-title section bottom padding at 64px desktop / 40px mobile. Preserve the existing particle geometry, interaction handlers and scroll-cue equations; use layout spacing to shorten the transition.
+
+## Reusable particle Skill
+
+The user requested a distributable Skill so others can reproduce this effect. Its versioned source is `skills/particle-showcase/`, with a standalone template under `assets/starter`, and the distributable ZIP plus Chinese handoff instructions under `deliverables/`. Keep the template independent of this machine and Sites hosting. Preserve source provenance; the extracted renderer and bundled brand/font assets are not all original or uniformly MIT licensed. When updating the Skill, validate the initializer, refresh the ZIP and installed copy together, and avoid modifying the live showcase just to maintain the package.

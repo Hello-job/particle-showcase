@@ -1,5 +1,7 @@
 # Astra / DeepSeek / Kimi / GLM particle experience
 
+可复用 Skill 已整理在 [`skills/particle-showcase`](skills/particle-showcase/SKILL.md)，含独立 Vite 模板、完整引擎、创建脚本和自定义形状接入说明。给别人使用时发送 [`particle-showcase-skill.zip`](deliverables/particle-showcase-skill.zip)，安装与调用见[使用说明](deliverables/particle-showcase使用说明.md)。原展示页继续保持原样。
+
 当前默认显示 DeepSeek 鲸鱼粒子。四个版本均保留左上角品牌标志和右上角 Astra / DeepSeek / Kimi / GLM 切换；切换控件使用统一的尺寸、内边距和四列等宽布局，桌面及手机端切换版本时都保持一致。页头不设导航菜单、搜索、登录、CTA 按钮或手机菜单，也没有旧的左下角切换入口。完整 Astra 原版已单独保存在 Git 中。
 
 四个版本的介绍标题分别为 `GPT-6 Astra`、`DeepSeek-V4-Pro`、`Kimi K3`、`GLM-5.3`，标题下不显示营销文案或交互提示；`Move · Drag · Scroll` 已按最新要求全部移除。型号名称以 2026-09-06 的官网核实结果为准，后续手动维护。
