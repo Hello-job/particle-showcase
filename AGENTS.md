@@ -6,6 +6,8 @@ This is a React + TypeScript particle showcase and a distributable Agent Skill. 
 
 The user requested pnpm and GitHub publication on 2026-09-06. Use the pinned `pnpm@11.17.0` with Node.js 22.13+; keep `pnpm-lock.yaml` as the sole dependency lockfile. Preserve its resolved dependency versions during package-manager maintenance. `pnpm-workspace.yaml` allows the required esbuild installation script and is part of standalone exports. The request authorizes publishing this prepared repository to GitHub; it does not change third-party licensing. Add actual browser screenshots for all four modes to the README and keep Skill download/install steps visible.
 
+The user supplied six high-resolution PNG screenshots for DeepSeek, Kimi and GLM on 2026-09-06. Preserve those original files in `docs/images/` without resizing or JPEG recompression. Show each image at the README content width instead of a small two-column thumbnail; retain the older Astra example in a collapsed section until replacement images are supplied.
+
 Run the local server and open the available browser yourself when working on the preview. Preserve its existing port when possible; do not give the user startup instructions when you can run it. For source refactors, verify that the existing visual result and interactions still work.
 
 Read `README.md`, `docs/architecture.md` and `docs/customization.md` for the maintained structure. Record durable user preferences here. Keep historical experiments and screenshots under `docs/archive/` and `docs/reference/` instead of the repository root.

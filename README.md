@@ -8,14 +8,50 @@
 
 ## 效果预览
 
-以下为本项目的实际浏览器截图。每种模式从首屏图形出发，随滚动散开，再聚成底部星座；运行项目后可以体验鼠标扰动、拖拽和重播。
+以下为本项目的实际浏览器截图。DeepSeek、Kimi、GLM 使用保留原分辨率的 PNG 图片，点击可查看原图。每种模式从首屏图形出发，随滚动散开，再聚成底部星座；运行项目后可以体验鼠标扰动、拖拽和重播。
 
-| 首屏粒子                                                                            | 底部成形                                                                               |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| **Astra · 螺旋 6**<br>![Astra 首屏螺旋 6 粒子](docs/images/astra-hero.jpg)          | **OpenAI · 结形**<br>![Astra 底部 OpenAI 结形粒子](docs/images/astra-ending.jpg)       |
-| **DeepSeek · 鲸鱼**<br>![DeepSeek 首屏鲸鱼粒子](docs/images/deepseek-hero.jpg)      | **DeepSeek · 字标**<br>![DeepSeek 底部大小写字标粒子](docs/images/deepseek-ending.jpg) |
-| **Kimi · K 与蓝色水滴**<br>![Kimi 首屏 K 与蓝色水滴粒子](docs/images/kimi-hero.jpg) | **Kimi · KIMI 字标**<br>![Kimi 底部 KIMI 字标粒子](docs/images/kimi-ending.jpg)        |
-| **GLM · 字母**<br>![GLM 首屏字母粒子](docs/images/glm-hero.jpg)                     | **Z.ai · 三段图形**<br>![GLM 底部 Z.ai 三段图形粒子](docs/images/glm-ending.jpg)       |
+### DeepSeek
+
+**首屏 · 鲸鱼**
+
+![DeepSeek 首屏鲸鱼粒子](docs/images/deepseek-hero.png)
+
+**底部 · DeepSeek 字标**
+
+![DeepSeek 底部大小写字标粒子](docs/images/deepseek-ending.png)
+
+### Kimi
+
+**首屏 · K 与蓝色水滴**
+
+![Kimi 首屏 K 与蓝色水滴粒子](docs/images/kimi-hero.png)
+
+**底部 · KIMI 字标**
+
+![Kimi 底部 KIMI 字标粒子](docs/images/kimi-ending.png)
+
+### GLM
+
+**首屏 · GLM 字母**
+
+![GLM 首屏字母粒子](docs/images/glm-hero.png)
+
+**底部 · Z.ai 三段图形**
+
+![GLM 底部 Z.ai 三段图形粒子](docs/images/glm-ending.png)
+
+<details>
+<summary>Astra 原版示例</summary>
+
+**首屏 · 螺旋 6**
+
+![Astra 首屏螺旋 6 粒子](docs/images/astra-hero.jpg)
+
+**底部 · OpenAI 结形**
+
+![Astra 底部 OpenAI 结形粒子](docs/images/astra-ending.jpg)
+
+</details>
 
 ## 体验
 
