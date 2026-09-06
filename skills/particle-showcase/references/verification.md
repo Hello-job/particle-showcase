@@ -1,8 +1,8 @@
 # 验收要点
 
-源仓库基准为 React 19.2、Three.js 0.180.0、postprocessing 6.39.4、Vite 6.4.2，应用、接入层与粒子核心使用严格 TypeScript。以源仓库或导出项目的 `package-lock.json` 为准执行 `npm ci`，不在初次复现时顺手升级。
+源仓库基准为 React 19.2、Three.js 0.180.0、postprocessing 6.39.4、Vite 6.4.2，应用、接入层与粒子核心使用严格 TypeScript。以源仓库或导出项目的 `pnpm-lock.yaml` 为准执行 `pnpm install --frozen-lockfile`，不在初次复现时顺手升级。
 
-先运行 `npm run typecheck`、`npm run lint`、`npm run format:check`、`npm test` 和 `npm run build`。应用与 `src/particles/core/` 新增功能都应补充匹配的结构类型；核心是对编译实现的可读重构，变更后需要数值与实际渲染回归，不应重新引入旧模块工厂。
+先运行 `pnpm typecheck`、`pnpm lint`、`pnpm format:check`、`pnpm test` 和 `pnpm build`。应用与 `src/particles/core/` 新增功能都应补充匹配的结构类型；核心是对编译实现的可读重构，变更后需要数值与实际渲染回归，不应重新引入旧模块工厂。
 
 ## 可见结果
 
@@ -33,6 +33,6 @@
 
 ## Skill 维护检查
 
-源仓库的 `npm run skill:check` 检查 Skill 必需文件与便携性，拒绝重复应用目录、构建产物、本机绝对路径和符号链接；`npm run skill:pack` 在检查通过后生成固定时间戳、固定文件顺序的轻量 ZIP。它们不会静默更新本机安装。
+源仓库的 `pnpm skill:check` 检查 Skill 必需文件与便携性，拒绝重复应用目录、构建产物、本机绝对路径和符号链接；`pnpm skill:pack` 在检查通过后生成固定时间戳、固定文件顺序的轻量 ZIP。它们不会静默更新本机安装。
 
-运行 `npm run test:skill` 验证导出脚本正确解析源码位置、只导出必要文件、拒绝覆盖非空目录和源码内部目录、保留来源记录，并正确处理标题中的 HTML 字符。修改导出流程后，在临时目录中分别验证仓库内调用与安装后的 `--source` 调用，完成独立安装、类型检查和构建。应用代码改变时另做上述浏览器验收。
+运行 `pnpm test:skill` 验证导出脚本正确解析源码位置、只导出必要文件、逐字节保留 pnpm 锁文件与构建脚本配置、拒绝覆盖非空目录和源码内部目录、保留来源记录，并正确处理标题中的 HTML 字符。修改导出流程后，在临时目录中分别验证仓库内调用与安装后的 `--source` 调用，完成独立安装、类型检查和构建。应用代码改变时另做上述浏览器验收。

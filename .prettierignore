@@ -1,7 +1,7 @@
 node_modules/
 dist/
 deliverables/*.zip
-package-lock.json
+pnpm-lock.yaml
 public/assets/
 docs/reference/
 docs/archive/

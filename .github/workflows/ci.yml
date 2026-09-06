@@ -15,21 +15,23 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          cache: npm
+      - uses: pnpm/action-setup@v4
+        with:
+          cache: true
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: npm ci
-      - run: npm run typecheck
-      - run: npm run lint
-      - run: npm run format:check
-      - run: npm test
-      - run: npm run test:skill
-      - run: npm run build
-      - run: npm run build:sites
-      - run: npm run test:sites
-      - run: npm run skill:check
-      - run: npm run skill:pack
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm lint
+      - run: pnpm format:check
+      - run: pnpm test
+      - run: pnpm test:skill
+      - run: pnpm build
+      - run: pnpm build:sites
+      - run: pnpm test:sites
+      - run: pnpm skill:check
+      - run: pnpm skill:pack
       - name: Export from the packaged Skill and repository
         run: |
           python3 -m zipfile -e deliverables/particle-showcase-skill.zip "$RUNNER_TEMP/particle-skill"
@@ -37,9 +39,9 @@ jobs:
       - name: Validate the exported project
         working-directory: ${{ runner.temp }}/particle-showcase
         run: |
-          npm ci
-          npm run typecheck
-          npm run lint
-          npm run format:check
-          npm test
-          npm run build
+          pnpm install --frozen-lockfile
+          pnpm typecheck
+          pnpm lint
+          pnpm format:check
+          pnpm test
+          pnpm build

@@ -1,0 +1,3 @@
+# esbuild installs the platform-specific binary used by Vite and tsx.
+allowBuilds:
+  esbuild: true

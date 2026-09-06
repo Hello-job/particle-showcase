@@ -9,13 +9,13 @@
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "build": "npm run typecheck && vite build",
+    "build": "pnpm typecheck && vite build",
     "preview": "vite preview",
-    "build:sites": "npm run typecheck && vite build --mode sites && node scripts/prepare-sites-build.mjs",
+    "build:sites": "pnpm typecheck && vite build --mode sites && node scripts/prepare-sites-build.mjs",
     "test": "node --import tsx --test tests/*.test.ts",
     "test:sites": "node --test tests/sites-worker.test.mjs",
     "test:skill": "python3 -m unittest discover -s tests -p 'test_skill_initializer.py'",
-    "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
+    "check": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test",
     "skill:check": "node scripts/manage-skill.mjs check",
     "skill:pack": "node scripts/manage-skill.mjs pack"
   },
@@ -46,6 +46,8 @@
   "description": "Interactive particle constellations built with React, TypeScript and a reusable Skill.",
   "license": "SEE LICENSE IN LICENSE.md",
   "engines": {
-    "node": ">=22.12.0"
-  }
+    "node": ">=22.13.0",
+    "pnpm": ">=11.17.0 <12"
+  },
+  "packageManager": "pnpm@11.17.0"
 }

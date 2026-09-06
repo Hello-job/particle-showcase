@@ -4,24 +4,24 @@
 
 ## 本地开发
 
-使用 Node.js 22.12+ 与 npm。在独立分支工作，并保留已有 Git 标签。
+使用 Node.js 22.13+ 与 pnpm 11.17.0。在独立分支工作，并保留已有 Git 标签。
 
 ```bash
-npm ci
-npm run dev
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
 提交前执行：
 
 ```bash
-npm run typecheck
-npm run lint
-npm run format:check
-npm test
-npm run build
+pnpm typecheck
+pnpm lint
+pnpm format:check
+pnpm test
+pnpm build
 ```
 
-用 `npm run format` 统一格式。涉及 Sites 适配时，另执行 `npm run build:sites` 和 `npm run test:sites`。
+用 `pnpm format` 统一格式。涉及 Sites 适配时，另执行 `pnpm build:sites` 和 `pnpm test:sites`。
 
 ## 修改边界
 
@@ -38,9 +38,9 @@ npm run build
 应用代码与资源只保存在仓库根目录。`skills/particle-showcase/` 只维护指南、参考和项目导出脚本；不要在 Skill 中新增一份应用示例或素材副本。
 
 ```bash
-npm run skill:check
-npm run test:skill
-npm run skill:pack
+pnpm skill:check
+pnpm test:skill
+pnpm skill:pack
 ```
 
 Skill 文案位于 `skills/particle-showcase/SKILL.md` 与其 `references/`，初始化器位于 `skills/particle-showcase/scripts/create_showcase.py`。它通过 `--source` 从本地仓库向新目录或空目录导出项目；修改导出规则后，应实际验证生成项目能独立安装、检查和构建。检查与打包流程见 [Skill 开发说明](docs/skill/development.md)。

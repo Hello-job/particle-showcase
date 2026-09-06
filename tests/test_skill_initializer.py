@@ -1,4 +1,4 @@
-"""Exercise the initializer's file-safety and user-content handling without npm."""
+"""Exercise the initializer's file-safety and user-content handling without installing dependencies."""
 
 import html
 import json
@@ -30,7 +30,7 @@ class SkillInitializerTests(unittest.TestCase):
         for name in (
             "index.html", "vite.config.ts", "eslint.config.js", ".prettierrc.json",
             ".prettierignore", ".editorconfig", ".gitignore", ".nvmrc", "LICENSE.md",
-            "THIRD_PARTY_NOTICES.md", "package.json", "package-lock.json", "tsconfig.json",
+            "THIRD_PARTY_NOTICES.md", "package.json", "pnpm-lock.yaml", "pnpm-workspace.yaml", "tsconfig.json",
         ):
             shutil.copy2(REPOSITORY / name, self.source / name)
         for item in (REPOSITORY / "tests").glob("*.test.ts"):
@@ -158,11 +158,33 @@ class SkillInitializerTests(unittest.TestCase):
         for relative in ("LICENSE.md", "THIRD_PARTY_NOTICES.md"):
             self.assertEqual((destination / relative).read_bytes(), (self.source / relative).read_bytes())
         manifest = json.loads((destination / "package.json").read_bytes())
-        lock = json.loads((destination / "package-lock.json").read_bytes())
-        self.assertEqual(manifest["name"], lock["packages"][""]["name"])
+        source_manifest = json.loads((self.source / "package.json").read_bytes())
+        self.assertEqual(manifest["name"], "particle-showcase-starter")
+        self.assertEqual(manifest["packageManager"], source_manifest["packageManager"])
+        self.assertEqual(manifest["engines"], source_manifest["engines"])
+        for relative in ("pnpm-lock.yaml", "pnpm-workspace.yaml"):
+            self.assertEqual((destination / relative).read_bytes(), (self.source / relative).read_bytes())
+        self.assertFalse((destination / "package-lock.json").exists())
+        self.assertEqual(manifest["scripts"]["check"], source_manifest["scripts"]["check"])
         self.assertNotIn("build:sites", manifest["scripts"])
         self.assertFalse(any(name.startswith("skill:") for name in manifest["scripts"]))
         self.assertEqual(manifest["dependencies"], json.loads((self.source / "package.json").read_bytes())["dependencies"])
+
+    def test_missing_pnpm_lock_is_rejected_before_writing(self):
+        (self.source / "pnpm-lock.yaml").unlink()
+        destination = self.root / "no lock"
+        result = self.run_initializer(destination)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("pnpm-lock.yaml", result.stderr)
+        self.assertFalse(destination.exists())
+
+    def test_missing_pnpm_build_configuration_is_rejected_before_writing(self):
+        (self.source / "pnpm-workspace.yaml").unlink()
+        destination = self.root / "no build settings"
+        result = self.run_initializer(destination)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("pnpm-workspace.yaml", result.stderr)
+        self.assertFalse(destination.exists())
 
     def test_symbolic_link_source_file_is_rejected_before_writing(self):
         (self.source / "src/outside.ts").symlink_to(self.config_path)

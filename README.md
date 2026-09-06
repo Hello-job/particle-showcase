@@ -4,9 +4,18 @@
 
 基于 **React + TypeScript + Vite + Three.js** 的交互粒子展示项目，包含四套品牌示例和配套 Agent Skill。页面、形状数据与渲染器分层组织，便于阅读、调整和接入自己的作品。
 
-![DeepSeek 粒子字标的实际浏览器截图](docs/reference/deepseek-titlecase-desktop.jpg)
+[效果预览](#效果预览) · [快速开始](#快速开始) · [下载 Skill](https://github.com/Hello-job/particle-showcase/releases/latest/download/particle-showcase-skill.zip) · [定制指南](docs/customization.md) · [核心代码](src/particles/core/README.md)
 
-[快速开始](#快速开始) · [定制形状](docs/customization.md) · [架构说明](docs/architecture.md) · [使用 Skill](docs/skill/usage.md) · [参与贡献](CONTRIBUTING.md)
+## 效果预览
+
+以下为本项目的实际浏览器截图。每种模式从首屏图形出发，随滚动散开，再聚成底部星座；运行项目后可以体验鼠标扰动、拖拽和重播。
+
+| 首屏粒子                                                                            | 底部成形                                                                               |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| **Astra · 螺旋 6**<br>![Astra 首屏螺旋 6 粒子](docs/images/astra-hero.jpg)          | **OpenAI · 结形**<br>![Astra 底部 OpenAI 结形粒子](docs/images/astra-ending.jpg)       |
+| **DeepSeek · 鲸鱼**<br>![DeepSeek 首屏鲸鱼粒子](docs/images/deepseek-hero.jpg)      | **DeepSeek · 字标**<br>![DeepSeek 底部大小写字标粒子](docs/images/deepseek-ending.jpg) |
+| **Kimi · K 与蓝色水滴**<br>![Kimi 首屏 K 与蓝色水滴粒子](docs/images/kimi-hero.jpg) | **Kimi · KIMI 字标**<br>![Kimi 底部 KIMI 字标粒子](docs/images/kimi-ending.jpg)        |
+| **GLM · 字母**<br>![GLM 首屏字母粒子](docs/images/glm-hero.jpg)                     | **Z.ai · 三段图形**<br>![GLM 底部 Z.ai 三段图形粒子](docs/images/glm-ending.jpg)       |
 
 ## 体验
 
@@ -27,24 +36,25 @@
 
 ## 快速开始
 
-需要 **Node.js 22.12+**、npm，以及支持 WebGL 的现代浏览器。
+需要 **Node.js 22.13+**、**pnpm 11.17.0**，以及支持 WebGL 的现代浏览器。pnpm 版本固定在 `package.json` 的 `packageManager` 字段中。
 
 ```bash
-npm ci
-npm run dev
+git clone https://github.com/Hello-job/particle-showcase.git
+cd particle-showcase
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
 打开终端显示的本地地址，使用右上角切换模式。粒子、字体和图形资源均在本地；首次安装依赖需要网络。
 
 ```bash
-npm run typecheck
-npm run lint
-npm run format:check
-npm test
-npm run build
+pnpm check
+pnpm build
 ```
 
-普通生产构建输出到 `dist/`。Sites 适配独立保留，需要时执行 `npm run build:sites` 与 `npm run test:sites`；对应产物位于 `dist/client/`、`dist/server/` 和 `dist/.openai/`。
+`pnpm check` 包含 TypeScript 类型检查、ESLint、格式检查和测试。普通生产构建输出到 `dist/`，运行 `pnpm preview` 可预览构建结果。
+
+可选的 Sites 适配独立保留，需要时执行 `pnpm build:sites` 与 `pnpm test:sites`；对应产物位于 `dist/client/`、`dist/server/` 和 `dist/.openai/`。
 
 ## 目录
 
@@ -71,18 +81,42 @@ worker/                   # 可选 Sites 适配
 
 React 组件使用 `.tsx`，粒子核心和其他逻辑使用 `.ts`。`particles/core/` 将提取的编译模块整理为普通导入、明确命名和结构类型；GPU 着色器保留为 GLSL 源码。原始编译版本保存在 Git 标签 `typescript-showcase-v1`，不参与当前运行或 Skill 分发。这是有来源记录的重构，不能称为找回原作者源码。详见[架构与数据流](docs/architecture.md)和[粒子核心阅读指南](src/particles/core/README.md)。
 
-## 定制与 Skill
+## 下载与使用 Skill
 
-先从 `src/config/showcase.json` 调整品牌信息、默认模式和标题；更换 SVG、文字轮廓或滚动节奏时阅读[定制指南](docs/customization.md)。
+**[下载 Particle Showcase Skill ZIP](https://github.com/Hello-job/particle-showcase/releases/latest/download/particle-showcase-skill.zip)** · [备用下载](https://github.com/Hello-job/particle-showcase/raw/refs/heads/main/deliverables/particle-showcase-skill.zip) · [查看 Skill 源码](skills/particle-showcase/)
 
-Skill 与展示页共用根目录的 `src/`、`public/` 和工程配置，代码与素材只保留一份。[Skill ZIP](deliverables/particle-showcase-skill.zip) 只包含指南、参考和创建脚本；安装后还需要提供本仓库的本地路径。在本项目中工作时，可以直接向 Agent 描述目标：
+1. 下载 ZIP，将其中整个 `particle-showcase` 文件夹解压到 `~/.codex/skills/`。设置了 `CODEX_HOME` 时，放到 `$CODEX_HOME/skills/`。
+2. 克隆本仓库，或在 GitHub 点击 **Code → Download ZIP** 后解压源码。
+3. 重新打开 Agent 任务，在源码目录内调用 `$particle-showcase`；也可以告诉它源码的本地路径。
+
+**Skill 是轻量指南与工具包，不包含粒子引擎或素材副本。** 它直接使用本仓库的代码，因此安装 Skill 后仍需一份仓库源码。
 
 ```text
 使用 $particle-showcase，把我的 SVG Logo 做成互动粒子页面。
+粒子源码就在当前仓库。
 首屏展示 Logo，底部聚成品牌英文，保留鼠标、拖拽、滚动和重播。
 ```
 
-[安装与使用](docs/skill/usage.md)介绍如何在当前仓库使用 Skill，或通过 `--source` 从仓库导出独立项目。[Skill 开发说明](docs/skill/development.md)说明如何检查初始化器和重新打包。
+也可以从本地源码导出独立项目：
+
+```bash
+python3 skills/particle-showcase/scripts/create_showcase.py \
+  --source . \
+  --dest ../my-particle-page \
+  --brand kimi \
+  --title "My Model" \
+  --single-brand
+```
+
+创建脚本需要 Python 3.9+，目标须为新目录或空目录。导出后在新目录中运行 `pnpm install --frozen-lockfile` 和 `pnpm dev`，项目即可独立运行。
+
+完整步骤见 [Skill 安装与使用](docs/skill/usage.md)，包维护见 [Skill 开发说明](docs/skill/development.md)。
+
+## 定制自己的形状
+
+从 `src/config/showcase.json` 调整品牌信息、默认模式和标题。新增 Logo 时，把 SVG 轮廓放入 `src/particles/shapes/`，在注册表中添加形状，再指定首屏与底部目标。
+
+[定制指南](docs/customization.md)介绍轮廓与填充采样、文字内部留白、分离配色和滚动节奏；[架构说明](docs/architecture.md)解释页面、输入和渲染器如何协作。提交改进前请阅读[贡献说明](CONTRIBUTING.md)。
 
 ## 来源与许可状态
 

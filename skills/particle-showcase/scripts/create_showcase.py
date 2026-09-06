@@ -11,7 +11,7 @@ import sys
 
 
 PORTABLE_SCRIPTS = (
-    "dev", "build", "preview", "typecheck", "lint", "format", "format:check", "test"
+    "dev", "build", "preview", "typecheck", "lint", "format", "format:check", "test", "check"
 )
 EXCLUDED_NAMES = {
     "node_modules", "dist", ".git", ".openai", ".DS_Store", "__pycache__", ".venv",
@@ -20,7 +20,7 @@ EXCLUDED_NAMES = {
 REQUIRED_FILES = (
     "index.html", "vite.config.ts", "eslint.config.js", ".prettierrc.json",
     ".prettierignore", ".editorconfig", ".gitignore", ".nvmrc", "LICENSE.md",
-    "THIRD_PARTY_NOTICES.md", "package.json", "package-lock.json", "tsconfig.json",
+    "THIRD_PARTY_NOTICES.md", "package.json", "pnpm-lock.yaml", "pnpm-workspace.yaml", "tsconfig.json",
     "src/app/App.tsx", "src/config/showcase.json", "src/particles/core/README.md",
     "src/particles/core/renderer.ts",
 )
@@ -32,9 +32,10 @@ drag rotation, scroll transitions and replay.
 
 ## Development
 
-Use the Node.js version in `.nvmrc`, then run `npm ci` and `npm run dev`.
-Run `npm run typecheck`, `npm run lint`, `npm run format:check`, `npm test`
-and `npm run build` to validate the project. Production output is in `dist/`.
+Use Node.js 22.13+ (the major version is in `.nvmrc`) and pnpm 11.17.0.
+Run `pnpm install --frozen-lockfile`, then `pnpm dev`.
+Run `pnpm typecheck`, `pnpm lint`, `pnpm format:check`, `pnpm test`
+and `pnpm build` to validate the project. Production output is in `dist/`.
 
 ## Customize
 
@@ -108,16 +109,14 @@ def export_files(source):
             collect_tree(tests / name, Path("tests") / name, files)
 
     manifest = json.loads(files[Path("package.json")])
-    lock = json.loads(files[Path("package-lock.json")])
     manifest["name"] = "particle-showcase-starter"
     manifest["private"] = True
     manifest["scripts"] = {name: manifest["scripts"][name] for name in PORTABLE_SCRIPTS}
     if any(re.search(r"sites|manage-skill", script) for script in manifest["scripts"].values()):
         raise ValueError("Exported scripts must not depend on Sites or Skill maintenance.")
-    lock["name"] = manifest["name"]
-    lock["packages"][""]["name"] = manifest["name"]
+    # pnpm identifies the root importer as "."; renaming the package does not
+    # require changing the lockfile. Keep its bytes and build settings intact.
     files[Path("package.json")] = json_bytes(manifest)
-    files[Path("package-lock.json")] = json_bytes(lock)
     files[Path("README.md")] = PROJECT_README.encode("utf-8")
     return files
 
@@ -177,7 +176,7 @@ def main():
     print(f"Created particle showcase: {target}")
     print(f"Default: {args.brand}; version switch: {config['showVersionSwitch']}")
     print(f"Next, run in {shlex.quote(str(target))}:")
-    print("  npm ci\n  npm run typecheck\n  npm run lint\n  npm run build\n  npm run dev")
+    print("  pnpm install --frozen-lockfile\n  pnpm typecheck\n  pnpm lint\n  pnpm build\n  pnpm dev")
     return 0
 
 

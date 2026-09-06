@@ -31,14 +31,16 @@ deliverables/particle-showcase-skill.zip（不包含应用）
 先在主应用完成修改并通过检查。应用不需要另行同步；更新接入说明或导出规则时，检查 Skill 并重新打包：
 
 ```bash
-npm run skill:check
-npm run test:skill
-npm run skill:pack
+pnpm skill:check
+pnpm test:skill
+pnpm skill:pack
 ```
 
 `skill:check` 检查轻量包的必需文件、结构和便携性；导出脚本会在写入目标目录前检查源仓库所需文件。`test:skill` 单独运行初始化器测试；独立项目的安装、类型检查和构建仍需实际执行。`skill:pack` 只打包 Skill 文件，不将粒子引擎、品牌资源或示例项目放入 ZIP。
 
 修改结构或公开接口时，同时更新 `SKILL.md`、引用文档和初始化器里的路径。修改导出规则后，用源仓库和安装目录中的脚本分别检查源路径解析，并在新目录实际生成项目。生成目录应保留 TypeScript 核心、测试、依赖锁文件和来源说明，能独立安装、类型检查和构建，且不包含原项目的个人路径、Git 历史、Sites 配置、构建产物或 `node_modules/`。
+
+导出项目保留 `packageManager` 的 pnpm 版本约束，并逐字节复制 `pnpm-lock.yaml` 与 `pnpm-workspace.yaml`。pnpm 的根导入项是 `.`，项目改名不需要重写锁文件；不要重新解析或升级依赖。用 `pnpm install --frozen-lockfile` 验证锁文件与生成项目一致。
 
 涉及形状或渲染的改动仍需打开生成页面检查桌面与窄屏。类型检查与文件导出成功并不能单独证明交互正确。记录实际检查过的首屏、底部、拖拽、重播与滚动行为。
 

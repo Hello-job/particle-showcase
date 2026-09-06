@@ -54,7 +54,9 @@ React 组件使用 `.tsx`，配置、协调器、采样、动画和渲染使用�
 
 应用代码、素材与工程配置只保存在仓库根目录。`skills/particle-showcase/` 包含工作指南、参考和创建脚本，不再保存 `assets/starter/` 副本。在本仓库使用 Skill 时直接修改 `src/` 与 `public/`；创建独立项目时，初始化器从指定的本地仓库导出所需文件。
 
-`npm run skill:check` 检查轻量包结构和便携性，`test:skill` 验证初始化器，`skill:pack` 生成仅含 Skill 文件的分发包。安装或解压后的 Skill 需要通过 `--source` 获取已克隆或下载的仓库；只有脚本位于源仓库内的标准 Skill 路径时，才能自动定位仓库。导出的项目保留 TypeScript 核心、测试、依赖锁文件与来源说明，不携带机器路径、Git 历史或 Sites 适配。导出规则与使用方式见 [Skill 开发说明](skill/development.md)。
+`pnpm skill:check` 检查轻量包结构和便携性，`test:skill` 验证初始化器，`skill:pack` 生成仅含 Skill 文件的分发包。安装或解压后的 Skill 需要通过 `--source` 获取已克隆或下载的仓库；只有脚本位于源仓库内的标准 Skill 路径时，才能自动定位仓库。导出的项目保留 TypeScript 核心、测试、依赖锁文件与来源说明，不携带机器路径、Git 历史或 Sites 适配。导出规则与使用方式见 [Skill 开发说明](skill/development.md)。
+
+依赖由 `package.json` 中固定版本的 pnpm 管理，`pnpm-lock.yaml` 锁定解析结果。`pnpm-workspace.yaml` 只为 esbuild 开放安装脚本；它不代表项目已经拆成多个工作区。导出项目原样保留这两份文件。
 
 普通 Vite 构建输出到 `dist/`。Sites 构建是独立适配，保留原有 worker 和构建整理脚本，不要求普通使用者采用同一托管平台。
 

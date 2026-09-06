@@ -4,6 +4,8 @@
 
 This is a React + TypeScript particle showcase and a distributable Agent Skill. Keep React components in `.tsx`, handwritten logic and geometry data in `.ts`, and strict type checking enabled. Do not use `@ts-nocheck`, broad `any` casts, or file renaming to hide migration errors.
 
+The user requested pnpm and GitHub publication on 2026-09-06. Use the pinned `pnpm@11.17.0` with Node.js 22.13+; keep `pnpm-lock.yaml` as the sole dependency lockfile. Preserve its resolved dependency versions during package-manager maintenance. `pnpm-workspace.yaml` allows the required esbuild installation script and is part of standalone exports. The request authorizes publishing this prepared repository to GitHub; it does not change third-party licensing. Add actual browser screenshots for all four modes to the README and keep Skill download/install steps visible.
+
 Run the local server and open the available browser yourself when working on the preview. Preserve its existing port when possible; do not give the user startup instructions when you can run it. For source refactors, verify that the existing visual result and interactions still work.
 
 Read `README.md`, `docs/architecture.md` and `docs/customization.md` for the maintained structure. Record durable user preferences here. Keep historical experiments and screenshots under `docs/archive/` and `docs/reference/` instead of the repository root.
@@ -48,9 +50,9 @@ Kimi and Z.ai paths in `shapes/brands.ts` retain their official geometry and sou
 
 ## Checks and builds
 
-Run `npm run typecheck`, `npm run lint`, `npm run format:check`, `npm test` and `npm run build` after substantive changes. Run meaningful browser checks for changes affecting the visible result or input/lifecycle behavior. Do not claim a physical-phone or failure-mode check that was only simulated or not performed.
+Run `pnpm typecheck`, `pnpm lint`, `pnpm format:check`, `pnpm test` and `pnpm build` after substantive changes. Run meaningful browser checks for changes affecting the visible result or input/lifecycle behavior. Do not claim a physical-phone or failure-mode check that was only simulated or not performed.
 
-The normal Vite build produces `dist/`. Preserve `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs` and `tests/sites-worker.test.mjs` for the optional Sites adapter. Before a Sites handoff, run `npm run build:sites` and `npm run test:sites`; the Sites build must leave `dist/client/index.html`, `dist/server/index.js` and `dist/.openai/hosting.json`. No deployment is implied by repository cleanup.
+The normal Vite build produces `dist/`. Preserve `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs` and `tests/sites-worker.test.mjs` for the optional Sites adapter. Before a Sites handoff, run `pnpm build:sites` and `pnpm test:sites`; the Sites build must leave `dist/client/index.html`, `dist/server/index.js` and `dist/.openai/hosting.json`. No deployment is implied by repository cleanup.
 
 ## Skill maintenance
 
@@ -58,7 +60,7 @@ The maintained Skill is `skills/particle-showcase/`. The user requested removal 
 
 Within this repository, the Skill works directly with `src/` and `public/`. For a standalone project, the initializer exports the current local repository to a new or empty destination using `--source`, `--dest`, `--brand`, `--title` and `--single-brand`. It may infer the source only when located inside the source repository at `skills/particle-showcase/scripts/create_showcase.py`; installed or unzipped copies require an explicit `--source` pointing to a cloned or downloaded repository. Do not invent a repository URL.
 
-After relevant Skill or export-source changes, run `npm run skill:check`, `npm run test:skill` and `npm run skill:pack`. There is no template synchronization step. Validate a newly generated project when changing the exporter or its file selection. Exported projects retain the TypeScript core, tests, dependency lock and provenance while excluding personal paths, Git data, build output, dependency folders and Sites-only configuration. Refresh the installed Skill copy as part of an authorized Skill update; packing must not silently alter a user's global installation.
+After relevant Skill or export-source changes, run `pnpm skill:check`, `pnpm test:skill` and `pnpm skill:pack`. There is no template synchronization step. Validate a newly generated project when changing the exporter or its file selection. Exported projects retain the TypeScript core, tests, dependency lock and provenance while excluding personal paths, Git data, build output, dependency folders and Sites-only configuration. Refresh the installed Skill copy as part of an authorized Skill update; packing must not silently alter a user's global installation.
 
 The shareable archive is `deliverables/particle-showcase-skill.zip`. It contains only the lightweight Skill; its users need a separate source checkout to create projects. Documentation belongs in `docs/skill/` and the Skill's scoped references.
 

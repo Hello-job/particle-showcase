@@ -24,7 +24,7 @@
 
 ## 依赖、截图与 Skill
 
-React、Three.js、postprocessing、Vite 及其他 npm 依赖遵循各自软件包中的许可；实际版本以 `package-lock.json` 为准。
+React、Three.js、postprocessing、Vite 及其他依赖遵循各自软件包中的许可；依赖由 pnpm 管理，实际版本以 `pnpm-lock.yaml` 为准。
 
 主展示仓库的 `docs/reference/` 保留原页面截图、选定概念图和本地实现截图，供历史比较与视觉验证。它们不应被误认为全部由本项目独立创作的素材。
 

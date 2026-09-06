@@ -9,7 +9,7 @@ description: 创建或改造 Astra 风格的 WebGL 星光粒子展示页，支�
 
 ## 定位源码
 
-下文的 `src/`、`public/` 与工程配置路径均相对于 Particle Showcase 源仓库，不在 Skill 文件夹内。在本仓库工作时直接使用现有文件，无需生成另一个项目。Skill 安装在全局目录或单独解压时，使用用户已克隆、下载或明确提供的源仓库路径。尚无源码时，先取得用户提供的仓库地址或本地目录；不要猜测作者机器路径、下载官网编译脚本或把普通目标项目误作源仓库。
+下文的 `src/`、`public/` 与工程配置路径均相对于 [Particle Showcase 源仓库](https://github.com/Hello-job/particle-showcase)，不在 Skill 文件夹内。在本仓库工作时直接使用现有文件，无需生成另一个项目。Skill 安装在全局目录或单独解压时，优先使用用户已克隆、下载或明确提供的源仓库路径。尚无源码时，可为当前任务将配套仓库 `https://github.com/Hello-job/particle-showcase.git` 克隆到新目录，再将该目录传给 `--source`。不要猜测作者机器路径、下载官网编译脚本或把普通目标项目误作源仓库。
 
 ## 新建展示页
 
@@ -23,9 +23,9 @@ python3 /absolute/path/to/particle-showcase/scripts/create_showcase.py \
   --dest /absolute/path/to/new-project --brand deepseek
 ```
 
-脚本需要 Python 3.9+，生成的项目需要 Node.js 22.12+ 和 npm。它从源仓库导出必要代码、资源、配置、测试与来源记录，只接受源仓库外的新目录或空目录，不覆盖已有项目。仅在脚本位于源仓库的 `skills/particle-showcase/` 中时可省略 `--source`。可选 `--title "My Model"` 修改所选示例的标题，`--single-brand` 隐藏右上角版本切换。生成后项目独立运行，不依赖 Skill 或原仓库路径。
+脚本需要 Python 3.9+，生成的项目需要 Node.js 22.13+ 和 pnpm 11.17.0。它从源仓库导出必要代码、资源、配置、测试与来源记录，只接受源仓库外的新目录或空目录，不覆盖已有项目。仅在脚本位于源仓库的 `skills/particle-showcase/` 中时可省略 `--source`。可选 `--title "My Model"` 修改所选示例的标题，`--single-brand` 隐藏右上角版本切换。生成后项目独立运行，不依赖 Skill 或原仓库路径。
 
-在生成目录中执行 `npm ci`、`npm run typecheck`、`npm run lint` 和 `npm run build`，然后自行启动本地预览并打开页面。优先用可用端口，不抢占用户正在运行的服务。运行时图形、字体和粒子素材都在本地；首次安装 npm 依赖需要网络。
+在生成目录中执行 `pnpm install --frozen-lockfile`、`pnpm typecheck`、`pnpm lint` 和 `pnpm build`，然后自行启动本地预览并打开页面。优先用可用端口，不抢占用户正在运行的服务。运行时图形、字体和粒子素材都在本地；首次安装依赖需要网络。
 
 ## 接入已有页面
 
@@ -59,4 +59,4 @@ python3 /absolute/path/to/particle-showcase/scripts/create_showcase.py \
 
 修改已有作品时保留可回退版本，不移动原有标签。最后给用户预览入口、已完成的效果和实测范围；浏览器或 WebGL 不可用时直说未实测的部分。相同代码在不同 GPU、屏幕比例和像素比下仍会有差异，不承诺任意设备上逐像素 100% 一致。
 
-维护本 Skill 时，应用代码只改源仓库；路径、接口或导出规则变化时更新本 Skill。运行 `npm run skill:check`、`npm run test:skill` 和 `npm run skill:pack`，并验证实际导出的项目。不要重新加入整套应用副本。打包不会修改本机已安装的 Skill；需要更新安装时显式复制已验证的 Skill 文件夹。
+维护本 Skill 时，应用代码只改源仓库；路径、接口或导出规则变化时更新本 Skill。运行 `pnpm skill:check`、`pnpm test:skill` 和 `pnpm skill:pack`，并验证实际导出的项目。不要重新加入整套应用副本。打包不会修改本机已安装的 Skill；需要更新安装时显式复制已验证的 Skill 文件夹。

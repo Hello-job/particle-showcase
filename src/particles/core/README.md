@@ -39,7 +39,7 @@ The original modules were served under `https://openai.com/_next/static/immutabl
 | Original Three.js core / WebGLRenderer                  | `0dfpqjin6t4po.js`, `1a43l2lhrwu30.js` | 695418, 361489                                       |
 | Original postprocessing dependency                      | `0xhsyls0qftqy.js`                     | 409703                                               |
 
-The original canvas declared Three.js r180. The local dependency is `three@0.180.0`; the compatible local postprocessing package is `postprocessing@6.39.4`. The public postprocessing bundle did not disclose its package version. Dependencies retain their own licenses and are installed through npm.
+The original canvas declared Three.js r180. The local dependency is `three@0.180.0`; the compatible local postprocessing package is `postprocessing@6.39.4`. The public postprocessing bundle did not disclose its package version. Dependencies retain their own licenses and are installed through the pinned pnpm version and `pnpm-lock.yaml`.
 
 ## Preserved effect settings
 
