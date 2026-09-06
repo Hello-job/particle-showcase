@@ -4,9 +4,9 @@
 
 ## Astra 渲染器
 
-粒子渲染器来自 [OpenAI GPT-6 Astra 公开页面](https://openai.com/index/gpt-6-astra/)，于 2026-09-05 获取。原始公开模块保留在 `src/particles/vendor/astra/`；公开 chunk、模块编号和参数记录见[渲染器来源说明](src/particles/vendor/astra/README.md)。
+粒子渲染器来自 [OpenAI GPT-6 Astra 公开页面](https://openai.com/index/gpt-6-astra/)，于 2026-09-05 获取。当前实现已将提取的编译模块整理为可读 TypeScript，位于 `src/particles/core/`；旧编译基线保存在 Git 标签 `typescript-showcase-v1`。公开 chunk、模块编号和参数记录见[渲染器来源说明](src/particles/core/README.md)。
 
-本项目保留了原始着色器、种子随机数、粒子运动与光学后处理，并增加独立 DOM 生命周期、品牌形状与 TypeScript 接入层。它是移植和扩展，不能把整个效果引擎描述为本项目原创。来源页面的公开可访问性不等于本项目已经取得源码再许可授权。
+本项目保留了原始着色器、种子随机数、粒子运动与光学后处理，并增加独立 DOM 生命周期、品牌形状、TypeScript 接入与可读核心重构。它是移植和扩展，不能把整个效果引擎描述为本项目原创。来源页面的公开可访问性不等于本项目已经取得源码再许可授权。
 
 ## 图形与字体
 

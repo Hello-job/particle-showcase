@@ -5,7 +5,7 @@ description: 创建或改造 Astra 风格的 WebGL 星光粒子展示页，支�
 
 # Particle Showcase
 
-复用随包提供的 React + TypeScript / TSX 项目，让用户得到真实交互粒子页面。模板包含 Astra、DeepSeek、Kimi、GLM 四个示例，也支持用户自己的 SVG 或文字轮廓。应用、组件与接入代码使用 TypeScript；提取的第三方渲染器保留在 `src/particles/vendor/astra/`，通过类型边界调用。来源见 [素材与源码来源](references/provenance.md)，不要把整个引擎称为原创。
+复用随包提供的 React + TypeScript / TSX 项目，让用户得到真实交互粒子页面。模板包含 Astra、DeepSeek、Kimi、GLM 四个示例，也支持用户自己的 SVG 或文字轮廓。页面、组件、接入代码和粒子核心均使用 TypeScript；`src/particles/core/` 将原站编译模块整理为明确命名、标准导入和结构类型，GPU 着色器保留 GLSL 源码。来源见 [素材与源码来源](references/provenance.md)，不要把整个引擎称为原创。
 
 ## 新建展示页
 
@@ -18,7 +18,7 @@ python3 /absolute/path/to/particle-showcase/scripts/create_showcase.py \
   --dest /absolute/path/to/new-project --brand deepseek
 ```
 
-脚本需要 Python 3.9+，生成的项目需要 Node.js 20.19.x 或 22.12+ 和 npm。它只向新目录或空目录复制模板，不覆盖已有项目。可选 `--title "My Model"` 修改所选示例的标题，`--single-brand` 隐藏右上角版本切换。
+脚本需要 Python 3.9+，生成的项目需要 Node.js 22.12+ 和 npm。它只向新目录或空目录复制模板，不覆盖已有项目。可选 `--title "My Model"` 修改所选示例的标题，`--single-brand` 隐藏右上角版本切换。
 
 在生成目录中执行 `npm ci`、`npm run typecheck`、`npm run lint` 和 `npm run build`，然后自行启动本地预览并打开页面。优先用可用端口，不抢占用户正在运行的服务。运行时图形、字体和粒子素材都在本地；首次安装 npm 依赖需要网络。
 
@@ -33,7 +33,7 @@ python3 /absolute/path/to/particle-showcase/scripts/create_showcase.py \
 - 页面组装：`src/app/App.tsx`；页头、首屏、形状锚点与控制按钮：`src/components/showcase/`。延续小组件边界，避免把整个展示页塞回单一组件。
 - 文案、默认版本、页头品牌资源：`src/config/showcase.json`，由 `src/config/showcase.ts` 提供类型化配置；后续修改品牌时也同步 `index.html` 的初始标题与描述。模板的型号名称是 2026-09-06 的示例快照；只有用户要求“最新”时才查官方来源更新。
 - 首屏与底部形状：阅读 [引擎与形状接入](references/engine-and-shapes.md)，注册 SVG 几何并接到 `hero` / `ending`。优先用用户提供的矢量文件；只有位图时可追踪，但需说明轮廓是近似的。
-- 密度、星光、交互或动画节奏：从 `src/particles/ParticleBackground.tsx` 的局部配置与滚动 cue 入手，再按需查看 `engine/profile.ts` 和 `vendor/astra/` 的默认配置。
+- 密度、星光、交互或动画节奏：从 `src/particles/ParticleBackground.tsx` 的局部配置与滚动 cue 入手，再按需查看 `engine/profile.ts` 和 `core/config.ts` 的默认配置。
 - 空滚动或留白：优先调整 `src/styles/` 的区间高度与标题间距，验证前后成形顺序。模板使用 20svh 中段留白及桌面 64px / 手机 40px 标题底部间距；这些是起始参数，可按用户目标调整。
 
 保留形状采样、随机种子、着色器和粒子运动算法，除非用户明确要改它们或问题确实在该层。重新随机摆点、改成普通散点或用视频替代会改变这个效果。
@@ -46,7 +46,7 @@ python3 /absolute/path/to/particle-showcase/scripts/create_showcase.py \
 - 转成填充粒子前先展开 SVG 的变换、描边及基础图元；文字先转路径。不要把 SVG 文本或带有变换的路径直接当成已归一化轮廓。
 - 保留场景释放、鼠标/触摸退出、键盘旋转、减少动态效果和 WebGL 失败处理。不要因隐藏提示文案而删除交互。
 - 根据用户要求保留或调整页面内容。示例的纯展示布局、四个页签、具体品牌和字体不是所有项目都必须采用的规则。
-- 新写的应用与形状接入使用 TypeScript，保留严格类型检查。不要用批量重命名或 `@ts-nocheck` 把第三方 JavaScript 伪装成已经迁移的 TypeScript。
+- 应用与粒子核心均保留严格 TypeScript 检查和明确命名。修改底层时维持随机调用顺序与着色器公式，并执行数值和浏览器回归；不要重新引入编译模块加载器、宽泛 `any` 或 `@ts-nocheck`。
 
 ## 验证与交付
 

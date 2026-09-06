@@ -2,9 +2,9 @@
 
 ## What is reusable
 
-The template is a procedural WebGL particle scene with pointer repulsion, drag rotation, replay, a scrolling transition through SVG destinations, and optical postprocessing. It is not a video, raster logo overlay, or generic CSS particle animation. Its original renderer and motion modules were ported from the public Astra page; custom brand shapes and the standalone DOM adapter were added locally. Preserve the source provenance in `src/particles/vendor/astra/README.md` and the shape modules.
+The template is a procedural WebGL particle scene with pointer repulsion, drag rotation, replay, a scrolling transition through SVG destinations, and optical postprocessing. It is not a video, raster logo overlay, or generic CSS particle animation. Its original renderer and motion modules were ported from the public Astra page; custom brand shapes and the standalone DOM adapter were added locally. Preserve the source provenance in `src/particles/core/README.md` and the shape modules.
 
-Reuse the entire `src/particles/` module graph and the particle stylesheet in `src/styles/`. `src/particles/ParticleBackground.tsx` is the React lifecycle wrapper; `src/app/App.tsx`, `src/components/showcase/` and `src/styles/` supply the working DOM and layout. Application, coordinator and shape code use strict TypeScript. The third-party renderer remains in `src/particles/vendor/astra/` behind declarations at the engine boundary; do not silently rewrite its extracted shader or motion code. The portable engine imports `three` and `postprocessing`; the verified versions are Three.js `0.180.0` and postprocessing `6.39.4`. Preserve a compatible lockfile instead of silently upgrading those rendering dependencies.
+Reuse the entire `src/particles/` module graph and the particle stylesheet in `src/styles/`. `src/particles/ParticleBackground.tsx` is the React lifecycle wrapper; `src/app/App.tsx`, `src/components/showcase/` and `src/styles/` supply the working DOM and layout. Application, coordinator, shapes and the rendering core use strict TypeScript. The reconstructed modules in `src/particles/core/` use standard imports, meaningful names and structural types; they retain third-party provenance. Preserve shader formulas and seeded random call order when changing the core. The portable engine imports `three` and `postprocessing`; the verified versions are Three.js `0.180.0` and postprocessing `6.39.4`. Preserve a compatible lockfile instead of silently upgrading those rendering dependencies.
 
 ## Scene contract
 
@@ -88,7 +88,7 @@ Each cue merges onto a default keyframe by cue index; adding many cues can event
 
 The fill cache detects path data, fill-rule and accent changes, not arbitrary transform/style changes. Fill attributes should be explicit and stable. The bundled ShapeTarget assumes nonzero winding. If a new SVG requires evenodd, extend ShapeTarget to pass its fillRule to the actual SVG/path instead of only recording it in the registry. `accentPaths` supports one contiguous accent group, currently rendered in the engine's fixed blue `#1685ff`; it is not a generic multicolor SVG renderer. Arbitrary brand colors require an intentional renderer extension.
 
-Current `deepseek-wordmark` is custom **DeepSeek** casing, not the official lowercase wordmark: original lowercase contours were retained and uppercase D/S added from the bundled font. Its contour visibility tuning includes an identifier check in `src/particles/vendor/astra/animation.js`; a new contour wordmark does not automatically inherit that special tuning. Filled shapes receive the generic filled treatment.
+Current `deepseek-wordmark` is custom **DeepSeek** casing, not the official lowercase wordmark: original lowercase contours were retained and uppercase D/S added from the bundled font. Its contour visibility tuning includes an identifier check in `src/particles/core/animation.ts`; a new contour wordmark does not automatically inherit that special tuning. Filled shapes receive the generic filled treatment.
 
 ## Controls, lifecycle and performance
 
@@ -102,6 +102,6 @@ Tier 3 limits are 40,000 maximum particles, 16 shader samples and full postproce
 
 ## Packaging caveats
 
-For subdirectory hosting, set Vite's `base` to the deployment path. Resolve new public assets with `assetUrl` from `src/lib/assets.ts`; existing logos and the fallback poster already use `import.meta.env.BASE_URL` through this helper. Vite rewrites bundled CSS font URLs for the configured base, and version links preserve the current directory. Font changes can alter title width and the measured transition; call refresh after asynchronous layout changes. Keep named exports and the complete internal module adapter graph intact.
+For subdirectory hosting, set Vite's `base` to the deployment path. Resolve new public assets with `assetUrl` from `src/lib/assets.ts`; existing logos and the fallback poster already use `import.meta.env.BASE_URL` through this helper. Vite rewrites bundled CSS font URLs for the configured base, and version links preserve the current directory. Font changes can alter title width and the measured transition; call refresh after asynchronous layout changes. Keep the typed scene interface and its core imports intact.
 
 Model-name strings are manually maintained examples verified on 2026-09-06, not a live latest-model lookup. Do not promise future currency. Public-source provenance is not itself a redistribution license: do not assign a blanket original-work or MIT claim to the copied renderer, brand paths, bundled fonts or posters.

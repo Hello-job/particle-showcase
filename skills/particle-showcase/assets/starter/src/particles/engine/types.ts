@@ -1,10 +1,13 @@
-import type { Group, OrthographicCamera, Vector2 } from "three";
+import type { Group, OrthographicCamera } from "three";
 import type { ShapeId } from "../shapes/registry";
+import type { RuntimeConfig } from "../core/config";
+import type { ParticleField } from "../core/field";
+import type { AnimationState } from "../core/animation";
 
 export type AstraEasing = "linear" | "smoothstep";
 export type AstraTier = 0 | 1 | 2 | 3;
 
-/** Scene sections are passed through to the original normalizer unchanged. */
+/** Editable scene sections are validated by the core configuration normalizer. */
 export type AstraSceneSection = Readonly<Record<string, unknown>>;
 
 export interface AstraKeyframe {
@@ -97,30 +100,10 @@ export interface AstraInput {
   };
 }
 
-// Opaque internals are created and consumed only by the retained vendor code.
-// The public boundary exposes exactly the fields read by our DOM coordinator.
-declare const configBrand: unique symbol;
-declare const fieldBrand: unique symbol;
-declare const animationBrand: unique symbol;
-
-export interface AstraRuntimeConfig {
-  readonly [configBrand]: true;
-  readonly animationPlaying: boolean;
-  readonly scrollEffects: boolean;
-  readonly faceForward: boolean;
-}
-
-export interface AstraField {
-  readonly [fieldBrand]: true;
-}
-
-export interface AstraAnimationState {
-  readonly [animationBrand]: true;
-  readonly railPresence: number;
-  readonly railContentBounds: Vector2;
-  readonly particleMotion: { epoch: number };
-  dispose(): void;
-}
+// Preserve the public names while exposing the core's real structural types.
+export type AstraRuntimeConfig = RuntimeConfig;
+export type AstraField = ParticleField;
+export type AstraAnimationState = AnimationState;
 
 export interface AstraRenderer {
   ready: Promise<void>;

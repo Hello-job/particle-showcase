@@ -1,0 +1,1463 @@
+{
+  "sourceCommit": "85663be",
+  "sourceTag": "typescript-showcase-v1",
+  "description": "Captured from the pre-refactor compiled particle field. SHA-256 hashes cover every float32 geometry attribute, path texture and shader; numeric values cover uniforms and flare tracking.",
+  "cases": [
+    {
+      "name": "default",
+      "config": {},
+      "options": {},
+      "expected": {
+        "particleCount": 4642,
+        "secondarySources": 5,
+        "corePosition": [-0.0016090734861791134, -0.000011588741472223774, 0.025059115141630173],
+        "coreScale": [1, 1, 1],
+        "points": [
+          {
+            "renderOrder": 40,
+            "count": 1000,
+            "attributesSha256": "90c7c55fbf9085267537f4c665d8bd8308c26ca7790a7d603df40239b37fcd22",
+            "uniformsSha256": "30136f7376cb935a27b0faace20de7d53a573d6ce04a8b7d0f7b918dc4320947",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 41,
+            "count": 773,
+            "attributesSha256": "1ceeaf5d930f8ad8d82e329203089e5a205ac14c3ff8c39a6cad4558373c0739",
+            "uniformsSha256": "6d47c558db37cc21e333281e3592c819a57ad4e20006bdd98069e36e50b56cfe",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 42,
+            "count": 1000,
+            "attributesSha256": "843a91cbdfe25b1828cc98319433f736437a7d6fbcdc36fbd5aa9c471ce47134",
+            "uniformsSha256": "32a2d4eefb26d5334719254abb0c8cf2dbb8ed901d6f022cd5082c8ec4f2a861",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 43,
+            "count": 773,
+            "attributesSha256": "1893476b6d8903812d3a0f12d4468539367e7e617eb288a37917837129928106",
+            "uniformsSha256": "b697f4c1b203574b8c9301b0e3a3ff3b1f9a98c343fda46c774f74ce71a65274",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 44,
+            "count": 1000,
+            "attributesSha256": "dcd4e4f77da51502860e5ba3879b75cb8ea6699f3a3f410003d940bf4838197e",
+            "uniformsSha256": "1ee1ef96d146dda9a88a3cbb65b1abf098fba0441b48bcc6bf19619af2dd2a86",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 100,
+            "count": 96,
+            "attributesSha256": "8ade3b545d90668f0f4e80462fe18e9fce43985f624650af468da51a5f0169ba",
+            "uniformsSha256": "b6c5ad6b89252c431442bb891998285893ebef8f5d2038260989147d78220b52",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          }
+        ],
+        "layers": [
+          {
+            "flareAcrossOffset": 0.11876971274614334,
+            "flareClearanceSeed": 0.0750034353841329,
+            "flareDepthOffset": -0.05621491000056267,
+            "flareProgress": 0.5620600581169128,
+            "flareShapeAcrossScatter": -0.0031836479902267456,
+            "flareShapeDepthScatter": -0.027285387739539146,
+            "flareShapeSeed": 0.23721185326576233,
+            "isCore": false,
+            "outwardSpeed": -0.025,
+            "phase": 0.16,
+            "motionOffset": 0,
+            "speed": 0.025,
+            "strong": true,
+            "pathShapeDepth": 0.868,
+            "pathShapeDepthPhase": 0,
+            "pathShapeTravel": 0,
+            "travel": 0.16,
+            "flareBasePosition": [-2.7441355226799433, 0.025090518448728335, 0.5648179434245827],
+            "flareScatter": [0.731318334081152, 0.2421512664295733, 0.37597551261569606],
+            "flarePathSamples": "de1b6290fe92fd792639c87fe2cb9b447433d6665f7df6ec2c7c94ea1ef6cb54",
+            "flareSource": {
+              "position": [-2.7441355226799433, 0.025090518448728335, 0.5648179434245827],
+              "scale": [0.9969138965328346, 0.9969138965328346, 0.9969138965328346]
+            }
+          },
+          {
+            "flareAcrossOffset": 0.024744631722569466,
+            "flareClearanceSeed": 0.6178755226210342,
+            "flareDepthOffset": -0.03053552843630314,
+            "flareProgress": 0.328321248292923,
+            "flareShapeAcrossScatter": -0.08029192686080933,
+            "flareShapeDepthScatter": 0.002311842283234,
+            "flareShapeSeed": 0.34735292196273804,
+            "isCore": false,
+            "outwardSpeed": -0.018,
+            "phase": 0.72,
+            "motionOffset": 0,
+            "speed": 0.018,
+            "strong": false,
+            "pathShapeDepth": -0.644,
+            "pathShapeDepthPhase": 0.82,
+            "pathShapeTravel": 0,
+            "travel": 0.72,
+            "flareBasePosition": [-0.9706193000033501, 4.444065352000281, -0.4463280921757832],
+            "flareScatter": [0.17647689216028084, 0.1544237379130209, 0.5105083742018905],
+            "flarePathSamples": "478fe2896a3adf5516d9c04a05d79cc1a0820a9d6b2fe15566614e29c7fdda8b",
+            "flareSource": {
+              "position": [-0.9706193000033501, 4.444065352000281, -0.4463280921757832],
+              "scale": [0.9742572759136319, 0.9742572759136319, 0.9742572759136319]
+            }
+          },
+          {
+            "flareAcrossOffset": 0.04589395597577095,
+            "flareClearanceSeed": 0.7221484641020197,
+            "flareDepthOffset": 0.08078685402870178,
+            "flareProgress": 0.5362804532051086,
+            "flareShapeAcrossScatter": -0.03609107807278633,
+            "flareShapeDepthScatter": -0.09427488595247269,
+            "flareShapeSeed": 0.32443127036094666,
+            "isCore": false,
+            "outwardSpeed": 0.021,
+            "phase": 0.38,
+            "motionOffset": 0,
+            "speed": -0.021,
+            "strong": true,
+            "pathShapeDepth": 1.0919999999999999,
+            "pathShapeDepthPhase": 1.64,
+            "pathShapeTravel": 0,
+            "travel": 0.38,
+            "flareBasePosition": [2.580588600278438, 0.963866001809674, -0.6458827816758981],
+            "flareScatter": [0.6715692308935104, 0.027671796080539934, 0.07147778171929531],
+            "flarePathSamples": "8beaa5a0b44a5713833f3b29e46d41752662c957a6a78fd74472411f217326aa",
+            "flareSource": {
+              "position": [2.580588600278438, 0.963866001809674, -0.6458827816758981],
+              "scale": [0.9989549751553194, 0.9989549751553194, 0.9989549751553194]
+            }
+          },
+          {
+            "flareAcrossOffset": 0.007135693449527025,
+            "flareClearanceSeed": 0.38242444895149674,
+            "flareDepthOffset": 0.0023069076705724,
+            "flareProgress": 0.3836587071418762,
+            "flareShapeAcrossScatter": 0.025639144703745842,
+            "flareShapeDepthScatter": -0.08182444423437119,
+            "flareShapeSeed": 0.2808869481086731,
+            "isCore": false,
+            "outwardSpeed": 0.016,
+            "phase": 0.58,
+            "motionOffset": 0,
+            "speed": -0.016,
+            "strong": false,
+            "pathShapeDepth": -0.9799999999999999,
+            "pathShapeDepthPhase": 2.46,
+            "pathShapeTravel": 0,
+            "travel": 0.58,
+            "flareBasePosition": [2.8860354263653702, 1.4110099837533718, 0.8124501584817326],
+            "flareScatter": [0.6069957191293724, 0.6066638236225117, 0.12807069331029197],
+            "flarePathSamples": "8b650fb68096cc2c6a5b1c588ba0471053858290a5f93455aab81112cd8e6d42",
+            "flareSource": {
+              "position": [2.8860354263653702, 1.4110099837533718, 0.8124501584817326],
+              "scale": [0.9887789669002593, 0.9887789669002593, 0.9887789669002593]
+            }
+          },
+          {
+            "flareAcrossOffset": -0.16133348643779755,
+            "flareClearanceSeed": 0.2862479445147983,
+            "flareDepthOffset": -0.023718450218439102,
+            "flareProgress": 0.8555921316146851,
+            "flareShapeAcrossScatter": -0.03100343607366085,
+            "flareShapeDepthScatter": 0.0311159435659647,
+            "flareShapeSeed": 0.3726247251033783,
+            "isCore": false,
+            "outwardSpeed": 0.03,
+            "phase": 0.08,
+            "motionOffset": 0,
+            "speed": -0.03,
+            "strong": true,
+            "pathShapeDepth": 0.588,
+            "pathShapeDepthPhase": 3.28,
+            "pathShapeTravel": 0,
+            "travel": 0.08,
+            "flareBasePosition": [-0.2618091325547247, -2.221280567145597, 0.1231583517874389],
+            "flareScatter": [0.023064719498506747, 0.718573306214239, 0.6414361065726553],
+            "flarePathSamples": "6d275426eef5d1c0d337adb8b2c3f0050f2f5674b785224eb40e1d9b98011383",
+            "flareSource": {
+              "position": [-0.2618091325547247, -2.221280567145597, 0.1231583517874389],
+              "scale": [0.8592689387876145, 0.8592689387876145, 0.8592689387876145]
+            }
+          },
+          {
+            "flareAcrossOffset": 0,
+            "flareClearanceSeed": 0.6651340285252445,
+            "flareDepthOffset": 0,
+            "flareProgress": 0,
+            "flareShapeAcrossScatter": 0.054072052240371704,
+            "flareShapeDepthScatter": 0.02665816992521286,
+            "flareShapeSeed": 0.06942056864500046,
+            "isCore": true,
+            "outwardSpeed": 0,
+            "phase": 0,
+            "motionOffset": 0,
+            "speed": 0,
+            "strong": true,
+            "pathShapeDepth": 0.18,
+            "pathShapeDepthPhase": 2.4,
+            "pathShapeTravel": 0,
+            "travel": 0,
+            "flareBasePosition": [
+              -0.0016090734861791134, -0.000011588741472223774, 0.025059115141630173
+            ],
+            "flareScatter": [0.4671135566641169, 0.9834868893249222, 0.6211734970711404],
+            "flarePathSamples": null,
+            "flareSource": {
+              "position": [-0.0016090734861791134, -0.000011588741472223774, 0.025059115141630173],
+              "scale": [1, 1, 1]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "budget-zero",
+      "config": {},
+      "options": {
+        "maxParticleCount": 0
+      },
+      "expected": {
+        "particleCount": 0,
+        "secondarySources": 0,
+        "corePosition": [0, 0, 0],
+        "coreScale": [0, 0, 0],
+        "points": [],
+        "layers": []
+      }
+    },
+    {
+      "name": "tier-zero",
+      "config": {},
+      "options": {
+        "tier": 0
+      },
+      "expected": {
+        "particleCount": 0,
+        "secondarySources": 0,
+        "corePosition": [0, 0, 0],
+        "coreScale": [0, 0, 0],
+        "points": [],
+        "layers": []
+      }
+    },
+    {
+      "name": "small-budget",
+      "config": {
+        "orbitalDust": {
+          "enabled": true
+        },
+        "showCenterCluster": true
+      },
+      "options": {
+        "maxParticleCount": 17,
+        "pixelRatio": 3,
+        "tier": 1
+      },
+      "expected": {
+        "particleCount": 17,
+        "secondarySources": 5,
+        "corePosition": [0, 0, 0],
+        "coreScale": [0, 0, 0],
+        "points": [
+          {
+            "renderOrder": 40,
+            "count": 3,
+            "attributesSha256": "7725456a5a08ac49412f6eccd444dcebd963c8674c33439f378c5939c4d7a198",
+            "uniformsSha256": "93ff8d255b5aac2ea993dacab6c4e7dc02d34fe0799166a30e9a1aeb9de0872f",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 70,
+            "count": 1,
+            "attributesSha256": "8440948ad913ce9d8c1f8c042ba7558b5466ca3ca944ddc6ef9db877b1d97c47",
+            "uniformsSha256": "919d17a961b99bc70e8716095a901f6ab04cb887062c40b4fa7252b7e0077406",
+            "vertexShader": "18bf5983794f996ccdcb823cf43959ee5af49d882c9b2731f57deafffcc02412",
+            "fragmentShader": "decabcfe105f4ac1d2cfc68ea7a35c10b5d362cbc425cf912b32887a87369878"
+          },
+          {
+            "renderOrder": 41,
+            "count": 3,
+            "attributesSha256": "f3aa79692682aa37146e7ca6df16ae28f6ddd841ad7d4094fe2a230087be0808",
+            "uniformsSha256": "e388931a20b97953067660ac75deee1a311c927dc96611d797a4346b61af897b",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 42,
+            "count": 3,
+            "attributesSha256": "f9015e00cab28cf901c7bb1d7d61185819e99fae8170827eb81034ef083dea3e",
+            "uniformsSha256": "c4bae9dc0fd6060b1ab018a5e0e1755d9e97fcd2c7057c53dfe0e2545a7858d1",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 72,
+            "count": 1,
+            "attributesSha256": "ad0ca4fbb3c886562b7b6e8d2bec9ebf23f0881d27511829a1e10e290ba2862b",
+            "uniformsSha256": "e919dab809c8efcb87129c571b64d6df6451c88af3564fdd5fd7847156587ddd",
+            "vertexShader": "18bf5983794f996ccdcb823cf43959ee5af49d882c9b2731f57deafffcc02412",
+            "fragmentShader": "decabcfe105f4ac1d2cfc68ea7a35c10b5d362cbc425cf912b32887a87369878"
+          },
+          {
+            "renderOrder": 43,
+            "count": 2,
+            "attributesSha256": "faa7755ad577cc80329b06e5251308c55fd1bb7957458cf75a41751147e3094c",
+            "uniformsSha256": "22ac3ee219be023560312d6a92d908e1fa2194123beb9f3363e3e98425d1ff16",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 44,
+            "count": 3,
+            "attributesSha256": "2280203506ddf54e5df52e94d53f85a3d0f18d37609c23eb24cc7b9bfe52bb99",
+            "uniformsSha256": "9625ebaa0bf1328da80bb861e141699818c87a3b783ec60ce3ccfff1f83b5156",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 74,
+            "count": 1,
+            "attributesSha256": "5aed7f3840848a298ef8c1ff10a3ec7c95ed7d9e85314204db7b149925b6767d",
+            "uniformsSha256": "5fba4c04a9e626f93b38d5a7dff62ac96a872b81a936a0e7caf338bed28ea7d1",
+            "vertexShader": "18bf5983794f996ccdcb823cf43959ee5af49d882c9b2731f57deafffcc02412",
+            "fragmentShader": "decabcfe105f4ac1d2cfc68ea7a35c10b5d362cbc425cf912b32887a87369878"
+          }
+        ],
+        "layers": [
+          {
+            "flareAcrossOffset": 0.0368516743183136,
+            "flareClearanceSeed": 0.8231518798406796,
+            "flareDepthOffset": -0.007735950406640768,
+            "flareProgress": 0.9725638031959534,
+            "flareShapeAcrossScatter": -0.09193826466798782,
+            "flareShapeDepthScatter": 0.051516007632017136,
+            "flareShapeSeed": 0.7401289343833923,
+            "isCore": false,
+            "outwardSpeed": -0.025,
+            "phase": 0.16,
+            "motionOffset": 0,
+            "speed": 0.025,
+            "strong": true,
+            "pathShapeDepth": 0.868,
+            "pathShapeDepthPhase": 0,
+            "pathShapeTravel": 0,
+            "travel": 0.16,
+            "flareBasePosition": [-0.05817526316619916, 0.3566920834078104, -0.08210970767247894],
+            "flareScatter": [0.15060622103192145, 0.0832415468266845, 0.7341636705896235],
+            "flarePathSamples": "de1b6290fe92fd792639c87fe2cb9b447433d6665f7df6ec2c7c94ea1ef6cb54",
+            "flareSource": {
+              "position": [-0.05817526316619916, 0.3566920834078104, -0.08210970767247894],
+              "scale": [0.4593782005572552, 0.4593782005572552, 0.4593782005572552]
+            }
+          },
+          {
+            "flareAcrossOffset": -0.002257275627925992,
+            "flareClearanceSeed": 0.40469520827173255,
+            "flareDepthOffset": -0.02081620693206787,
+            "flareProgress": 0.34492307901382446,
+            "flareShapeAcrossScatter": 0.004242609720677137,
+            "flareShapeDepthScatter": 0.07318833470344543,
+            "flareShapeSeed": 0.9943077564239502,
+            "isCore": false,
+            "outwardSpeed": -0.018,
+            "phase": 0.72,
+            "motionOffset": 0,
+            "speed": 0.018,
+            "strong": false,
+            "pathShapeDepth": -0.644,
+            "pathShapeDepthPhase": 0.82,
+            "pathShapeTravel": 0,
+            "travel": 0.72,
+            "flareBasePosition": [-1.1307501413861543, 4.346258963312319, -0.41828843600452403],
+            "flareScatter": [0.4764625801908551, 0.5588924994954141, 0.8326742459685192],
+            "flarePathSamples": "478fe2896a3adf5516d9c04a05d79cc1a0820a9d6b2fe15566614e29c7fdda8b",
+            "flareSource": {
+              "position": [-1.1307501413861543, 4.346258963312319, -0.41828843600452403],
+              "scale": [0.97935449423145, 0.97935449423145, 0.97935449423145]
+            }
+          },
+          {
+            "flareAcrossOffset": -0.06546249240636826,
+            "flareClearanceSeed": 0.4963942632020917,
+            "flareDepthOffset": 0.03715100884437561,
+            "flareProgress": 0.7351517081260681,
+            "flareShapeAcrossScatter": 0.043198633939027786,
+            "flareShapeDepthScatter": -0.054878752678632736,
+            "flareShapeSeed": 0.8290402889251709,
+            "isCore": false,
+            "outwardSpeed": 0.021,
+            "phase": 0.38,
+            "motionOffset": 0,
+            "speed": -0.021,
+            "strong": true,
+            "pathShapeDepth": 1.0919999999999999,
+            "pathShapeDepthPhase": 1.64,
+            "pathShapeTravel": 0,
+            "travel": 0.38,
+            "flareBasePosition": [2.7009131441114436, -1.448460824233149, -0.8404679726065871],
+            "flareScatter": [0.6009685239132523, 0.7590200824124622, 0.2505511245180969],
+            "flarePathSamples": "8beaa5a0b44a5713833f3b29e46d41752662c957a6a78fd74472411f217326aa",
+            "flareSource": {
+              "position": [2.7009131441114436, -1.448460824233149, -0.8404679726065871],
+              "scale": [0.9479088090334344, 0.9479088090334344, 0.9479088090334344]
+            }
+          },
+          {
+            "flareAcrossOffset": 0.04265770688652992,
+            "flareClearanceSeed": 0.6018153926706873,
+            "flareDepthOffset": 0.09833944588899612,
+            "flareProgress": 0.7954569458961487,
+            "flareShapeAcrossScatter": -0.052080344408750534,
+            "flareShapeDepthScatter": 0.06066824495792389,
+            "flareShapeSeed": 0.7591615915298462,
+            "isCore": false,
+            "outwardSpeed": 0.016,
+            "phase": 0.58,
+            "motionOffset": 0,
+            "speed": -0.016,
+            "strong": false,
+            "pathShapeDepth": -0.9799999999999999,
+            "pathShapeDepthPhase": 2.46,
+            "pathShapeTravel": 0,
+            "travel": 0.58,
+            "flareBasePosition": [-0.3341112155965708, -3.3158422932418463, 0.4719630522763479],
+            "flareScatter": [0.5480159128992454, 0.017981220211368054, 0.7757647575708688],
+            "flarePathSamples": "8b650fb68096cc2c6a5b1c588ba0471053858290a5f93455aab81112cd8e6d42",
+            "flareSource": {
+              "position": [-0.3341112155965708, -3.3158422932418463, 0.4719630522763479],
+              "scale": [0.9108073850691325, 0.9108073850691325, 0.9108073850691325]
+            }
+          },
+          {
+            "flareAcrossOffset": -0.08777377009391785,
+            "flareClearanceSeed": 0.3799099303978437,
+            "flareDepthOffset": 0.09123463928699493,
+            "flareProgress": 0.3654433488845825,
+            "flareShapeAcrossScatter": 0.01345198042690754,
+            "flareShapeDepthScatter": 0.10102706402540207,
+            "flareShapeSeed": 0.5501570105552673,
+            "isCore": false,
+            "outwardSpeed": 0.03,
+            "phase": 0.08,
+            "motionOffset": 0,
+            "speed": -0.03,
+            "strong": true,
+            "pathShapeDepth": 0.588,
+            "pathShapeDepthPhase": 3.28,
+            "pathShapeTravel": 0,
+            "travel": 0.08,
+            "flareBasePosition": [1.2905850332887676, 0.5014931050360982, -0.44861447994674164],
+            "flareScatter": [0.38425870245919214, 0.727841136889765, 0.9592139342639712],
+            "flarePathSamples": "6d275426eef5d1c0d337adb8b2c3f0050f2f5674b785224eb40e1d9b98011383",
+            "flareSource": {
+              "position": [1.2905850332887676, 0.5014931050360982, -0.44861447994674164],
+              "scale": [0.9847567897997591, 0.9847567897997591, 0.9847567897997591]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "dust-and-core",
+      "config": {
+        "orbitalDust": {
+          "enabled": true,
+          "density": 1.7,
+          "spread": 0.35,
+          "tightSpread": 0.12,
+          "driftSpeed": 0.7
+        },
+        "showCenterCluster": true,
+        "colorMode": true
+      },
+      "options": {
+        "tier": 2,
+        "pixelRatio": 2
+      },
+      "expected": {
+        "particleCount": 5713,
+        "secondarySources": 5,
+        "corePosition": [-0.0016090734861791134, -0.000011588741472223774, 0.025059115141630173],
+        "coreScale": [1, 1, 1],
+        "points": [
+          {
+            "renderOrder": 40,
+            "count": 1000,
+            "attributesSha256": "90c7c55fbf9085267537f4c665d8bd8308c26ca7790a7d603df40239b37fcd22",
+            "uniformsSha256": "6e8a194f99b6174521e054febc89bdb1000789f0e0678f4c8495709c0561088b",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 70,
+            "count": 255,
+            "attributesSha256": "bc9d2abeca0078955b91f4abbbdcc2db43aa7742fcc408a247eb4c98740cdad4",
+            "uniformsSha256": "152917a120ace8e9b299c4d3fd94f4e018b581e19435c913acf5111bf5f4eae9",
+            "vertexShader": "18bf5983794f996ccdcb823cf43959ee5af49d882c9b2731f57deafffcc02412",
+            "fragmentShader": "decabcfe105f4ac1d2cfc68ea7a35c10b5d362cbc425cf912b32887a87369878"
+          },
+          {
+            "renderOrder": 41,
+            "count": 773,
+            "attributesSha256": "1ceeaf5d930f8ad8d82e329203089e5a205ac14c3ff8c39a6cad4558373c0739",
+            "uniformsSha256": "32e1ee8eae95bc0f15fa1980b9c726f1afe94a6b477f7ef9efdd85d07fc55c38",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 71,
+            "count": 153,
+            "attributesSha256": "c4a19fc5a8c2af1f87ab3439ff1cc2c8ebdb74dcf36ed7bd31468889a12fa45f",
+            "uniformsSha256": "3f976bc4324dd618ad30c023b174f0d54d08c7d1157944cec98e60214bea8833",
+            "vertexShader": "18bf5983794f996ccdcb823cf43959ee5af49d882c9b2731f57deafffcc02412",
+            "fragmentShader": "decabcfe105f4ac1d2cfc68ea7a35c10b5d362cbc425cf912b32887a87369878"
+          },
+          {
+            "renderOrder": 42,
+            "count": 1000,
+            "attributesSha256": "843a91cbdfe25b1828cc98319433f736437a7d6fbcdc36fbd5aa9c471ce47134",
+            "uniformsSha256": "13487a0d4bbb01bae64785df53e5a687e54d1c15cf16ecd16c0bf1951205fafc",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 72,
+            "count": 255,
+            "attributesSha256": "4b7e1e42d8e7ca33bf6a7638e06a0f122da65df92b2a5affb1497f8a12a5524e",
+            "uniformsSha256": "63b6392584aec1dd391f57cd5983b6ad22702cf248d7185a5f872e8b25117c83",
+            "vertexShader": "18bf5983794f996ccdcb823cf43959ee5af49d882c9b2731f57deafffcc02412",
+            "fragmentShader": "decabcfe105f4ac1d2cfc68ea7a35c10b5d362cbc425cf912b32887a87369878"
+          },
+          {
+            "renderOrder": 43,
+            "count": 773,
+            "attributesSha256": "1893476b6d8903812d3a0f12d4468539367e7e617eb288a37917837129928106",
+            "uniformsSha256": "82e62378b79cdcd43aaaef8d208add8623ff91bd7ebec7ee5af3bf61ebcb7fd1",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 73,
+            "count": 153,
+            "attributesSha256": "3e781cb4dac7d4cd039b35f6bc0831b92aba717e8e234566f9b61652638aeb96",
+            "uniformsSha256": "c4c076df962cc0d88eeec449268111dda0f5abf8dd08e040fa1bd83fa1669ab9",
+            "vertexShader": "18bf5983794f996ccdcb823cf43959ee5af49d882c9b2731f57deafffcc02412",
+            "fragmentShader": "decabcfe105f4ac1d2cfc68ea7a35c10b5d362cbc425cf912b32887a87369878"
+          },
+          {
+            "renderOrder": 44,
+            "count": 1000,
+            "attributesSha256": "dcd4e4f77da51502860e5ba3879b75cb8ea6699f3a3f410003d940bf4838197e",
+            "uniformsSha256": "ed3e59ff37c1e51c1dcd518d5f03c60f8c4bcbd0a872bf86bca3a026fefd8950",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 74,
+            "count": 255,
+            "attributesSha256": "a518005e15f9589935a150a0b23d54e7521c34bccc20b0a2aece07bbf15c5554",
+            "uniformsSha256": "73f77c67b08ca9f7caecaf2b4b05fb119ab53e36b4e4856e333129b5de2cc11f",
+            "vertexShader": "18bf5983794f996ccdcb823cf43959ee5af49d882c9b2731f57deafffcc02412",
+            "fragmentShader": "decabcfe105f4ac1d2cfc68ea7a35c10b5d362cbc425cf912b32887a87369878"
+          },
+          {
+            "renderOrder": 100,
+            "count": 96,
+            "attributesSha256": "8ade3b545d90668f0f4e80462fe18e9fce43985f624650af468da51a5f0169ba",
+            "uniformsSha256": "f6a4ba34f9dd66b5cf7fa54c668700fb021bcb6c210575dfe51e2a76224eeedb",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          }
+        ],
+        "layers": [
+          {
+            "flareAcrossOffset": 0.11876971274614334,
+            "flareClearanceSeed": 0.0750034353841329,
+            "flareDepthOffset": -0.05621491000056267,
+            "flareProgress": 0.5620600581169128,
+            "flareShapeAcrossScatter": -0.0031836479902267456,
+            "flareShapeDepthScatter": -0.027285387739539146,
+            "flareShapeSeed": 0.23721185326576233,
+            "isCore": false,
+            "outwardSpeed": -0.025,
+            "phase": 0.16,
+            "motionOffset": 0,
+            "speed": 0.025,
+            "strong": true,
+            "pathShapeDepth": 0.868,
+            "pathShapeDepthPhase": 0,
+            "pathShapeTravel": 0,
+            "travel": 0.16,
+            "flareBasePosition": [-2.7441355226799433, 0.025090518448728335, 0.5648179434245827],
+            "flareScatter": [0.731318334081152, 0.2421512664295733, 0.37597551261569606],
+            "flarePathSamples": "de1b6290fe92fd792639c87fe2cb9b447433d6665f7df6ec2c7c94ea1ef6cb54",
+            "flareSource": {
+              "position": [-2.7441355226799433, 0.025090518448728335, 0.5648179434245827],
+              "scale": [0.9969138965328346, 0.9969138965328346, 0.9969138965328346]
+            }
+          },
+          {
+            "flareAcrossOffset": 0.024744631722569466,
+            "flareClearanceSeed": 0.6178755226210342,
+            "flareDepthOffset": -0.03053552843630314,
+            "flareProgress": 0.328321248292923,
+            "flareShapeAcrossScatter": -0.08029192686080933,
+            "flareShapeDepthScatter": 0.002311842283234,
+            "flareShapeSeed": 0.34735292196273804,
+            "isCore": false,
+            "outwardSpeed": -0.018,
+            "phase": 0.72,
+            "motionOffset": 0,
+            "speed": 0.018,
+            "strong": false,
+            "pathShapeDepth": -0.644,
+            "pathShapeDepthPhase": 0.82,
+            "pathShapeTravel": 0,
+            "travel": 0.72,
+            "flareBasePosition": [-0.9706193000033501, 4.444065352000281, -0.4463280921757832],
+            "flareScatter": [0.17647689216028084, 0.1544237379130209, 0.5105083742018905],
+            "flarePathSamples": "478fe2896a3adf5516d9c04a05d79cc1a0820a9d6b2fe15566614e29c7fdda8b",
+            "flareSource": {
+              "position": [-0.9706193000033501, 4.444065352000281, -0.4463280921757832],
+              "scale": [0.9742572759136319, 0.9742572759136319, 0.9742572759136319]
+            }
+          },
+          {
+            "flareAcrossOffset": 0.04589395597577095,
+            "flareClearanceSeed": 0.7221484641020197,
+            "flareDepthOffset": 0.08078685402870178,
+            "flareProgress": 0.5362804532051086,
+            "flareShapeAcrossScatter": -0.03609107807278633,
+            "flareShapeDepthScatter": -0.09427488595247269,
+            "flareShapeSeed": 0.32443127036094666,
+            "isCore": false,
+            "outwardSpeed": 0.021,
+            "phase": 0.38,
+            "motionOffset": 0,
+            "speed": -0.021,
+            "strong": true,
+            "pathShapeDepth": 1.0919999999999999,
+            "pathShapeDepthPhase": 1.64,
+            "pathShapeTravel": 0,
+            "travel": 0.38,
+            "flareBasePosition": [2.580588600278438, 0.963866001809674, -0.6458827816758981],
+            "flareScatter": [0.6715692308935104, 0.027671796080539934, 0.07147778171929531],
+            "flarePathSamples": "8beaa5a0b44a5713833f3b29e46d41752662c957a6a78fd74472411f217326aa",
+            "flareSource": {
+              "position": [2.580588600278438, 0.963866001809674, -0.6458827816758981],
+              "scale": [0.9989549751553194, 0.9989549751553194, 0.9989549751553194]
+            }
+          },
+          {
+            "flareAcrossOffset": 0.007135693449527025,
+            "flareClearanceSeed": 0.38242444895149674,
+            "flareDepthOffset": 0.0023069076705724,
+            "flareProgress": 0.3836587071418762,
+            "flareShapeAcrossScatter": 0.025639144703745842,
+            "flareShapeDepthScatter": -0.08182444423437119,
+            "flareShapeSeed": 0.2808869481086731,
+            "isCore": false,
+            "outwardSpeed": 0.016,
+            "phase": 0.58,
+            "motionOffset": 0,
+            "speed": -0.016,
+            "strong": false,
+            "pathShapeDepth": -0.9799999999999999,
+            "pathShapeDepthPhase": 2.46,
+            "pathShapeTravel": 0,
+            "travel": 0.58,
+            "flareBasePosition": [2.8860354263653702, 1.4110099837533718, 0.8124501584817326],
+            "flareScatter": [0.6069957191293724, 0.6066638236225117, 0.12807069331029197],
+            "flarePathSamples": "8b650fb68096cc2c6a5b1c588ba0471053858290a5f93455aab81112cd8e6d42",
+            "flareSource": {
+              "position": [2.8860354263653702, 1.4110099837533718, 0.8124501584817326],
+              "scale": [0.9887789669002593, 0.9887789669002593, 0.9887789669002593]
+            }
+          },
+          {
+            "flareAcrossOffset": -0.16133348643779755,
+            "flareClearanceSeed": 0.2862479445147983,
+            "flareDepthOffset": -0.023718450218439102,
+            "flareProgress": 0.8555921316146851,
+            "flareShapeAcrossScatter": -0.03100343607366085,
+            "flareShapeDepthScatter": 0.0311159435659647,
+            "flareShapeSeed": 0.3726247251033783,
+            "isCore": false,
+            "outwardSpeed": 0.03,
+            "phase": 0.08,
+            "motionOffset": 0,
+            "speed": -0.03,
+            "strong": true,
+            "pathShapeDepth": 0.588,
+            "pathShapeDepthPhase": 3.28,
+            "pathShapeTravel": 0,
+            "travel": 0.08,
+            "flareBasePosition": [-0.2618091325547247, -2.221280567145597, 0.1231583517874389],
+            "flareScatter": [0.023064719498506747, 0.718573306214239, 0.6414361065726553],
+            "flarePathSamples": "6d275426eef5d1c0d337adb8b2c3f0050f2f5674b785224eb40e1d9b98011383",
+            "flareSource": {
+              "position": [-0.2618091325547247, -2.221280567145597, 0.1231583517874389],
+              "scale": [0.8592689387876145, 0.8592689387876145, 0.8592689387876145]
+            }
+          },
+          {
+            "flareAcrossOffset": 0,
+            "flareClearanceSeed": 0.6651340285252445,
+            "flareDepthOffset": 0,
+            "flareProgress": 0,
+            "flareShapeAcrossScatter": 0.054072052240371704,
+            "flareShapeDepthScatter": 0.02665816992521286,
+            "flareShapeSeed": 0.06942056864500046,
+            "isCore": true,
+            "outwardSpeed": 0,
+            "phase": 0,
+            "motionOffset": 0,
+            "speed": 0,
+            "strong": true,
+            "pathShapeDepth": 0.18,
+            "pathShapeDepthPhase": 2.4,
+            "pathShapeTravel": 0,
+            "travel": 0,
+            "flareBasePosition": [
+              -0.0016090734861791134, -0.000011588741472223774, 0.025059115141630173
+            ],
+            "flareScatter": [0.4671135566641169, 0.9834868893249222, 0.6211734970711404],
+            "flarePathSamples": null,
+            "flareSource": {
+              "position": [-0.0016090734861791134, -0.000011588741472223774, 0.025059115141630173],
+              "scale": [1, 1, 1]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "custom-palette",
+      "config": {
+        "colorMode": true,
+        "colorPalette": "aurora",
+        "colorPaletteColors": ["#ff0011", "#235678"],
+        "stars": {
+          "size": 1.7,
+          "density": 0.3,
+          "flowInward": true,
+          "scatter": 0.21,
+          "densityFalloff": 0.77,
+          "sizeFalloff": 0.38
+        },
+        "rotationDepth": 1.4
+      },
+      "options": {
+        "trackOpticalSources": false
+      },
+      "expected": {
+        "particleCount": 359,
+        "secondarySources": 0,
+        "corePosition": [0, 0, 0],
+        "coreScale": [0, 0, 0],
+        "points": [
+          {
+            "renderOrder": 40,
+            "count": 75,
+            "attributesSha256": "73cbd5161c7d9a4756bb42f957ec595f81a3a7e541f634b06884ee838cf5dcf5",
+            "uniformsSha256": "6ead039f9d55778f142926f21be88f76623a0d69f5d40322c76a49e9a6d26981",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 41,
+            "count": 58,
+            "attributesSha256": "083b81142aba9ad553b6ffdb8a8131a92d079270577312fce7305a615bcb9358",
+            "uniformsSha256": "7b0bd9ea362024ce230e687c7a2946ba2f57e7b73fd407d54c60c9bfa3c00fb9",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 42,
+            "count": 75,
+            "attributesSha256": "ec21e52495b0b08ee9bfc03cc8599989aec06fb8c9e68e80eed12118b8d643b0",
+            "uniformsSha256": "0fdf53e96b5545a1094954882acbed958d83761f3c3a82934f397a5ceef1febf",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 43,
+            "count": 58,
+            "attributesSha256": "1fd35422916a9ec661bd1f7e1869a81a010b29d77185899fa74b11db8967163f",
+            "uniformsSha256": "282475f8de8dc6e0a3d6a60f273466d07a5fbafca3400a9e1c86933effc9e5ec",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 44,
+            "count": 75,
+            "attributesSha256": "d5298c8c305a51c47e2ae78cb394545d4bd05b71fa0263056a24df56f69acf37",
+            "uniformsSha256": "a9a56462748d5edacc4a4cb0e35ee8df2270cc9597634971f31c3b7202c062b0",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 100,
+            "count": 18,
+            "attributesSha256": "927c5fa6fbc4cf4b06c46d033ef8f0b2fe8ab4a18aa1fbef50f9abb8607e5424",
+            "uniformsSha256": "5f49bd5292ca357e9c86607015a89471c9c95ee02ed2fe2d4d9f12eb11540657",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          }
+        ],
+        "layers": [
+          {
+            "flareAcrossOffset": -0.0349588505923748,
+            "flareClearanceSeed": 0.1314828509224526,
+            "flareDepthOffset": 0.05545426160097122,
+            "flareProgress": 0.834547758102417,
+            "flareShapeAcrossScatter": 0.08307455480098724,
+            "flareShapeDepthScatter": 0.04830466955900192,
+            "flareShapeSeed": 0.9805906414985657,
+            "isCore": false,
+            "outwardSpeed": -0.025,
+            "phase": 0.16,
+            "motionOffset": 0,
+            "speed": 0.025,
+            "strong": true,
+            "pathShapeDepth": 0.868,
+            "pathShapeDepthPhase": 0,
+            "pathShapeTravel": 0,
+            "travel": 0.16,
+            "flareBasePosition": [-0.9434153017464224, -1.5566287035698994, 0.09243813446200107],
+            "flareScatter": [0.8834069046442892, 0.8088810586268664, 0.7195666748066287],
+            "flarePathSamples": "de1b6290fe92fd792639c87fe2cb9b447433d6665f7df6ec2c7c94ea1ef6cb54",
+            "flareSource": null
+          },
+          {
+            "flareAcrossOffset": 0.03360414877533913,
+            "flareClearanceSeed": 0.08505833210801939,
+            "flareDepthOffset": -0.014163327403366566,
+            "flareProgress": 0.26105302572250366,
+            "flareShapeAcrossScatter": 0.0473412461578846,
+            "flareShapeDepthScatter": -0.06316583603620529,
+            "flareShapeSeed": 0.918577253818512,
+            "isCore": false,
+            "outwardSpeed": -0.018,
+            "phase": 0.72,
+            "motionOffset": 0,
+            "speed": 0.018,
+            "strong": false,
+            "pathShapeDepth": -0.644,
+            "pathShapeDepthPhase": 0.82,
+            "pathShapeTravel": 0,
+            "travel": 0.72,
+            "flareBasePosition": [-1.1957424179179348, 4.240851611902779, -0.3980939806784368],
+            "flareScatter": [0.5088125106412917, 0.8856978810072178, 0.2128825487634458],
+            "flarePathSamples": "478fe2896a3adf5516d9c04a05d79cc1a0820a9d6b2fe15566614e29c7fdda8b",
+            "flareSource": null
+          },
+          {
+            "flareAcrossOffset": -0.03795216605067253,
+            "flareClearanceSeed": 0.4963942632020917,
+            "flareDepthOffset": 0.02153845876455307,
+            "flareProgress": 0.7351517081260681,
+            "flareShapeAcrossScatter": -0.04352497309446335,
+            "flareShapeDepthScatter": -0.054878752678632736,
+            "flareShapeSeed": 0.7389503121376038,
+            "isCore": false,
+            "outwardSpeed": 0.021,
+            "phase": 0.38,
+            "motionOffset": 0,
+            "speed": -0.021,
+            "strong": true,
+            "pathShapeDepth": 1.0919999999999999,
+            "pathShapeDepthPhase": 1.64,
+            "pathShapeTravel": 0,
+            "travel": 0.38,
+            "flareBasePosition": [2.882802824995185, -0.22368393871025796, -0.8891323248273528],
+            "flareScatter": [0.6009685239132523, 0.036323381784313824, 0.2505511245180969],
+            "flarePathSamples": "8beaa5a0b44a5713833f3b29e46d41752662c957a6a78fd74472411f217326aa",
+            "flareSource": null
+          },
+          {
+            "flareAcrossOffset": -0.09301051497459412,
+            "flareClearanceSeed": 0.9104155056702439,
+            "flareDepthOffset": 0.09830444306135178,
+            "flareProgress": 0.6555658578872681,
+            "flareShapeAcrossScatter": -0.014771806076169014,
+            "flareShapeDepthScatter": -0.012877139262855053,
+            "flareShapeSeed": 0.7622581720352173,
+            "isCore": false,
+            "outwardSpeed": 0.016,
+            "phase": 0.58,
+            "motionOffset": 0,
+            "speed": -0.016,
+            "strong": false,
+            "pathShapeDepth": -0.9799999999999999,
+            "pathShapeDepthPhase": 2.46,
+            "pathShapeTravel": 0,
+            "travel": 0.58,
+            "flareBasePosition": [3.0749077420120368, -1.4316320566309146, 1.059542449365076],
+            "flareScatter": [0.8590962163070799, 0.017805396222684067, 0.441467550026573],
+            "flarePathSamples": "8b650fb68096cc2c6a5b1c588ba0471053858290a5f93455aab81112cd8e6d42",
+            "flareSource": null
+          },
+          {
+            "flareAcrossOffset": 0.017303474247455597,
+            "flareClearanceSeed": 0.627253779945022,
+            "flareDepthOffset": -0.07755395025014877,
+            "flareProgress": 0.16845540702342987,
+            "flareShapeAcrossScatter": -0.030870838090777397,
+            "flareShapeDepthScatter": -0.03677010536193848,
+            "flareShapeSeed": 0.04189978539943695,
+            "isCore": false,
+            "outwardSpeed": 0.03,
+            "phase": 0.08,
+            "motionOffset": 0,
+            "speed": -0.03,
+            "strong": true,
+            "pathShapeDepth": 0.588,
+            "pathShapeDepthPhase": 3.28,
+            "pathShapeTravel": 0,
+            "travel": 0.08,
+            "flareBasePosition": [0.35856002888785465, 1.0915134564311724, -0.5084516139527577],
+            "flareScatter": [0.3253379629313713, 0.41740505309280707, 0.3328631517752001],
+            "flarePathSamples": "6d275426eef5d1c0d337adb8b2c3f0050f2f5674b785224eb40e1d9b98011383",
+            "flareSource": null
+          },
+          {
+            "flareAcrossOffset": 0,
+            "flareClearanceSeed": 0.6651340285252445,
+            "flareDepthOffset": 0,
+            "flareProgress": 0,
+            "flareShapeAcrossScatter": -0.012040135450661182,
+            "flareShapeDepthScatter": 0.02665816992521286,
+            "flareShapeSeed": 0.9994311928749084,
+            "isCore": true,
+            "outwardSpeed": 0,
+            "phase": 0,
+            "motionOffset": 0,
+            "speed": 0,
+            "strong": true,
+            "pathShapeDepth": 0.18,
+            "pathShapeDepthPhase": 2.4,
+            "pathShapeTravel": 0,
+            "travel": 0,
+            "flareBasePosition": [
+              -0.0016090734861791134, -0.000011588741472223774, 0.025059115141630173
+            ],
+            "flareScatter": [0.4671135566641169, 0.43255198104361625, 0.6211734970711404],
+            "flarePathSamples": null,
+            "flareSource": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "converge-background",
+      "config": {
+        "animationPreset": "converge-tilt",
+        "animationPlaying": true
+      },
+      "options": {
+        "maxParticleCount": 5000
+      },
+      "expected": {
+        "particleCount": 4642,
+        "secondarySources": 5,
+        "corePosition": [-0.0016090734861791134, -0.000011588741472223774, 0.025059115141630173],
+        "coreScale": [1, 1, 1],
+        "points": [
+          {
+            "renderOrder": 40,
+            "count": 1000,
+            "attributesSha256": "90c7c55fbf9085267537f4c665d8bd8308c26ca7790a7d603df40239b37fcd22",
+            "uniformsSha256": "30136f7376cb935a27b0faace20de7d53a573d6ce04a8b7d0f7b918dc4320947",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 41,
+            "count": 773,
+            "attributesSha256": "1ceeaf5d930f8ad8d82e329203089e5a205ac14c3ff8c39a6cad4558373c0739",
+            "uniformsSha256": "6d47c558db37cc21e333281e3592c819a57ad4e20006bdd98069e36e50b56cfe",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 42,
+            "count": 1000,
+            "attributesSha256": "843a91cbdfe25b1828cc98319433f736437a7d6fbcdc36fbd5aa9c471ce47134",
+            "uniformsSha256": "32a2d4eefb26d5334719254abb0c8cf2dbb8ed901d6f022cd5082c8ec4f2a861",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 43,
+            "count": 773,
+            "attributesSha256": "1893476b6d8903812d3a0f12d4468539367e7e617eb288a37917837129928106",
+            "uniformsSha256": "b697f4c1b203574b8c9301b0e3a3ff3b1f9a98c343fda46c774f74ce71a65274",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 44,
+            "count": 1000,
+            "attributesSha256": "dcd4e4f77da51502860e5ba3879b75cb8ea6699f3a3f410003d940bf4838197e",
+            "uniformsSha256": "1ee1ef96d146dda9a88a3cbb65b1abf098fba0441b48bcc6bf19619af2dd2a86",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 100,
+            "count": 96,
+            "attributesSha256": "8ade3b545d90668f0f4e80462fe18e9fce43985f624650af468da51a5f0169ba",
+            "uniformsSha256": "b6c5ad6b89252c431442bb891998285893ebef8f5d2038260989147d78220b52",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          }
+        ],
+        "layers": [
+          {
+            "flareAcrossOffset": 0.11876971274614334,
+            "flareClearanceSeed": 0.0750034353841329,
+            "flareDepthOffset": -0.05621491000056267,
+            "flareProgress": 0.5620600581169128,
+            "flareShapeAcrossScatter": -0.0031836479902267456,
+            "flareShapeDepthScatter": -0.027285387739539146,
+            "flareShapeSeed": 0.23721185326576233,
+            "isCore": false,
+            "outwardSpeed": -0.025,
+            "phase": 0.16,
+            "motionOffset": 0,
+            "speed": 0.025,
+            "strong": true,
+            "pathShapeDepth": 0.868,
+            "pathShapeDepthPhase": 0,
+            "pathShapeTravel": 0,
+            "travel": 0.16,
+            "flareBasePosition": [-2.7441355226799433, 0.025090518448728335, 0.5648179434245827],
+            "flareScatter": [0.731318334081152, 0.2421512664295733, 0.37597551261569606],
+            "flarePathSamples": "de1b6290fe92fd792639c87fe2cb9b447433d6665f7df6ec2c7c94ea1ef6cb54",
+            "flareSource": {
+              "position": [-2.7441355226799433, 0.025090518448728335, 0.5648179434245827],
+              "scale": [0.9969138965328346, 0.9969138965328346, 0.9969138965328346]
+            }
+          },
+          {
+            "flareAcrossOffset": 0.024744631722569466,
+            "flareClearanceSeed": 0.6178755226210342,
+            "flareDepthOffset": -0.03053552843630314,
+            "flareProgress": 0.328321248292923,
+            "flareShapeAcrossScatter": -0.08029192686080933,
+            "flareShapeDepthScatter": 0.002311842283234,
+            "flareShapeSeed": 0.34735292196273804,
+            "isCore": false,
+            "outwardSpeed": -0.018,
+            "phase": 0.72,
+            "motionOffset": 0,
+            "speed": 0.018,
+            "strong": false,
+            "pathShapeDepth": -0.644,
+            "pathShapeDepthPhase": 0.82,
+            "pathShapeTravel": 0,
+            "travel": 0.72,
+            "flareBasePosition": [-0.9706193000033501, 4.444065352000281, -0.4463280921757832],
+            "flareScatter": [0.17647689216028084, 0.1544237379130209, 0.5105083742018905],
+            "flarePathSamples": "478fe2896a3adf5516d9c04a05d79cc1a0820a9d6b2fe15566614e29c7fdda8b",
+            "flareSource": {
+              "position": [-0.9706193000033501, 4.444065352000281, -0.4463280921757832],
+              "scale": [0.9742572759136319, 0.9742572759136319, 0.9742572759136319]
+            }
+          },
+          {
+            "flareAcrossOffset": 0.04589395597577095,
+            "flareClearanceSeed": 0.7221484641020197,
+            "flareDepthOffset": 0.08078685402870178,
+            "flareProgress": 0.5362804532051086,
+            "flareShapeAcrossScatter": -0.03609107807278633,
+            "flareShapeDepthScatter": -0.09427488595247269,
+            "flareShapeSeed": 0.32443127036094666,
+            "isCore": false,
+            "outwardSpeed": 0.021,
+            "phase": 0.38,
+            "motionOffset": 0,
+            "speed": -0.021,
+            "strong": true,
+            "pathShapeDepth": 1.0919999999999999,
+            "pathShapeDepthPhase": 1.64,
+            "pathShapeTravel": 0,
+            "travel": 0.38,
+            "flareBasePosition": [2.580588600278438, 0.963866001809674, -0.6458827816758981],
+            "flareScatter": [0.6715692308935104, 0.027671796080539934, 0.07147778171929531],
+            "flarePathSamples": "8beaa5a0b44a5713833f3b29e46d41752662c957a6a78fd74472411f217326aa",
+            "flareSource": {
+              "position": [2.580588600278438, 0.963866001809674, -0.6458827816758981],
+              "scale": [0.9989549751553194, 0.9989549751553194, 0.9989549751553194]
+            }
+          },
+          {
+            "flareAcrossOffset": 0.007135693449527025,
+            "flareClearanceSeed": 0.38242444895149674,
+            "flareDepthOffset": 0.0023069076705724,
+            "flareProgress": 0.3836587071418762,
+            "flareShapeAcrossScatter": 0.025639144703745842,
+            "flareShapeDepthScatter": -0.08182444423437119,
+            "flareShapeSeed": 0.2808869481086731,
+            "isCore": false,
+            "outwardSpeed": 0.016,
+            "phase": 0.58,
+            "motionOffset": 0,
+            "speed": -0.016,
+            "strong": false,
+            "pathShapeDepth": -0.9799999999999999,
+            "pathShapeDepthPhase": 2.46,
+            "pathShapeTravel": 0,
+            "travel": 0.58,
+            "flareBasePosition": [2.8860354263653702, 1.4110099837533718, 0.8124501584817326],
+            "flareScatter": [0.6069957191293724, 0.6066638236225117, 0.12807069331029197],
+            "flarePathSamples": "8b650fb68096cc2c6a5b1c588ba0471053858290a5f93455aab81112cd8e6d42",
+            "flareSource": {
+              "position": [2.8860354263653702, 1.4110099837533718, 0.8124501584817326],
+              "scale": [0.9887789669002593, 0.9887789669002593, 0.9887789669002593]
+            }
+          },
+          {
+            "flareAcrossOffset": -0.16133348643779755,
+            "flareClearanceSeed": 0.2862479445147983,
+            "flareDepthOffset": -0.023718450218439102,
+            "flareProgress": 0.8555921316146851,
+            "flareShapeAcrossScatter": -0.03100343607366085,
+            "flareShapeDepthScatter": 0.0311159435659647,
+            "flareShapeSeed": 0.3726247251033783,
+            "isCore": false,
+            "outwardSpeed": 0.03,
+            "phase": 0.08,
+            "motionOffset": 0,
+            "speed": -0.03,
+            "strong": true,
+            "pathShapeDepth": 0.588,
+            "pathShapeDepthPhase": 3.28,
+            "pathShapeTravel": 0,
+            "travel": 0.08,
+            "flareBasePosition": [-0.2618091325547247, -2.221280567145597, 0.1231583517874389],
+            "flareScatter": [0.023064719498506747, 0.718573306214239, 0.6414361065726553],
+            "flarePathSamples": "6d275426eef5d1c0d337adb8b2c3f0050f2f5674b785224eb40e1d9b98011383",
+            "flareSource": {
+              "position": [-0.2618091325547247, -2.221280567145597, 0.1231583517874389],
+              "scale": [0.8592689387876145, 0.8592689387876145, 0.8592689387876145]
+            }
+          },
+          {
+            "flareAcrossOffset": 0,
+            "flareClearanceSeed": 0.6651340285252445,
+            "flareDepthOffset": 0,
+            "flareProgress": 0,
+            "flareShapeAcrossScatter": 0.054072052240371704,
+            "flareShapeDepthScatter": 0.02665816992521286,
+            "flareShapeSeed": 0.06942056864500046,
+            "isCore": true,
+            "outwardSpeed": 0,
+            "phase": 0,
+            "motionOffset": 0,
+            "speed": 0,
+            "strong": true,
+            "pathShapeDepth": 0.18,
+            "pathShapeDepthPhase": 2.4,
+            "pathShapeTravel": 0,
+            "travel": 0,
+            "flareBasePosition": [
+              -0.0016090734861791134, -0.000011588741472223774, 0.025059115141630173
+            ],
+            "flareScatter": [0.4671135566641169, 0.9834868893249222, 0.6211734970711404],
+            "flarePathSamples": null,
+            "flareSource": {
+              "position": [-0.0016090734861791134, -0.000011588741472223774, 0.025059115141630173],
+              "scale": [1, 1, 1]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "bounded-background",
+      "config": {
+        "animationPreset": "converge-tilt",
+        "orbitalDust": {
+          "enabled": true
+        },
+        "showCenterCluster": true
+      },
+      "options": {
+        "maxParticleCount": 2000
+      },
+      "expected": {
+        "particleCount": 2000,
+        "secondarySources": 5,
+        "corePosition": [-0.0016090734861791134, -0.000011588741472223774, 0.025059115141630173],
+        "coreScale": [1, 1, 1],
+        "points": [
+          {
+            "renderOrder": 40,
+            "count": 396,
+            "attributesSha256": "820723d6c4377f87bec28bf88f8d104b93d639bcfeb55371d4ddb93426e80807",
+            "uniformsSha256": "eec1b1a06b1b3eb7df4b2a5000714c35e305d24242407979f39c16cdf149b930",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 70,
+            "count": 37,
+            "attributesSha256": "99e0295a3c97d8d7712daf6bca639afe1cc89ba5f4a56543e2ea47105f1f59d5",
+            "uniformsSha256": "919d17a961b99bc70e8716095a901f6ab04cb887062c40b4fa7252b7e0077406",
+            "vertexShader": "18bf5983794f996ccdcb823cf43959ee5af49d882c9b2731f57deafffcc02412",
+            "fragmentShader": "decabcfe105f4ac1d2cfc68ea7a35c10b5d362cbc425cf912b32887a87369878"
+          },
+          {
+            "renderOrder": 41,
+            "count": 306,
+            "attributesSha256": "d061d23056cce7cd877edf33b1ba0ab5c8cd81493e70e9c0387b15c4d89ef1d0",
+            "uniformsSha256": "69aad1af07fb40354f902793159526406870a329bc6896e27201a8b88d89823b",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 71,
+            "count": 23,
+            "attributesSha256": "d8b904a5bf421e37891754c788cddbabc0b155363191fa2dbc2898ba11198d34",
+            "uniformsSha256": "90d0e8b7f2db5de42db1f7c57d5185b6ce659693b10afe48e41b4e140ba9a964",
+            "vertexShader": "18bf5983794f996ccdcb823cf43959ee5af49d882c9b2731f57deafffcc02412",
+            "fragmentShader": "decabcfe105f4ac1d2cfc68ea7a35c10b5d362cbc425cf912b32887a87369878"
+          },
+          {
+            "renderOrder": 42,
+            "count": 396,
+            "attributesSha256": "5e5a8897a2ac3fb53896f46c67a77a81e8d08dde13ac03582f4cf142b0c25bb9",
+            "uniformsSha256": "32a2d4eefb26d5334719254abb0c8cf2dbb8ed901d6f022cd5082c8ec4f2a861",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 72,
+            "count": 37,
+            "attributesSha256": "887425def069e7c0ff6217472818c6020c26525219583a70aaa3954931e1edb2",
+            "uniformsSha256": "e919dab809c8efcb87129c571b64d6df6451c88af3564fdd5fd7847156587ddd",
+            "vertexShader": "18bf5983794f996ccdcb823cf43959ee5af49d882c9b2731f57deafffcc02412",
+            "fragmentShader": "decabcfe105f4ac1d2cfc68ea7a35c10b5d362cbc425cf912b32887a87369878"
+          },
+          {
+            "renderOrder": 43,
+            "count": 306,
+            "attributesSha256": "6cc7a18759d4d95ed21d37114ae50940e34fcd2056991d0f96e780a428b2fd53",
+            "uniformsSha256": "fb5a4030e46ab415892d4dd4a0742dd60e107d6358bc5a6b2244c8a80a697a00",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 73,
+            "count": 23,
+            "attributesSha256": "0b4937d3ecdd1c647585dc4618141b9ee03348de2c6d1313628daf440410c737",
+            "uniformsSha256": "2befe44047fc01bb255cde5c9dd25c907d17173cf90c7141e071af41cbc8f691",
+            "vertexShader": "18bf5983794f996ccdcb823cf43959ee5af49d882c9b2731f57deafffcc02412",
+            "fragmentShader": "decabcfe105f4ac1d2cfc68ea7a35c10b5d362cbc425cf912b32887a87369878"
+          },
+          {
+            "renderOrder": 44,
+            "count": 396,
+            "attributesSha256": "1abf41cc281c862443288c8ce6e636444206a73107e5b9c37da84621d60d449c",
+            "uniformsSha256": "1ee1ef96d146dda9a88a3cbb65b1abf098fba0441b48bcc6bf19619af2dd2a86",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          },
+          {
+            "renderOrder": 74,
+            "count": 37,
+            "attributesSha256": "c773a4b9aa3f2234360341a28cb2942d46886727fb26cb99120a5b4fac9da7e7",
+            "uniformsSha256": "5fba4c04a9e626f93b38d5a7dff62ac96a872b81a936a0e7caf338bed28ea7d1",
+            "vertexShader": "18bf5983794f996ccdcb823cf43959ee5af49d882c9b2731f57deafffcc02412",
+            "fragmentShader": "decabcfe105f4ac1d2cfc68ea7a35c10b5d362cbc425cf912b32887a87369878"
+          },
+          {
+            "renderOrder": 100,
+            "count": 43,
+            "attributesSha256": "d3f83b3f1e85a7fd36ef6377c4526a9a3dfa5b18b756340f045b8debdcd489a1",
+            "uniformsSha256": "b6c5ad6b89252c431442bb891998285893ebef8f5d2038260989147d78220b52",
+            "vertexShader": "57c8240745e1e409c45ef980e61cd6cb1a414e07d093ee8d9c738b6c275f9281",
+            "fragmentShader": "5426f4af7bdced4fee0f82c9d87c465d3657bd3fd8679970defa6902d314103a"
+          }
+        ],
+        "layers": [
+          {
+            "flareAcrossOffset": -0.05652187392115593,
+            "flareClearanceSeed": 0.7759096933841647,
+            "flareDepthOffset": -0.10939624160528183,
+            "flareProgress": 0.33750176429748535,
+            "flareShapeAcrossScatter": -0.06463876366615295,
+            "flareShapeDepthScatter": -0.06127714738249779,
+            "flareShapeSeed": 0.3802981972694397,
+            "isCore": false,
+            "outwardSpeed": -0.025,
+            "phase": 0.16,
+            "motionOffset": 0,
+            "speed": 0.025,
+            "strong": true,
+            "pathShapeDepth": 0.868,
+            "pathShapeDepthPhase": 0,
+            "pathShapeTravel": 0,
+            "travel": 0.16,
+            "flareBasePosition": [-3.0401932797234803, 2.535055003653185, 0.6839765868136778],
+            "flareScatter": [0.02560156369872857, 0.4357420717278728, 0.22146751971513368],
+            "flarePathSamples": "de1b6290fe92fd792639c87fe2cb9b447433d6665f7df6ec2c7c94ea1ef6cb54",
+            "flareSource": {
+              "position": [-3.0401932797234803, 2.535055003653185, 0.6839765868136778],
+              "scale": [0.9771592804129098, 0.9771592804129098, 0.9771592804129098]
+            }
+          },
+          {
+            "flareAcrossOffset": 0.072908915579319,
+            "flareClearanceSeed": 0.8845511785839335,
+            "flareDepthOffset": 0.012810641899704933,
+            "flareProgress": 0.13737615942955017,
+            "flareShapeAcrossScatter": 0.015780294314026833,
+            "flareShapeDepthScatter": -0.10809062421321869,
+            "flareShapeSeed": 0.9040082097053528,
+            "isCore": false,
+            "outwardSpeed": -0.018,
+            "phase": 0.72,
+            "motionOffset": 0,
+            "speed": 0.018,
+            "strong": false,
+            "pathShapeDepth": -0.644,
+            "pathShapeDepthPhase": 0.82,
+            "pathShapeTravel": 0,
+            "travel": 0.72,
+            "flareBasePosition": [1.2571100390563241, 5.400097067211329, -0.3033629014521436],
+            "flareScatter": [0.47364025969818613, 0.6578621872249641, 0.008678967176820152],
+            "flarePathSamples": "478fe2896a3adf5516d9c04a05d79cc1a0820a9d6b2fe15566614e29c7fdda8b",
+            "flareSource": {
+              "position": [1.2571100390563241, 5.400097067211329, -0.3033629014521436],
+              "scale": [0.8521422211670843, 0.8521422211670843, 0.8521422211670843]
+            }
+          },
+          {
+            "flareAcrossOffset": 0.04589395597577095,
+            "flareClearanceSeed": 0.7221484641020197,
+            "flareDepthOffset": 0.08078685402870178,
+            "flareProgress": 0.5362804532051086,
+            "flareShapeAcrossScatter": -0.03609107807278633,
+            "flareShapeDepthScatter": -0.09427488595247269,
+            "flareShapeSeed": 0.32443127036094666,
+            "isCore": false,
+            "outwardSpeed": 0.021,
+            "phase": 0.38,
+            "motionOffset": 0,
+            "speed": -0.021,
+            "strong": true,
+            "pathShapeDepth": 1.0919999999999999,
+            "pathShapeDepthPhase": 1.64,
+            "pathShapeTravel": 0,
+            "travel": 0.38,
+            "flareBasePosition": [2.580588600278438, 0.963866001809674, -0.6458827816758981],
+            "flareScatter": [0.6715692308935104, 0.027671796080539934, 0.07147778171929531],
+            "flarePathSamples": "8beaa5a0b44a5713833f3b29e46d41752662c957a6a78fd74472411f217326aa",
+            "flareSource": {
+              "position": [2.580588600278438, 0.963866001809674, -0.6458827816758981],
+              "scale": [0.9989549751553194, 0.9989549751553194, 0.9989549751553194]
+            }
+          },
+          {
+            "flareAcrossOffset": 0.00580440042540431,
+            "flareClearanceSeed": 0.7370020391645085,
+            "flareDepthOffset": -0.0057913330383598804,
+            "flareProgress": 0.13976341485977173,
+            "flareShapeAcrossScatter": -0.019415922462940216,
+            "flareShapeDepthScatter": -0.030429719015955925,
+            "flareShapeSeed": 0.8069947957992554,
+            "isCore": false,
+            "outwardSpeed": 0.016,
+            "phase": 0.58,
+            "motionOffset": 0,
+            "speed": -0.016,
+            "strong": false,
+            "pathShapeDepth": -0.9799999999999999,
+            "pathShapeDepthPhase": 2.46,
+            "pathShapeTravel": 0,
+            "travel": 0.58,
+            "flareBasePosition": [-1.2837450979246265, 1.741935458797973, 0.008672115929738416],
+            "flareScatter": [0.12167700246936874, 0.7165236404762254, 0.3616830957635102],
+            "flarePathSamples": "8b650fb68096cc2c6a5b1c588ba0471053858290a5f93455aab81112cd8e6d42",
+            "flareSource": {
+              "position": [-1.2837450979246265, 1.741935458797973, 0.008672115929738416],
+              "scale": [0.8545898182675363, 0.8545898182675363, 0.8545898182675363]
+            }
+          },
+          {
+            "flareAcrossOffset": -0.16133348643779755,
+            "flareClearanceSeed": 0.2862479445147983,
+            "flareDepthOffset": -0.023718450218439102,
+            "flareProgress": 0.8555921316146851,
+            "flareShapeAcrossScatter": -0.03100343607366085,
+            "flareShapeDepthScatter": 0.0311159435659647,
+            "flareShapeSeed": 0.3726247251033783,
+            "isCore": false,
+            "outwardSpeed": 0.03,
+            "phase": 0.08,
+            "motionOffset": 0,
+            "speed": -0.03,
+            "strong": true,
+            "pathShapeDepth": 0.588,
+            "pathShapeDepthPhase": 3.28,
+            "pathShapeTravel": 0,
+            "travel": 0.08,
+            "flareBasePosition": [-0.2618091325547247, -2.221280567145597, 0.1231583517874389],
+            "flareScatter": [0.023064719498506747, 0.718573306214239, 0.6414361065726553],
+            "flarePathSamples": "6d275426eef5d1c0d337adb8b2c3f0050f2f5674b785224eb40e1d9b98011383",
+            "flareSource": {
+              "position": [-0.2618091325547247, -2.221280567145597, 0.1231583517874389],
+              "scale": [0.8592689387876145, 0.8592689387876145, 0.8592689387876145]
+            }
+          },
+          {
+            "flareAcrossOffset": 0,
+            "flareClearanceSeed": 0.6651340285252445,
+            "flareDepthOffset": 0,
+            "flareProgress": 0,
+            "flareShapeAcrossScatter": 0.054072052240371704,
+            "flareShapeDepthScatter": 0.02665816992521286,
+            "flareShapeSeed": 0.06942056864500046,
+            "isCore": true,
+            "outwardSpeed": 0,
+            "phase": 0,
+            "motionOffset": 0,
+            "speed": 0,
+            "strong": true,
+            "pathShapeDepth": 0.18,
+            "pathShapeDepthPhase": 2.4,
+            "pathShapeTravel": 0,
+            "travel": 0,
+            "flareBasePosition": [
+              -0.0016090734861791134, -0.000011588741472223774, 0.025059115141630173
+            ],
+            "flareScatter": [0.4671135566641169, 0.9834868893249222, 0.6211734970711404],
+            "flarePathSamples": null,
+            "flareSource": {
+              "position": [-0.0016090734861791134, -0.000011588741472223774, 0.025059115141630173],
+              "scale": [1, 1, 1]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

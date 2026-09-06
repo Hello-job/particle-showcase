@@ -57,7 +57,7 @@ src/
 │   ├── ParticleBackground.tsx
 │   ├── engine/           # TypeScript 场景接入与类型边界
 │   ├── shapes/           # SVG 几何、注册表与采样
-│   └── vendor/astra/     # 有来源记录的原始 JavaScript 渲染模块
+│   └── core/             # 可读 TypeScript 粒子、动画、渲染和着色器
 ├── styles/               # 页面与粒子背景样式
 └── main.tsx
 public/assets/            # 本地图形与字体
@@ -69,7 +69,7 @@ deliverables/             # 可分发的 Skill ZIP
 worker/                   # 可选 Sites 适配
 ```
 
-React 组件使用 `.tsx`，不含 JSX 的自有逻辑使用 `.ts`。原页面提取的数学与渲染模块保留为 `.js`，集中隔离在 `vendor/astra/`，通过类型边界接入。这样可以严格检查新代码，同时保留可追溯的渲染实现。详见[架构与数据流](docs/architecture.md)。
+React 组件使用 `.tsx`，粒子核心和其他逻辑使用 `.ts`。`particles/core/` 将提取的编译模块整理为普通导入、明确命名和结构类型；GPU 着色器保留为 GLSL 源码。原始编译版本保存在 Git 标签 `typescript-showcase-v1`，不参与当前运行或 Skill 分发。这是有来源记录的重构，不能称为找回原作者源码。详见[架构与数据流](docs/architecture.md)和[粒子核心阅读指南](src/particles/core/README.md)。
 
 ## 定制与 Skill
 
@@ -90,4 +90,4 @@ React 组件使用 `.tsx`，不含 JSX 的自有逻辑使用 `.ts`。原页面�
 
 **仓库尚未选择统一的开源许可证。** 原始渲染代码、字体与品牌素材保留各自来源，本仓库不对它们授予新的许可。公开展示源码与授予开源许可是两个独立步骤；当前状态见 [LICENSE.md](LICENSE.md)，具体素材见[第三方来源说明](THIRD_PARTY_NOTICES.md)。
 
-本次整理的检查结果见 [TypeScript 重构验收](docs/verification/typescript-migration.md)。历史截图与视觉验收在 [docs/archive](docs/archive/README.md)，各阶段 Git 标签保持可回退。
+本轮检查见 [可读核心验收](docs/verification/readable-engine.md)，前一轮页面迁移见 [TypeScript 重构验收](docs/verification/typescript-migration.md)。历史截图与视觉验收在 [docs/archive](docs/archive/README.md)，各阶段 Git 标签保持可回退。

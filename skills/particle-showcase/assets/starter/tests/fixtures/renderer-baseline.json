@@ -1,0 +1,660 @@
+{
+  "source": "Original renderer.js preserved at Git tag typescript-showcase-v1 (85663be). Generated before removing the compiled runtime; these are comparison outputs, not regenerated expectations.",
+  "dirt": [
+    {
+      "width": 256,
+      "height": 192,
+      "seed": 2776289653,
+      "sha256": "0178cf636e55951552bbb6c098ac8633a0ed3b6c6d857379a78b26b50e2bf557"
+    },
+    {
+      "width": 16,
+      "height": 16,
+      "seed": 0,
+      "sha256": "2afaa6ca2782bf6e3f2861cd751117c35d3607f6fb7d3e4abcfc273c6768c69a"
+    },
+    {
+      "width": 47,
+      "height": 31,
+      "seed": 17,
+      "sha256": "741f04af7e51b47c8ac15bf72851b2a4bf87bc1cdc6dcf04978116ab89f0a602"
+    },
+    {
+      "width": 80,
+      "height": 35,
+      "seed": -123,
+      "sha256": "826169356b1bba5e6baf66deead516d8423a2b50897ea2225bf468fadf88d12f"
+    },
+    {
+      "width": 512,
+      "height": 128,
+      "seed": 4294967295,
+      "sha256": "8ff1799499c38c9fef716a0b2f2916bd16b2c4d6c02cfa428acce33e7d61aaa3"
+    }
+  ],
+  "shaders": {
+    "BLOOM_PREFILTER_FRAGMENT": "6b608a92eba8c72967e2803b55dcf88336781f73ec2a7282d484a631cce546cc",
+    "BLOOM_BLUR_FRAGMENT": "753ee9efd32977145dc86729184facfeed7398dafd8af8bf9d2dbd0e5a5a7652",
+    "LENS_FLARE_VERTEX": "414444030cdc39aaa460d9a1a292ecb1060a500e51af8b22aa8c272aa1659b6e",
+    "LENS_FLARE_FRAGMENT": "081449ca5930fa89d7483eb21549e3c80f9f6408d7ef120f3da4d886eda263b2"
+  },
+  "quality": [
+    {
+      "tier": 0,
+      "reducedMotion": false,
+      "dpr": 0.25,
+      "width": 360,
+      "height": 780,
+      "expected": {
+        "available": false,
+        "tier": 0,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 0,
+        "continuousMotion": false,
+        "postprocessing": "none",
+        "multisampling": 0,
+        "bloomLevels": 0,
+        "bloomResolutionScale": 0,
+        "optics": null
+      }
+    },
+    {
+      "tier": 0,
+      "reducedMotion": false,
+      "dpr": 1,
+      "width": 1440,
+      "height": 900,
+      "expected": {
+        "available": false,
+        "tier": 0,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 0,
+        "continuousMotion": false,
+        "postprocessing": "none",
+        "multisampling": 0,
+        "bloomLevels": 0,
+        "bloomResolutionScale": 0,
+        "optics": null
+      }
+    },
+    {
+      "tier": 0,
+      "reducedMotion": false,
+      "dpr": 3,
+      "width": 5120,
+      "height": 2880,
+      "expected": {
+        "available": false,
+        "tier": 0,
+        "pixelRatio": 0.5,
+        "antialias": false,
+        "maxParticleCount": 0,
+        "continuousMotion": false,
+        "postprocessing": "none",
+        "multisampling": 0,
+        "bloomLevels": 0,
+        "bloomResolutionScale": 0,
+        "optics": null
+      }
+    },
+    {
+      "tier": 0,
+      "reducedMotion": true,
+      "dpr": 0.25,
+      "width": 360,
+      "height": 780,
+      "expected": {
+        "available": false,
+        "tier": 0,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 0,
+        "continuousMotion": false,
+        "postprocessing": "none",
+        "multisampling": 0,
+        "bloomLevels": 0,
+        "bloomResolutionScale": 0,
+        "optics": null
+      }
+    },
+    {
+      "tier": 0,
+      "reducedMotion": true,
+      "dpr": 1,
+      "width": 1440,
+      "height": 900,
+      "expected": {
+        "available": false,
+        "tier": 0,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 0,
+        "continuousMotion": false,
+        "postprocessing": "none",
+        "multisampling": 0,
+        "bloomLevels": 0,
+        "bloomResolutionScale": 0,
+        "optics": null
+      }
+    },
+    {
+      "tier": 0,
+      "reducedMotion": true,
+      "dpr": 3,
+      "width": 5120,
+      "height": 2880,
+      "expected": {
+        "available": false,
+        "tier": 0,
+        "pixelRatio": 0.5,
+        "antialias": false,
+        "maxParticleCount": 0,
+        "continuousMotion": false,
+        "postprocessing": "none",
+        "multisampling": 0,
+        "bloomLevels": 0,
+        "bloomResolutionScale": 0,
+        "optics": null
+      }
+    },
+    {
+      "tier": 1,
+      "reducedMotion": false,
+      "dpr": 0.25,
+      "width": 360,
+      "height": 780,
+      "expected": {
+        "available": true,
+        "tier": 1,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 12000,
+        "continuousMotion": true,
+        "postprocessing": "none",
+        "multisampling": 0,
+        "bloomLevels": 0,
+        "bloomResolutionScale": 0,
+        "optics": null
+      }
+    },
+    {
+      "tier": 1,
+      "reducedMotion": false,
+      "dpr": 1,
+      "width": 1440,
+      "height": 900,
+      "expected": {
+        "available": true,
+        "tier": 1,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 12000,
+        "continuousMotion": true,
+        "postprocessing": "none",
+        "multisampling": 0,
+        "bloomLevels": 0,
+        "bloomResolutionScale": 0,
+        "optics": null
+      }
+    },
+    {
+      "tier": 1,
+      "reducedMotion": false,
+      "dpr": 3,
+      "width": 5120,
+      "height": 2880,
+      "expected": {
+        "available": true,
+        "tier": 1,
+        "pixelRatio": 0.5,
+        "antialias": false,
+        "maxParticleCount": 12000,
+        "continuousMotion": true,
+        "postprocessing": "none",
+        "multisampling": 0,
+        "bloomLevels": 0,
+        "bloomResolutionScale": 0,
+        "optics": null
+      }
+    },
+    {
+      "tier": 1,
+      "reducedMotion": true,
+      "dpr": 0.25,
+      "width": 360,
+      "height": 780,
+      "expected": {
+        "available": true,
+        "tier": 1,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 12000,
+        "continuousMotion": false,
+        "postprocessing": "none",
+        "multisampling": 0,
+        "bloomLevels": 0,
+        "bloomResolutionScale": 0,
+        "optics": null
+      }
+    },
+    {
+      "tier": 1,
+      "reducedMotion": true,
+      "dpr": 1,
+      "width": 1440,
+      "height": 900,
+      "expected": {
+        "available": true,
+        "tier": 1,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 12000,
+        "continuousMotion": false,
+        "postprocessing": "none",
+        "multisampling": 0,
+        "bloomLevels": 0,
+        "bloomResolutionScale": 0,
+        "optics": null
+      }
+    },
+    {
+      "tier": 1,
+      "reducedMotion": true,
+      "dpr": 3,
+      "width": 5120,
+      "height": 2880,
+      "expected": {
+        "available": true,
+        "tier": 1,
+        "pixelRatio": 0.5,
+        "antialias": false,
+        "maxParticleCount": 12000,
+        "continuousMotion": false,
+        "postprocessing": "none",
+        "multisampling": 0,
+        "bloomLevels": 0,
+        "bloomResolutionScale": 0,
+        "optics": null
+      }
+    },
+    {
+      "tier": 2,
+      "reducedMotion": false,
+      "dpr": 0.25,
+      "width": 360,
+      "height": 780,
+      "expected": {
+        "available": true,
+        "tier": 2,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 28000,
+        "continuousMotion": true,
+        "postprocessing": "selective",
+        "multisampling": 0,
+        "bloomLevels": 3,
+        "bloomResolutionScale": 0.5,
+        "optics": null
+      }
+    },
+    {
+      "tier": 2,
+      "reducedMotion": false,
+      "dpr": 1,
+      "width": 1440,
+      "height": 900,
+      "expected": {
+        "available": true,
+        "tier": 2,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 28000,
+        "continuousMotion": true,
+        "postprocessing": "selective",
+        "multisampling": 0,
+        "bloomLevels": 3,
+        "bloomResolutionScale": 0.5,
+        "optics": null
+      }
+    },
+    {
+      "tier": 2,
+      "reducedMotion": false,
+      "dpr": 3,
+      "width": 5120,
+      "height": 2880,
+      "expected": {
+        "available": true,
+        "tier": 2,
+        "pixelRatio": 0.5,
+        "antialias": false,
+        "maxParticleCount": 28000,
+        "continuousMotion": true,
+        "postprocessing": "selective",
+        "multisampling": 0,
+        "bloomLevels": 3,
+        "bloomResolutionScale": 0.5,
+        "optics": null
+      }
+    },
+    {
+      "tier": 2,
+      "reducedMotion": true,
+      "dpr": 0.25,
+      "width": 360,
+      "height": 780,
+      "expected": {
+        "available": true,
+        "tier": 2,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 28000,
+        "continuousMotion": false,
+        "postprocessing": "selective",
+        "multisampling": 0,
+        "bloomLevels": 3,
+        "bloomResolutionScale": 0.5,
+        "optics": null
+      }
+    },
+    {
+      "tier": 2,
+      "reducedMotion": true,
+      "dpr": 1,
+      "width": 1440,
+      "height": 900,
+      "expected": {
+        "available": true,
+        "tier": 2,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 28000,
+        "continuousMotion": false,
+        "postprocessing": "selective",
+        "multisampling": 0,
+        "bloomLevels": 3,
+        "bloomResolutionScale": 0.5,
+        "optics": null
+      }
+    },
+    {
+      "tier": 2,
+      "reducedMotion": true,
+      "dpr": 3,
+      "width": 5120,
+      "height": 2880,
+      "expected": {
+        "available": true,
+        "tier": 2,
+        "pixelRatio": 0.5,
+        "antialias": false,
+        "maxParticleCount": 28000,
+        "continuousMotion": false,
+        "postprocessing": "selective",
+        "multisampling": 0,
+        "bloomLevels": 3,
+        "bloomResolutionScale": 0.5,
+        "optics": null
+      }
+    },
+    {
+      "tier": 3,
+      "reducedMotion": false,
+      "dpr": 0.25,
+      "width": 360,
+      "height": 780,
+      "expected": {
+        "available": true,
+        "tier": 3,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 40000,
+        "continuousMotion": true,
+        "postprocessing": "full",
+        "multisampling": 0,
+        "bloomLevels": 5,
+        "bloomResolutionScale": 0.5,
+        "optics": {
+          "secondarySourceCount": 5,
+          "distortion": true
+        }
+      }
+    },
+    {
+      "tier": 3,
+      "reducedMotion": false,
+      "dpr": 1,
+      "width": 1440,
+      "height": 900,
+      "expected": {
+        "available": true,
+        "tier": 3,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 40000,
+        "continuousMotion": true,
+        "postprocessing": "full",
+        "multisampling": 0,
+        "bloomLevels": 5,
+        "bloomResolutionScale": 0.5,
+        "optics": {
+          "secondarySourceCount": 5,
+          "distortion": true
+        }
+      }
+    },
+    {
+      "tier": 3,
+      "reducedMotion": false,
+      "dpr": 3,
+      "width": 5120,
+      "height": 2880,
+      "expected": {
+        "available": true,
+        "tier": 3,
+        "pixelRatio": 0.5,
+        "antialias": false,
+        "maxParticleCount": 40000,
+        "continuousMotion": true,
+        "postprocessing": "full",
+        "multisampling": 0,
+        "bloomLevels": 5,
+        "bloomResolutionScale": 0.5,
+        "optics": {
+          "secondarySourceCount": 5,
+          "distortion": true
+        }
+      }
+    },
+    {
+      "tier": 3,
+      "reducedMotion": true,
+      "dpr": 0.25,
+      "width": 360,
+      "height": 780,
+      "expected": {
+        "available": true,
+        "tier": 3,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 40000,
+        "continuousMotion": false,
+        "postprocessing": "selective",
+        "multisampling": 0,
+        "bloomLevels": 3,
+        "bloomResolutionScale": 0.5,
+        "optics": null
+      }
+    },
+    {
+      "tier": 3,
+      "reducedMotion": true,
+      "dpr": 1,
+      "width": 1440,
+      "height": 900,
+      "expected": {
+        "available": true,
+        "tier": 3,
+        "pixelRatio": 1,
+        "antialias": false,
+        "maxParticleCount": 40000,
+        "continuousMotion": false,
+        "postprocessing": "selective",
+        "multisampling": 0,
+        "bloomLevels": 3,
+        "bloomResolutionScale": 0.5,
+        "optics": null
+      }
+    },
+    {
+      "tier": 3,
+      "reducedMotion": true,
+      "dpr": 3,
+      "width": 5120,
+      "height": 2880,
+      "expected": {
+        "available": true,
+        "tier": 3,
+        "pixelRatio": 0.5,
+        "antialias": false,
+        "maxParticleCount": 40000,
+        "continuousMotion": false,
+        "postprocessing": "selective",
+        "multisampling": 0,
+        "bloomLevels": 3,
+        "bloomResolutionScale": 0.5,
+        "optics": null
+      }
+    }
+  ],
+  "lens": {
+    "initial": {
+      "uParticleMotionTexture": null,
+      "uParticleMotionAge": 6,
+      "uPrimaryMotionUv": [-1, -1, 1],
+      "uSecondaryMotionUvs": [
+        [-1, -1, 1],
+        [-1, -1, 1],
+        [-1, -1, 1],
+        [-1, -1, 1],
+        [-1, -1, 1]
+      ],
+      "uAnimated": 1,
+      "uAspect": 1,
+      "uCenter": [0.5, 0.5],
+      "uDirtTexture": "texture",
+      "uDirtTextureAspect": 1.3333333333333333,
+      "uDirtTextureOffset": [0, 0],
+      "uDirtTextureRotation": 0,
+      "uDirtyGlassEnabled": 1,
+      "uDistortion": 0.68,
+      "uFlareEnabled": 1,
+      "uGhosts": 0.1,
+      "uGrain": 0.031,
+      "uHalo": 0.12,
+      "uIntensity": 0.3,
+      "uProceduralDirt": 0,
+      "uSecondaryCenters": [
+        [-2, -2],
+        [-2, -2],
+        [-2, -2],
+        [-2, -2],
+        [-2, -2]
+      ],
+      "uSecondaryIntensity": 0.25,
+      "uSecondaryVisibility": [0, 0, 0, 0, 0],
+      "uStreakLength": 1,
+      "uStreaks": 0.18,
+      "uTime": 0,
+      "uTextureDirt": 0,
+      "uVerticalStreaks": 0,
+      "uVisibility": 1
+    },
+    "updated": {
+      "uParticleMotionTexture": "texture",
+      "uParticleMotionAge": 0.4,
+      "uPrimaryMotionUv": [0.2, 0.3, 2],
+      "uSecondaryMotionUvs": [
+        [-1, -1, 1],
+        [0.8, 0.7, 1.2],
+        [-1, -1, 1],
+        [-1, -1, 1],
+        [-1, -1, 1]
+      ],
+      "uAnimated": 0,
+      "uAspect": 1.6,
+      "uCenter": [0.5, 0.5],
+      "uDirtTexture": "texture",
+      "uDirtTextureAspect": 1.3333333333333333,
+      "uDirtTextureOffset": [-0.0031982656785131264, -0.0032400742704060607],
+      "uDirtTextureRotation": -0.006019625595036164,
+      "uDirtyGlassEnabled": 1,
+      "uDistortion": 0.68,
+      "uFlareEnabled": 1,
+      "uGhosts": 0.1,
+      "uGrain": 0.055,
+      "uHalo": 0.12,
+      "uIntensity": 0.3,
+      "uProceduralDirt": 0,
+      "uSecondaryCenters": [
+        [-2, -2],
+        [-2, -2],
+        [-2, -2],
+        [-2, -2],
+        [-2, -2]
+      ],
+      "uSecondaryIntensity": 0.25,
+      "uSecondaryVisibility": [0, 0, 0, 0, 0],
+      "uStreakLength": 0.5,
+      "uStreaks": 0.18,
+      "uTime": 0,
+      "uTextureDirt": 0.15,
+      "uVerticalStreaks": 0.3,
+      "uVisibility": 1
+    },
+    "projected": {
+      "uParticleMotionTexture": "texture",
+      "uParticleMotionAge": 0.4,
+      "uPrimaryMotionUv": [0.2, 0.3, 2],
+      "uSecondaryMotionUvs": [
+        [-1, -1, 1],
+        [0.8, 0.7, 1.2],
+        [-1, -1, 1],
+        [-1, -1, 1],
+        [-1, -1, 1]
+      ],
+      "uAnimated": 0,
+      "uAspect": 1.6,
+      "uCenter": [0.5246012523868187, 0.4927156900819222],
+      "uDirtTexture": "texture",
+      "uDirtTextureAspect": 1.3333333333333333,
+      "uDirtTextureOffset": [-0.0031982656785131264, -0.0032400742704060607],
+      "uDirtTextureRotation": -0.006019625595036164,
+      "uDirtyGlassEnabled": 1,
+      "uDistortion": 0.68,
+      "uFlareEnabled": 1,
+      "uGhosts": 0.1,
+      "uGrain": 0.055,
+      "uHalo": 0.12,
+      "uIntensity": 0.3,
+      "uProceduralDirt": 0,
+      "uSecondaryCenters": [
+        [-0.05555555555555558, 0.5208888888888888],
+        [0.5902777777777778, 0.38755555555555554],
+        [-2, -2],
+        [-2, -2],
+        [-2, -2]
+      ],
+      "uSecondaryIntensity": 0.25,
+      "uSecondaryVisibility": [0, 1, 0, 0, 0],
+      "uStreakLength": 0.5,
+      "uStreaks": 0.18,
+      "uTime": 3.2,
+      "uTextureDirt": 0.15,
+      "uVerticalStreaks": 0.3,
+      "uVisibility": 0.48999999999999994
+    }
+  }
+}

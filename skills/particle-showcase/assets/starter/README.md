@@ -25,7 +25,7 @@ the source. `npm run build` creates a static site in `dist/`;
 - `src/particles/ParticleBackground.tsx`: React scene lifecycle.
 - `src/particles/engine/`: typed scene API and DOM/scroll coordination.
 - `src/particles/shapes/`: shape registry and custom SVG sampling.
-- `src/particles/vendor/astra/`: retained third-party JavaScript renderer.
+- `src/particles/core/`: readable TypeScript particle generation, animation and rendering.
 - `src/styles/`: page and particle styles.
 - `public/assets/`: bundled logos, fonts and fallback image.
 
@@ -35,10 +35,10 @@ For subdirectory hosting, set Vite's `base` to the deployment path. Resolve new
 public assets with `assetUrl` from `src/lib/assets.ts`; the bundled logos and
 poster already use it, and version links preserve the current directory.
 
-The application code uses TypeScript. The extracted renderer intentionally
-remains isolated JavaScript behind a typed boundary; it is not a new original
-engine. Preserve [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and
-`src/particles/vendor/astra/README.md`. Source availability does not grant
+The application and rendering core use strict TypeScript. The core is a readable
+reconstruction of extracted particle modules; it is not the original author's
+uncompiled source or an independently original algorithm. GPU shaders use GLSL. Preserve [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and
+`src/particles/core/README.md`. Source availability does not grant
 redistribution rights to all bundled source, fonts or brand assets.
 
 This starter is generated from the maintained showcase source. Maintainers

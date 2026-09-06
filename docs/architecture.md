@@ -10,29 +10,31 @@ app/App.tsx + components/showcase/
 particles/ParticleBackground.tsx
         ↓ 创建、重播、刷新、释放
 particles/engine/ ── particles/shapes/
-        ↓ 类型边界
-particles/vendor/astra/
+        ↓ 配置、输入与几何
+particles/core/
         ↓
 Three.js + postprocessing → WebGL canvas
 ```
 
 ## 各层职责
 
-| 目录                          | 职责                                     | 常见修改                        |
-| ----------------------------- | ---------------------------------------- | ------------------------------- |
-| `src/app/`                    | 组合页面、选择当前模式                   | 页面内容与模式逻辑              |
-| `src/components/showcase/`    | 页头、SVG 目标、拖拽和重播控件           | UI、可访问名称、展示结构        |
-| `src/config/`                 | 品牌配置与数据类型                       | 标题、Logo 资源、首屏和底部形状 |
-| `src/particles/engine/`       | 浏览器生命周期、DOM 测量、滚动和输入协调 | 宿主页面接入、场景管理          |
-| `src/particles/shapes/`       | 几何数据、形状注册、填充采样             | 新增 Logo、文字轮廓与蓝色部件   |
-| `src/particles/vendor/astra/` | 来源可追溯的原始数学、着色器和后处理     | 仅处理该层的渲染问题            |
-| `src/styles/`                 | 全局基础、展示布局与背景样式             | 字体、间距、响应式布局          |
+| 目录                       | 职责                                     | 常见修改                        |
+| -------------------------- | ---------------------------------------- | ------------------------------- |
+| `src/app/`                 | 组合页面、选择当前模式                   | 页面内容与模式逻辑              |
+| `src/components/showcase/` | 页头、SVG 目标、拖拽和重播控件           | UI、可访问名称、展示结构        |
+| `src/config/`              | 品牌配置与数据类型                       | 标题、Logo 资源、首屏和底部形状 |
+| `src/particles/engine/`    | 浏览器生命周期、DOM 测量、滚动和输入协调 | 宿主页面接入、场景管理          |
+| `src/particles/shapes/`    | 几何数据、形状注册、填充采样             | 新增 Logo、文字轮廓与蓝色部件   |
+| `src/particles/core/`      | 可读 TS 数学、状态、着色器与后处理       | 阅读或调整底层算法              |
+| `src/styles/`              | 全局基础、展示布局与背景样式             | 字体、间距、响应式布局          |
 
-## TypeScript 边界
+## TypeScript 核心
 
-React 组件使用 `.tsx`；配置、协调器、采样和类型使用 `.ts`。原始渲染模块保留 JavaScript 文件名及来源记录，集中在 `vendor/astra/`。`adapter.d.ts` 为适配入口提供类型声明；应用从 `particles/engine/index.ts` 获取公开接口和类型，而不直接依赖零散 vendor 模块。
+React 组件使用 `.tsx`，配置、协调器、采样、动画和渲染使用严格检查的 `.ts`。`core/` 使用标准 ES 模块，不再通过数字编号加载原网站的编译工厂；配置、粒子场和动画状态都有结构类型。外部页面从 `particles/engine/index.ts` 获取公开接口。
 
-这是刻意保留的第三方边界。把提取的复杂渲染源码机械改成 `.ts`，再大量加入 `any` 或关闭检查，并不能提高类型安全，还会增加与原始效果比较的成本。
+通用 SVG 解析使用固定版本 Three.js 自带的 SVGLoader。着色器仍使用 GPU 执行的 GLSL 源码，这是 WebGL 的语言要求。粒子生成、运动和光学参数保留来源，命名和模块结构经过重新整理；原作者在编译中丢失的类型、注释与命名不能自动恢复。
+
+底层阅读顺序和来源对应关系见 [core 阅读指南](../src/particles/core/README.md)。旧编译实现保存在 `typescript-showcase-v1`，用于回归比较和回退，不在当前应用与 Skill 内重复携带。
 
 ## 场景生命周期
 

@@ -1,8 +1,8 @@
 # 验收要点
 
-模板基准为 React 19.2、Three.js 0.180.0、postprocessing 6.39.4、Vite 6.4.2，应用与接入层使用严格 TypeScript。以随包 `package-lock.json` 为准执行 `npm ci`，不在初次复现时顺手升级。
+模板基准为 React 19.2、Three.js 0.180.0、postprocessing 6.39.4、Vite 6.4.2，应用、接入层与粒子核心使用严格 TypeScript。以随包 `package-lock.json` 为准执行 `npm ci`，不在初次复现时顺手升级。
 
-先运行 `npm run typecheck`、`npm run lint`、`npm run format:check` 和 `npm run build`。应用代码新增功能应补充匹配的类型；保留在 `src/particles/vendor/astra/` 的提取渲染器是明确隔离的 JavaScript，不是已经全部迁移或逐行验证的 TypeScript。
+先运行 `npm run typecheck`、`npm run lint`、`npm run format:check`、`npm test` 和 `npm run build`。应用与 `src/particles/core/` 新增功能都应补充匹配的结构类型；核心是对编译实现的可读重构，变更后需要数值与实际渲染回归，不应重新引入旧模块工厂。
 
 ## 可见结果
 

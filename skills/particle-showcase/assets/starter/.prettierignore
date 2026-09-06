@@ -3,7 +3,6 @@ dist/
 deliverables/*.zip
 package-lock.json
 public/assets/
-src/particles/vendor/astra/
 skills/particle-showcase/assets/starter/
 docs/reference/
 docs/archive/

@@ -17,11 +17,11 @@ Read `README.md`, `docs/architecture.md` and `docs/customization.md` for the mai
 - `src/particles/ParticleBackground.tsx`: React scene lifetime.
 - `src/particles/engine/`: typed DOM, scroll, device profile and public API.
 - `src/particles/shapes/`: SVG geometry, shape registry and filled sampler.
-- `src/particles/vendor/astra/`: retained compiled renderer and typed adapter boundary.
+- `src/particles/core/`: readable TypeScript implementation of particle generation, configuration, motion, rendering and shaders.
 - `src/styles/`: global, page and particle styles.
 - `public/assets/brands/`, `fonts/`, `images/`: local runtime resources.
 
-The vendor JavaScript is intentionally retained to preserve the source shaders, seeded distribution, geometry, optical postprocessing and motion parameters. Do not rename this compiled code to TypeScript or rewrite its mathematics as routine cleanup. Its provenance is recorded in `src/particles/vendor/astra/README.md` and `THIRD_PARTY_NOTICES.md`.
+The user explicitly requested readable TypeScript for the compiled rendering core on 2026-09-06. Replace the extracted module factories and numeric module loader with ordinary imports, descriptive identifiers and real structural types. Keep shader equations, seeded distribution, geometry, optical postprocessing and motion parameters equivalent. Do not mechanically rename files or suppress type errors. The compiled baseline remains in the immutable `typescript-showcase-v1` tag; it must not be copied into the active application or distributable Skill merely as a fallback. Keep source provenance in `src/particles/core/README.md` and `THIRD_PARTY_NOTICES.md`. A readable reconstruction does not recover the author's lost original names, comments or TypeScript source, or change third-party rights.
 
 ## Visual and interaction contract
 
@@ -62,4 +62,4 @@ The shareable archive is `deliverables/particle-showcase-skill.zip`. Keep the te
 
 Do not assign a blanket MIT or other open-source license to the extracted renderer, brand paths, bundled fonts or posters. Keep `LICENSE.md` and `THIRD_PARTY_NOTICES.md` accurate. The user plans to make the project available for others to study; publishing or licensing third-party contents requires a separate, accurate decision.
 
-Keep all prior snapshots intact: `astra-original-v1` (`3dd20cf`, also `main`), `deepseek-v1`, `deepseek-wordmark-v2`, `two-brand-showcase-v1`, `kimi-glm-v1`, `model-titles-v1`, `showcase-polish-v1`, `shorter-scroll-v1` and `particle-showcase-skill-v1`. Do not move or overwrite these tags. The TypeScript organization is developed on `refactor/typescript-showcase`; save verified changes separately.
+Keep all prior snapshots intact: `astra-original-v1` (`3dd20cf`, also `main`), `deepseek-v1`, `deepseek-wordmark-v2`, `two-brand-showcase-v1`, `kimi-glm-v1`, `model-titles-v1`, `showcase-polish-v1`, `shorter-scroll-v1`, `particle-showcase-skill-v1` and `typescript-showcase-v1` (`85663be`). Do not move or overwrite these tags. Readable engine development uses `refactor/readable-particle-engine`; save verified changes separately.

@@ -61,7 +61,7 @@ npm run build
 npm run dev
 ```
 
-生成项目保留同样的 TypeScript 分层：React 组件为 `.tsx`，自有逻辑为 `.ts`，有来源记录的原始渲染器独立保存在 `src/particles/vendor/astra/`。首次安装依赖需要网络，运行粒子效果无需访问原始网站。
+生成项目保留同样的 TypeScript 分层：React 组件为 `.tsx`，页面逻辑和可读粒子核心为 `.ts`，有来源记录的底层实现位于 `src/particles/core/`。首次安装依赖需要网络，运行粒子效果无需访问原始网站。
 
 ## 使用范围
 

@@ -1,17 +1,17 @@
 import {
-  createAstraRenderer,
-  createAstraAnimationState,
-  updateAstraAnimation,
   resolveHeroLayout,
   resolveCueKeyframe,
   resolveAstraRendererConfig,
   prepareAstraRuntimeConfig,
   resolvePreparedAstraRuntimeConfig,
   getAstraScrollState,
-  sceneMath,
-  interpolateAstra,
-} from "../vendor/astra/adapter.js";
-import type { PreparedRuntimeConfig } from "../vendor/astra/adapter.js";
+  getAstraSceneValues,
+  getAstraNumber,
+  applyAstraEasing,
+} from "../core/config";
+import type { PreparedRuntimeConfig } from "../core/config";
+import { createAstraRenderer } from "../core/renderer";
+import { createAstraAnimationState, updateAstraAnimation } from "../core/animation";
 import { ASTRA_SHAPE_SVGS, resolveAstraPathShape } from "../shapes/registry";
 import type { SampledElement } from "../shapes/types";
 import type {
@@ -81,8 +81,6 @@ const smootherstep = (value: number, start: number, end: number) => {
   const x = clamp((value - start) / (end - start));
   return x * x * x * (x * (x * 6 - 15) + 10);
 };
-const { getAstraSceneValues, getAstraNumber } = sceneMath;
-const { applyAstraEasing } = interpolateAstra;
 
 function documentBounds(element: Element) {
   const rect = element.getBoundingClientRect();
