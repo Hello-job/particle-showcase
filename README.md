@@ -2,7 +2,7 @@
 
 让 Logo 在星光中成形，随鼠标、拖拽和滚动散开、旋转、再次聚合。
 
-基于 **React + TypeScript + Vite + Three.js** 的交互粒子展示项目，包含四套品牌示例和可独立使用的 Agent Skill。页面、形状数据与渲染器分层组织，便于阅读、调整和接入自己的作品。
+基于 **React + TypeScript + Vite + Three.js** 的交互粒子展示项目，包含四套品牌示例和配套 Agent Skill。页面、形状数据与渲染器分层组织，便于阅读、调整和接入自己的作品。
 
 ![DeepSeek 粒子字标的实际浏览器截图](docs/reference/deepseek-titlecase-desktop.jpg)
 
@@ -14,7 +14,7 @@
 - **连续交互**：鼠标扰动、拖拽旋转、方向键控制、滚动变形与重播。
 - **四套示例**：统一的品牌切换、简洁页头、桌面和窄屏布局。
 - **可替换形状**：支持 SVG 轮廓、填充形状、字母内部留白、分离部件和局部配色。
-- **可复用 Skill**：从同一份源码生成独立模板，附创建脚本、接入说明和验证清单。
+- **轻量 Skill**：直接使用仓库源码，附项目导出脚本、接入说明和验证清单，不重复携带应用与素材。
 
 | 模式     | 地址参数          | 首屏                 | 底部                       |
 | -------- | ----------------- | -------------------- | -------------------------- |
@@ -62,8 +62,8 @@ src/
 └── main.tsx
 public/assets/            # 本地图形与字体
 docs/                     # 架构、定制、Skill 和历史视觉记录
-skills/particle-showcase/ # Skill 源文件与自动同步的独立模板
-scripts/                  # 构建适配、模板同步与打包
+skills/particle-showcase/ # Skill 指南、参考与项目导出脚本
+scripts/                  # 构建适配与 Skill 检查、打包
 tests/                    # 行为与构建检查
 deliverables/             # 可分发的 Skill ZIP
 worker/                   # 可选 Sites 适配
@@ -75,14 +75,14 @@ React 组件使用 `.tsx`，粒子核心和其他逻辑使用 `.ts`。`particles
 
 先从 `src/config/showcase.json` 调整品牌信息、默认模式和标题；更换 SVG、文字轮廓或滚动节奏时阅读[定制指南](docs/customization.md)。
 
-将 [Skill ZIP](deliverables/particle-showcase-skill.zip) 安装后，可以直接向 Agent 描述目标：
+Skill 与展示页共用根目录的 `src/`、`public/` 和工程配置，代码与素材只保留一份。[Skill ZIP](deliverables/particle-showcase-skill.zip) 只包含指南、参考和创建脚本；安装后还需要提供本仓库的本地路径。在本项目中工作时，可以直接向 Agent 描述目标：
 
 ```text
 使用 $particle-showcase，把我的 SVG Logo 做成互动粒子页面。
 首屏展示 Logo，底部聚成品牌英文，保留鼠标、拖拽、滚动和重播。
 ```
 
-[安装与使用](docs/skill/usage.md)介绍完整流程。[Skill 开发说明](docs/skill/development.md)说明如何同步模板、检查初始化器和重新打包；不要手动维护另一份应用代码。
+[安装与使用](docs/skill/usage.md)介绍如何在当前仓库使用 Skill，或通过 `--source` 从仓库导出独立项目。[Skill 开发说明](docs/skill/development.md)说明如何检查初始化器和重新打包。
 
 ## 来源与许可状态
 

@@ -35,15 +35,15 @@ npm run build
 
 ## 维护 Skill
 
-应用是模板的来源。不要仅修改 `skills/particle-showcase/assets/starter/`，否则下次同步会覆盖该改动。
+应用代码与资源只保存在仓库根目录。`skills/particle-showcase/` 只维护指南、参考和项目导出脚本；不要在 Skill 中新增一份应用示例或素材副本。
 
 ```bash
-npm run skill:sync
 npm run skill:check
+npm run test:skill
 npm run skill:pack
 ```
 
-Skill 文案位于 `skills/particle-showcase/SKILL.md` 与 `references/`，初始化器位于 `scripts/create_showcase.py`。同步与打包流程见 [Skill 开发说明](docs/skill/development.md)。
+Skill 文案位于 `skills/particle-showcase/SKILL.md` 与其 `references/`，初始化器位于 `skills/particle-showcase/scripts/create_showcase.py`。它通过 `--source` 从本地仓库向新目录或空目录导出项目；修改导出规则后，应实际验证生成项目能独立安装、检查和构建。检查与打包流程见 [Skill 开发说明](docs/skill/development.md)。
 
 ## 提交说明
 

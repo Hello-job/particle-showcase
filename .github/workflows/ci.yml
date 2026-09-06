@@ -30,8 +30,12 @@ jobs:
       - run: npm run test:sites
       - run: npm run skill:check
       - run: npm run skill:pack
-      - name: Validate standalone Skill template
-        working-directory: skills/particle-showcase/assets/starter
+      - name: Export from the packaged Skill and repository
+        run: |
+          python3 -m zipfile -e deliverables/particle-showcase-skill.zip "$RUNNER_TEMP/particle-skill"
+          python3 "$RUNNER_TEMP/particle-skill/particle-showcase/scripts/create_showcase.py" --source "$GITHUB_WORKSPACE" --dest "$RUNNER_TEMP/particle-showcase" --brand kimi --single-brand
+      - name: Validate the exported project
+        working-directory: ${{ runner.temp }}/particle-showcase
         run: |
           npm ci
           npm run typecheck

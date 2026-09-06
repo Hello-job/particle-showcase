@@ -1,8 +1,8 @@
 # 使用 Particle Showcase Skill
 
-Skill 包含工作说明、可运行的 React + TypeScript 模板、创建脚本与形状接入参考。使用完整文件夹或 ZIP；单独一个 `SKILL.md` 不包含粒子引擎。
+Skill 包含工作说明、创建脚本与形状接入参考。粒子引擎、页面示例和素材只保存在本仓库根目录，Skill 不再复制一份应用。你可以直接在本项目中使用它，也可以从本地仓库导出一个独立项目。
 
-[下载完整 Skill ZIP](../../deliverables/particle-showcase-skill.zip) · [查看 Skill 源码](../../skills/particle-showcase/SKILL.md)
+[下载轻量 Skill ZIP](../../deliverables/particle-showcase-skill.zip) · [查看 Skill 源码](../../skills/particle-showcase/SKILL.md)
 
 ## 安装
 
@@ -13,19 +13,21 @@ skills/
 └── particle-showcase/
     ├── SKILL.md
     ├── agents/
-    ├── scripts/
     ├── references/
-    └── assets/starter/
+    └── scripts/
+        └── create_showcase.py
 ```
 
-重新打开任务后调用 `$particle-showcase`。也可以把完整压缩包交给支持此 Skill 格式的 Agent，让它安装并创建项目。
+安装整个文件夹，保留脚本与参考文件。重新打开任务后调用 `$particle-showcase`。也可以把压缩包交给支持此 Skill 格式的 Agent 安装。
+
+**ZIP 不包含引擎或品牌素材。** 使用安装后的 Skill 时，还需克隆或下载本仓库，并告诉 Agent 本地路径；也可以直接在本仓库中打开任务。不要把轻量 ZIP 当作独立可运行的展示项目。
 
 ## 调用示例
 
-使用内置示例：
+在本仓库使用已有示例：
 
 ```text
-使用 $particle-showcase，创建 DeepSeek 粒子展示页。
+使用 $particle-showcase，在当前仓库调整 DeepSeek 粒子展示页。
 保留鼠标扰动、拖拽旋转、滚动成形和重播，打开本地预览。
 ```
 
@@ -37,7 +39,7 @@ skills/
 隐藏版本切换，中间标题写 Orion One。
 ```
 
-也可以要求接入已有 React 页面。Skill 会指导 Agent 合并必要组件和 DOM 锚点，而不是覆盖整个应用。
+创建另一个项目时，同时提供源仓库和目标路径。也可以要求接入已有 React 页面，Skill 会指导 Agent 合并必要组件和 DOM 锚点。
 
 ## 手动生成项目
 
@@ -45,13 +47,16 @@ skills/
 
 ```bash
 python3 /path/to/particle-showcase/scripts/create_showcase.py \
+  --source /path/to/particle-showcase-repository \
   --dest /path/to/new-project \
   --brand deepseek \
   --title "My Model" \
   --single-brand
 ```
 
-`--brand` 可选 `astra`、`deepseek`、`kimi`、`glm`。省略 `--title` 和 `--single-brand` 保留示例标题与切换栏。脚本只接受新目录或空目录，不覆盖已有项目。
+`--source` 指向本仓库的根目录，那里应有 `src/`、`public/` 和 `package.json`。已安装或单独解压的 Skill 必须显式提供这个参数。只有运行源仓库内的 `skills/particle-showcase/scripts/create_showcase.py` 时，脚本才可按相对位置自动找到仓库，此时可以省略 `--source`。
+
+`--brand` 可选 `astra`、`deepseek`、`kimi`、`glm`。省略 `--title` 和 `--single-brand` 保留示例标题与切换栏。脚本只接受新目录或空目录，不覆盖已有项目；它导出所选本地仓库的当前文件，不要求 Git 历史。
 
 ```bash
 cd /path/to/new-project
@@ -61,10 +66,10 @@ npm run build
 npm run dev
 ```
 
-生成项目保留同样的 TypeScript 分层：React 组件为 `.tsx`，页面逻辑和可读粒子核心为 `.ts`，有来源记录的底层实现位于 `src/particles/core/`。首次安装依赖需要网络，运行粒子效果无需访问原始网站。
+生成项目保留同样的 TypeScript 分层：React 组件为 `.tsx`，页面逻辑和可读粒子核心为 `.ts`，有来源记录的底层实现位于 `src/particles/core/`。同时保留测试、依赖锁文件和来源说明，排除原仓库的 Git 数据、机器路径、依赖目录、构建产物和 Sites 适配。导出完成后，生成项目可以独立运行，不再依赖源仓库。首次安装依赖需要网络，运行粒子效果无需访问原始网站。
 
 ## 使用范围
 
-内置 Astra、DeepSeek、Kimi 和 GLM 四套示例。自己的 Logo 应优先提供 SVG；文字需要转为轮廓。不同设备的性能、光点和光晕细节可能不同。
+仓库提供 Astra、DeepSeek、Kimi 和 GLM 四套示例。自己的 Logo 应优先提供 SVG；文字需要转为轮廓。不同设备的性能、光点和光晕细节可能不同。
 
-模板保留源码、字体和品牌图形的来源说明，当前没有统一开源许可证。具体范围见 [第三方来源](../../THIRD_PARTY_NOTICES.md) 和 [许可状态](../../LICENSE.md)。
+导出的项目保留源码、字体和品牌图形的来源说明，当前没有统一开源许可证。具体范围见 [第三方来源](../../THIRD_PARTY_NOTICES.md) 和 [许可状态](../../LICENSE.md)。

@@ -54,12 +54,16 @@ The normal Vite build produces `dist/`. Preserve `.openai/hosting.json`, `worker
 
 ## Skill maintenance
 
-The maintained Skill is `skills/particle-showcase/`. Its `assets/starter/` is generated from the application, not independently maintained. After relevant source changes, run `npm run skill:sync`, `npm run skill:check`, `npm run test:skill` and `npm run skill:pack`. Validate a newly generated project when changing the template or initializer. Refresh the installed Skill copy as part of an authorized Skill update; packing must not silently alter a user's global installation.
+The maintained Skill is `skills/particle-showcase/`. The user requested removal of its duplicate example on 2026-09-06: keep application code, assets and project configuration only at the repository root. The Skill contains `SKILL.md`, `agents/`, `references/` and `scripts/create_showcase.py`; do not restore an `assets/starter/` copy or bundle the application into its ZIP.
 
-The shareable archive is `deliverables/particle-showcase-skill.zip`. Keep the template portable, free of personal paths, build output, dependency folders and Sites-only configuration. Documentation belongs in `docs/skill/` and the Skill's scoped references.
+Within this repository, the Skill works directly with `src/` and `public/`. For a standalone project, the initializer exports the current local repository to a new or empty destination using `--source`, `--dest`, `--brand`, `--title` and `--single-brand`. It may infer the source only when located inside the source repository at `skills/particle-showcase/scripts/create_showcase.py`; installed or unzipped copies require an explicit `--source` pointing to a cloned or downloaded repository. Do not invent a repository URL.
+
+After relevant Skill or export-source changes, run `npm run skill:check`, `npm run test:skill` and `npm run skill:pack`. There is no template synchronization step. Validate a newly generated project when changing the exporter or its file selection. Exported projects retain the TypeScript core, tests, dependency lock and provenance while excluding personal paths, Git data, build output, dependency folders and Sites-only configuration. Refresh the installed Skill copy as part of an authorized Skill update; packing must not silently alter a user's global installation.
+
+The shareable archive is `deliverables/particle-showcase-skill.zip`. It contains only the lightweight Skill; its users need a separate source checkout to create projects. Documentation belongs in `docs/skill/` and the Skill's scoped references.
 
 ## Provenance and version preservation
 
 Do not assign a blanket MIT or other open-source license to the extracted renderer, brand paths, bundled fonts or posters. Keep `LICENSE.md` and `THIRD_PARTY_NOTICES.md` accurate. The user plans to make the project available for others to study; publishing or licensing third-party contents requires a separate, accurate decision.
 
-Keep all prior snapshots intact: `astra-original-v1` (`3dd20cf`, also `main`), `deepseek-v1`, `deepseek-wordmark-v2`, `two-brand-showcase-v1`, `kimi-glm-v1`, `model-titles-v1`, `showcase-polish-v1`, `shorter-scroll-v1`, `particle-showcase-skill-v1` and `typescript-showcase-v1` (`85663be`). Do not move or overwrite these tags. Readable engine development uses `refactor/readable-particle-engine`; save verified changes separately.
+Keep all prior snapshots intact: `astra-original-v1` (`3dd20cf`, also `main`), `deepseek-v1`, `deepseek-wordmark-v2`, `two-brand-showcase-v1`, `kimi-glm-v1`, `model-titles-v1`, `showcase-polish-v1`, `shorter-scroll-v1`, `particle-showcase-skill-v1`, `typescript-showcase-v1` (`85663be`) and `readable-engine-v1` (`edfb719`). Do not move or overwrite these tags. Readable engine development uses `refactor/readable-particle-engine`; save verified changes separately.

@@ -10,10 +10,8 @@ import tempfile
 import unittest
 
 
-INITIALIZER = (
-    Path(__file__).resolve().parents[1]
-    / "skills/particle-showcase/scripts/create_showcase.py"
-)
+REPOSITORY = Path(__file__).resolve().parents[1]
+INITIALIZER = REPOSITORY / "skills/particle-showcase/scripts/create_showcase.py"
 
 
 class SkillInitializerTests(unittest.TestCase):
@@ -25,26 +23,27 @@ class SkillInitializerTests(unittest.TestCase):
         self.script = self.skill / "scripts/create_showcase.py"
         self.script.parent.mkdir(parents=True)
         shutil.copy2(INITIALIZER, self.script)
-        self.starter = self.skill / "assets/starter"
-        config_directory = self.starter / "src/config"
-        config_directory.mkdir(parents=True)
-        self.original_config = {
-            "defaultVariant": "deepseek",
-            "showVersionSwitch": True,
-            "versions": {
-                brand: {"modelName": brand.title()}
-                for brand in ("astra", "deepseek", "kimi", "glm")
-            },
-        }
-        self.config_path = config_directory / "showcase.json"
-        self.config_path.write_text(json.dumps(self.original_config), encoding="utf-8")
-        (self.starter / "index.html").write_text(
+        self.source = self.root / "source repository"
+        self.source.mkdir()
+        for name in ("src", "public", "tests/fixtures", "tests/helpers"):
+            shutil.copytree(REPOSITORY / name, self.source / name)
+        for name in (
+            "index.html", "vite.config.ts", "eslint.config.js", ".prettierrc.json",
+            ".prettierignore", ".editorconfig", ".gitignore", ".nvmrc", "LICENSE.md",
+            "THIRD_PARTY_NOTICES.md", "package.json", "package-lock.json", "tsconfig.json",
+        ):
+            shutil.copy2(REPOSITORY / name, self.source / name)
+        for item in (REPOSITORY / "tests").glob("*.test.ts"):
+            shutil.copy2(item, self.source / "tests" / item.name)
+        self.config_path = self.source / "src/config/showcase.json"
+        self.original_config = json.loads(self.config_path.read_text())
+        (self.source / "index.html").write_text(
             "<!doctype html><title>\nDefault\n</title><main>Example</main>", encoding="utf-8"
         )
 
     def run_initializer(self, destination, *arguments):
         return subprocess.run(
-            [sys.executable, str(self.script), "--dest", str(destination), *arguments],
+            [sys.executable, str(self.script), "--source", str(self.source), "--dest", str(destination), *arguments],
             capture_output=True,
             text=True,
             check=False,
@@ -85,8 +84,8 @@ class SkillInitializerTests(unittest.TestCase):
         config = json.loads((destination / "src/config/showcase.json").read_text())
         self.assertEqual(config, self.original_config)
 
-    def test_destination_inside_starter_is_rejected(self):
-        destination = self.starter / "nested"
+    def test_destination_inside_source_is_rejected(self):
+        destination = self.source / "nested"
         result = self.run_initializer(destination)
         self.assertNotEqual(result.returncode, 0)
         self.assertFalse(destination.exists())
@@ -106,12 +105,71 @@ class SkillInitializerTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertFalse(destination.exists())
 
-    def test_missing_starter_explains_whole_skill_is_required(self):
+    def test_incomplete_source_is_rejected_before_writing(self):
         self.config_path.unlink()
         destination = self.root / "missing"
         result = self.run_initializer(destination)
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("entire skill folder", result.stderr)
+        self.assertIn("incomplete", result.stderr)
+        self.assertFalse(destination.exists())
+
+    def test_installed_skill_without_source_explains_requirement(self):
+        destination = self.root / "no source"
+        result = subprocess.run(
+            [sys.executable, str(self.script), "--dest", str(destination)],
+            capture_output=True, text=True, check=False,
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("--source", result.stderr)
+        self.assertFalse(destination.exists())
+
+    def test_repository_skill_auto_locates_source(self):
+        script = self.source / "skills/particle-showcase/scripts/create_showcase.py"
+        script.parent.mkdir(parents=True)
+        shutil.copy2(INITIALIZER, script)
+        destination = self.root / "auto source"
+        result = subprocess.run(
+            [sys.executable, str(script), "--dest", str(destination)],
+            capture_output=True, text=True, check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertTrue((destination / "src/particles/core/renderer.ts").is_file())
+
+    def test_export_is_complete_and_excludes_repository_only_content(self):
+        for relative in (".git/config", ".openai/hosting.json", "node_modules/package/index.js",
+                         "dist/index.html", "scripts/prepare-sites-build.mjs", "src/.env.local"):
+            item = self.source / relative
+            item.parent.mkdir(parents=True, exist_ok=True)
+            item.write_text("excluded", encoding="utf-8")
+        destination = self.root / "portable"
+        result = self.run_initializer(destination)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        for relative in ("src", "public/assets", "tests/fixtures", "tests/helpers"):
+            for item in (self.source / relative).rglob("*"):
+                if item.is_file() and item.name != ".env.local":
+                    exported = destination / item.relative_to(self.source)
+                    # The default configuration is reserialized, so compare it as JSON.
+                    if item == self.config_path:
+                        self.assertEqual(json.loads(exported.read_bytes()), self.original_config)
+                    else:
+                        self.assertEqual(exported.read_bytes(), item.read_bytes())
+        for relative in (".git", ".openai", "node_modules", "dist", "scripts", "skills", "src/.env.local"):
+            self.assertFalse((destination / relative).exists(), relative)
+        for relative in ("LICENSE.md", "THIRD_PARTY_NOTICES.md"):
+            self.assertEqual((destination / relative).read_bytes(), (self.source / relative).read_bytes())
+        manifest = json.loads((destination / "package.json").read_bytes())
+        lock = json.loads((destination / "package-lock.json").read_bytes())
+        self.assertEqual(manifest["name"], lock["packages"][""]["name"])
+        self.assertNotIn("build:sites", manifest["scripts"])
+        self.assertFalse(any(name.startswith("skill:") for name in manifest["scripts"]))
+        self.assertEqual(manifest["dependencies"], json.loads((self.source / "package.json").read_bytes())["dependencies"])
+
+    def test_symbolic_link_source_file_is_rejected_before_writing(self):
+        (self.source / "src/outside.ts").symlink_to(self.config_path)
+        destination = self.root / "linked source"
+        result = self.run_initializer(destination)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("symbolic link", result.stderr)
         self.assertFalse(destination.exists())
 
 

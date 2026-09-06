@@ -3,7 +3,6 @@ dist/
 deliverables/*.zip
 package-lock.json
 public/assets/
-skills/particle-showcase/assets/starter/
 docs/reference/
 docs/archive/
 docs/skill/verification-v1.md
