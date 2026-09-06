@@ -131,16 +131,81 @@ function summarizeField(field: ParticleField) {
   };
 }
 
+function assertFlarePosition(
+  actual: readonly number[],
+  expected: readonly number[],
+  label: string,
+) {
+  assert.equal(actual.length, 3, `${label} must remain a 3D position`);
+  assert.equal(expected.length, 3);
+  for (let axis = 0; axis < 3; axis += 1) {
+    // Float64 world coordinates can differ by a few ULPs across Node/CPU platforms.
+    // Keep this absolute tolerance away from seeds, buffers, uniforms and shaders.
+    assert.ok(
+      Number.isFinite(actual[axis]) &&
+        Number.isFinite(expected[axis]) &&
+        Math.abs(actual[axis] - expected[axis]) <= 1e-12,
+      `${label}[${axis}]: ${actual[axis]} differs from ${expected[axis]} by more than 1e-12`,
+    );
+  }
+}
+
+function assertFieldMatchesBaseline(
+  actual: ReturnType<typeof summarizeField>,
+  expected: (typeof baseline.cases)[number]["expected"],
+) {
+  assert.equal(actual.layers.length, expected.layers.length);
+  const layers = actual.layers.map((layer, index) => {
+    const reference = expected.layers[index];
+    assertFlarePosition(
+      layer.flareBasePosition,
+      reference.flareBasePosition,
+      `layers[${index}].flareBasePosition`,
+    );
+    if (layer.flareSource && reference.flareSource) {
+      assertFlarePosition(
+        layer.flareSource.position,
+        reference.flareSource.position,
+        `layers[${index}].flareSource.position`,
+      );
+    }
+    // Only the already-checked positions are normalized for the exact comparison.
+    return {
+      ...layer,
+      flareBasePosition: reference.flareBasePosition,
+      flareSource:
+        layer.flareSource && reference.flareSource
+          ? { ...layer.flareSource, position: reference.flareSource.position }
+          : layer.flareSource,
+    };
+  });
+  assert.deepEqual({ ...actual, layers }, expected);
+}
+
 for (const scenario of baseline.cases) {
   test(`particle field preserves pre-refactor attributes and shaders: ${scenario.name}`, () => {
     const field = generateAstraField(resolveEngineConfig(scenario.config), scenario.options);
     try {
-      assert.deepEqual(summarizeField(field), scenario.expected);
+      assertFieldMatchesBaseline(summarizeField(field), scenario.expected);
     } finally {
       field.dispose();
     }
   });
 }
+
+test("flare position tolerance accepts platform rounding and rejects coordinate drift", () => {
+  const expected = [-0.9434153017464224, -1.5566287035698994, 0.09243813446200107];
+  const linuxPosition = [-0.9434153017464152, -1.5566287035698998, 0.09243813446200075];
+  assertFlarePosition(linuxPosition, expected, "flare");
+  for (const invalid of [
+    [expected[0] + 2e-12, expected[1], expected[2]],
+    [NaN, expected[1], expected[2]],
+    [Infinity, expected[1], expected[2]],
+    [...expected, 0],
+  ]) {
+    assert.throws(() => assertFlarePosition(invalid, expected, "flare"), assert.AssertionError);
+  }
+});
 
 test("invalid and fractional budgets cannot produce unbounded or fractional particle counts", () => {
   const config = resolveEngineConfig({});
